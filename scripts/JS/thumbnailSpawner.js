@@ -23,26 +23,25 @@ async function LoadTestThumbnails()
 async function LoadAllMovieThumbnails()
 {
     var thumbnailrow_m = document.getElementById("thumbnailrow-movies");
-    // get the list of all movies
-    await fetch('https://')
-            .then((response) => response.json())
-                .then((json) => console.log(json));
 
-
-
-
-    for (let i = 0; i < 12; i++) {
-        AddThumbnail("Shrek_1", true, thumbnailrow_m);
+    // in the future this should also load in the movie data, description etc.
+    for (let i = 0; i < movies.length; i++) {
+        AddThumbnail(movies[i], true, thumbnailrow_m);
     }
 }
+
+
 
 async function LoadAllSeriesThumbnails()
 {
-    var thumbnailrow_m = document.getElementById("thumbnailrow-series");
-    for (let i = 0; i < 12; i++) {
-        AddThumbnail("Shrek_1", true, thumbnailrow_m);
+    var thumbnailrow_s = document.getElementById("thumbnailrow-series");
+
+    // in the future this should also load in the movie data, description etc.
+    for (let i = 0; i < series.length; i++) {
+        AddThumbnail(series[i], false, thumbnailrow_s);
     }
 }
+
 
 
 
@@ -61,7 +60,7 @@ async function AddThumbnail(contentName, contentIsMovie, parent)
 
 
 LoadAllMovieThumbnails();
-
+LoadAllSeriesThumbnails();
 
 
 
