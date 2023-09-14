@@ -1,0 +1,19 @@
+
+Make an actual video player
+
+Make a watch progress system
+- for each show / movie save the last timestamp watched(-15sec)
+- for each episode / movie, save a bool "HasWatched" as true if watched.
+- add the option to clear watch progress for each show / movie
+
+make user system
+
+ui:
+make user choice / login screen
+make homepage + search bar
+
+make a display that shows the thumbnails like netflix
+
+make everything sortable by #tags such as #disney #christmas #series #movie
+
+probably won't need suggestions but if needed that's last priority

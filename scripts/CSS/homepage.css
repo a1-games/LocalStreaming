@@ -1,0 +1,86 @@
+
+
+
+:root {
+    --textColor: #e1ecf8;
+    --sectionColor: #1f354d;
+    --backgroundColor: #031324;
+    --scrollColor: #205186;
+}
+
+
+body {
+    background-color: var(--backgroundColor);
+}
+
+.section-title {
+    display: flex;
+    position: relative;
+    margin: auto 0;
+    padding: 1rem 0 0 1rem;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--textColor);
+}
+
+.homepage-section {
+    position: relative;
+    display: flex;
+    width: auto;
+    margin: 1rem;
+    padding: 0;
+    
+    border-radius: 0.5em;
+    background-color: var(--sectionColor);
+
+    flex-direction: column;
+}
+
+
+.thumbnailrow {
+    position: relative;
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: 1em;
+    /* bottom padding is to make space for the scroll wheel*/
+    padding: 0 0 0.5rem 0;
+    
+    flex-flow: row;
+    flex-grow: 2;
+    
+    background-color: transparent;
+    border-radius: 0.5em;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+
+.content-thumbnail {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    height: 8em;
+    width: 15em;
+    margin-right: 1em;
+
+    
+    border-radius: 0.5em;
+    /* background image is set from the thumbnail spawner */
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+
+
+
+
+
+
+
