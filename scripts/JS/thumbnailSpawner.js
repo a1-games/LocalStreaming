@@ -1,4 +1,27 @@
 
+let rndSeries = []
+let rndMovies = []
+
+function RandomizeSeriesList()
+{
+    rndSeries = []
+    let len = series.length;
+    for (let i = 0; i < len; i++) {
+        let rnd = Math.floor(Math.random() * series.length);
+        rndSeries[i] = (series[rnd]);
+        series.splice(rnd, 1);
+    }
+}
+function RandomizeMoviesList()
+{
+    rndMovies = []
+    let len = movies.length;
+    for (let i = 0; i < len; i++) {
+        let rnd = Math.floor(Math.random() * movies.length);
+        rndMovies[i] = (movies[rnd]);
+        movies.splice(rnd, 1);
+    }
+}
 
 
 async function LoadTestThumbnails()
@@ -25,8 +48,8 @@ async function LoadAllMovieThumbnails()
     var thumbnailrow_m = document.getElementById("thumbnailrow-movies");
 
     // in the future this should also load in the movie data, description etc.
-    for (let i = 0; i < movies.length; i++) {
-        AddThumbnail(movies[i], true, thumbnailrow_m);
+    for (let i = 0; i < rndMovies.length; i++) {
+        AddThumbnail(rndMovies[i], true, thumbnailrow_m);
     }
 }
 
@@ -37,8 +60,8 @@ async function LoadAllSeriesThumbnails()
     var thumbnailrow_s = document.getElementById("thumbnailrow-series");
 
     // in the future this should also load in the movie data, description etc.
-    for (let i = 0; i < series.length; i++) {
-        AddThumbnail(series[i], false, thumbnailrow_s);
+    for (let i = 0; i < rndSeries.length; i++) {
+        AddThumbnail(rndSeries[i], false, thumbnailrow_s);
     }
 }
 
@@ -58,6 +81,8 @@ async function AddThumbnail(contentName, contentIsMovie, parent)
 
 
 
+RandomizeSeriesList();
+RandomizeMoviesList();
 
 LoadAllMovieThumbnails();
 LoadAllSeriesThumbnails();

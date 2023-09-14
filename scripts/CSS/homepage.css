@@ -33,7 +33,7 @@ body {
     padding: 0;
     
     border-radius: 0.5em;
-    background-color: var(--sectionColor);
+    background: linear-gradient(90deg, transparent, var(--sectionColor));
 
     flex-direction: column;
 }
@@ -50,6 +50,7 @@ body {
     
     flex-flow: row;
     flex-grow: 2;
+    gap: 1em;
     
     background-color: transparent;
     border-radius: 0.5em;
@@ -63,9 +64,8 @@ body {
     position: relative;
     display: flex;
     flex-shrink: 0;
-    height: 8em;
-    width: 15em;
-    margin-right: 1em;
+    height: 120px;
+    width: 256px;
 
     
     border-radius: 0.5em;
@@ -73,6 +73,7 @@ body {
     background-image: none;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 
 
