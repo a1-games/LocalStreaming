@@ -1,0 +1,29 @@
+
+
+/* Track */
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollColor);
+    border-radius: 0.5rem;
+    
+    /* cut off the borde to appear as margin:
+    background-clip: padding-box;
+    border-top: 0.375rem solid rgba(0, 0, 0, 0);
+    */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollColorActive);
+}
+
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.sssscrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+}

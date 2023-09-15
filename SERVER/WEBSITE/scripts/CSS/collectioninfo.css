@@ -1,0 +1,141 @@
+
+
+
+:root {
+    --textColor: #e1ecf8;
+    --sectionColor: #1f354d;
+    --backgroundColor: #031324;
+    --scrollColor: #1f446b;
+    --scrollColorActive: #3e90e9;
+}
+
+
+body {
+    background-color: var(--backgroundColor);
+}
+
+.collection-title {
+    display: flex;
+    position: relative;
+    margin: auto 0;
+    padding: 1rem;
+
+    height: fit-content;
+    width: auto;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    color: var(--textColor);
+}
+
+.collection-description {
+    display: flex;
+    position: relative;
+    margin: 1rem;
+
+    height: auto;
+    width: auto;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    color: var(--textColor);
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: normal;
+
+    border-radius: 0.5rem;
+    background-color: #03132475;
+    padding-right: 22px;
+}
+
+.info-section {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    width: auto;
+    height: auto;
+    margin: 1rem;
+    padding: 0;
+    
+    border-radius: 0.5em;
+    background: linear-gradient(90deg, transparent, var(--sectionColor));
+
+    flex-direction: column;
+}
+
+
+.thumbnailrow {
+    position: relative;
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: 1em;
+    /* bottom padding is to make space for the scroll wheel*/
+    padding: 2rem 0;
+    
+    flex-flow: row;
+    flex-grow: 2;
+    gap: 1em;
+    
+    background-color: transparent;
+    border-radius: 0.5em;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+
+.content-thumbnail {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    height: 120px;
+    width: 256px;
+
+    
+    border-radius: 0.5em;
+    /* background image is set from the thumbnail spawner */
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* --- Below here is individual element css --- */
+
+#top-row {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+}
+
+#info-box {
+    position: relative;
+    display: flex;
+    flex-grow: 0;
+    width: 30%;
+    flex-direction: column;
+}
+
+#info-banner {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    flex-grow: 0;
+    width: auto;
+}
+
+#video-player {
+    background-color: var(--sectionColor);
+}
+
+
+
