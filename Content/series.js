@@ -6,6 +6,7 @@ series = [
     "Breaking_Bad",
     "Brooklyn_99",
     "HIMYM",
+    "Marvel",
     "The_Office",
     "Game_Of_Thrones",
 ]
