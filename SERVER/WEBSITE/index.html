@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="scripts/CSS/contract.css" media="screen">
     <link rel="stylesheet" href="scripts/CSS/fonts.css" media="screen">
     <link rel="stylesheet" href="scripts/CSS/scrollbar.css" media="screen">
+    <link rel="stylesheet" href="scripts/CSS/mouseHover.css" media="screen">
     <link rel="stylesheet" href="scripts/CSS/homepage.css" media="screen">
     
     
@@ -20,12 +21,9 @@
     <!-- Jquery (load first!) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
     
-
     <!-- Indie Ads Fetch -->
     <script src="https://indieads.github.io/indieads.js"></script>
     
-    
-
     <!-- Movie and Series list -->
     <script src="Content/movies.js"></script>
     <script src="Content/series.js"></script>
@@ -33,52 +31,36 @@
     
     <!-- Custom JS -->
     <script src="scripts/JS/thumbnailSpawner.js"></script>
+    <script src="scripts/JS/infoSpawner.js"></script>
 
 </head>
 <body>
     <!-- load header in -->
-    <header id="header"></header>
-    <script>$("#header").load("header.html");</script>
-    
-    <div style="height: 15rem;">
-        placeholder
-    </div>
+    <header id="header" style="height: 12em;">
+        <a onclick="LoadPage('homepage')" style="margin: auto; width: auto; height: auto; display: block; color: aliceblue; background-color: black; font-size: 2rem; align-items: center; text-align: center; align-content: center; justify-content: center;">
+            <h1 style="margin: auto; padding: 1em;">
+                Click to go to home page
+            </h1>
+        </a>
+    </header>
 
-    <div id="series" class="homepage-section">
-        <div id="title-series" class="section-title">
-            Series
+    <div id="main-content-box">
+        <!-- Users Tab -->
+        <div id="user-manager-box">
         </div>
-        <div id="thumbnailrow-series" class="thumbnailrow">
-        </div>
-    </div>
-
-    <div id="movies" class="homepage-section">
-        <div id="title-movies" class="section-title">
-            Movies
-        </div>
-        <div id="thumbnailrow-movies" class="thumbnailrow">
-        </div>
-    </div>
-
-    <div id="collections" class="homepage-section">
-        <div id="title-collections" class="section-title">
-            Collections
-        </div>
-        <div id="thumbnailrow-collections" class="thumbnailrow">
-        </div>
-    </div>
-
-
-    <!-- Spawning Thumbnails -->
-    <script>
-        RandomizeSeriesList();
-        RandomizeMoviesList();
-        RandomizeCollectionsList();
+        <script>$("#user-manager-box").load("userManager.html");</script>
         
-        LoadAllMovieThumbnails();
-        LoadAllSeriesThumbnails();
-        LoadAllCollectionsThumbnails();        
-    </script>
+        <!-- Page Content -->
+        <div id="rightside">
+        </div>
+        <script>$("#rightside").load("page_homepage.html");</script>
+
+
+    </div>
+
+
+    
+    <script src="scripts/JS/pageManager.js"></script>
 </body>
 
 </html>

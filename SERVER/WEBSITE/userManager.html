@@ -1,0 +1,36 @@
+<head>
+    <link rel="stylesheet" href="scripts/CSS/userManager.css" media="screen">
+</head>
+
+
+
+<div id="user-manager"  onpointerleave="CloseUserMenu()">
+    <div id="userIcon-chosen" class="userIcon" onclick="OpenUserMenu()">
+        A
+    </div>
+    <div class="userIcon">
+        H
+    </div>
+    <div id="create-user-box">
+        <form action="/createUser" method="POST">
+            <div>
+                <label>Username</label>
+                <input type="text" name="Username">
+            </div>
+            <div>
+                <label>Color</label>
+                <input type="text" name="Color">
+            </div>
+            <button id="create-user-button" type="submit">create user</button>
+        </form>
+    </div>
+
+    <!-- Accounts / User Menu -->
+    <script src="scripts/JS/userSelection.js">    
+    </script>
+    <script>/*
+        document.getElementById("create-user-button").addEventListener("click", function(event){
+            event.preventDefault()
+        });*/
+    </script>
+</div>

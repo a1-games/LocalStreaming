@@ -1,20 +1,7 @@
 
 
 
-:root {
-    --textColor: #e1ecf8;
-    --sectionColor: #1f354d;
-    --backgroundColor: #031324;
-    --scrollColor: #1f446b;
-    --scrollColorActive: #3e90e9;
-}
-
-
-body {
-    background-color: var(--backgroundColor);
-}
-
-.collection-title {
+#info-title {
     display: flex;
     position: relative;
     margin: auto 0;
@@ -29,7 +16,7 @@ body {
     color: var(--textColor);
 }
 
-.collection-description {
+.info-description {
     display: flex;
     position: relative;
     margin: 1rem;
@@ -69,44 +56,6 @@ body {
 }
 
 
-.thumbnailrow {
-    position: relative;
-    display: flex;
-    width: auto;
-    height: auto;
-    margin: 1em;
-    /* bottom padding is to make space for the scroll wheel*/
-    padding: 2rem 0;
-    
-    flex-flow: row;
-    flex-grow: 2;
-    gap: 1em;
-    
-    background-color: transparent;
-    border-radius: 0.5em;
-
-    overflow-x: scroll;
-    overflow-y: hidden;
-}
-
-
-.content-thumbnail {
-    position: relative;
-    display: flex;
-    flex-shrink: 0;
-    height: 120px;
-    width: 256px;
-
-    
-    border-radius: 0.5em;
-    /* background image is set from the thumbnail spawner */
-    background-image: none;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-
 /* --- Below here is individual element css --- */
 
 #top-row {
@@ -136,6 +85,21 @@ body {
 #video-player {
     background-color: var(--sectionColor);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

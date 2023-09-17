@@ -1,15 +1,22 @@
 
+:root {
+    --scrollColor: #23548a;
+    --scrollColorActive: #2c6fb8;
+}
+
+
 
 /* Track */
 ::-webkit-scrollbar {
     width: 1rem;
+    transition: all 0.5s ease;
 }
 
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background-color: var(--scrollColor);
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     
     /* cut off the borde to appear as margin:
     background-clip: padding-box;
@@ -24,6 +31,6 @@
 
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.sssscrollbar {
+.scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
 }

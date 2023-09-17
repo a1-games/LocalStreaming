@@ -1,10 +1,9 @@
 
 
-const selectedItem = localStorage.getItem("selectedContent");
-
 
 async function SetCollectionInfo()
 {
+    var selectedItem = localStorage.getItem("selectedContent");
     var titlediv = document.getElementById("info-title");
     var thumb = document.getElementById("info-thumbnail");
 
@@ -16,12 +15,26 @@ async function SetCollectionInfo()
     LoadCollectionList(selectedItem);
 }
 
-async function SpawnCollectionInfoFromData(collectionList, description)
+
+async function LoadCollectionList(collectionName) {
+    let scriptEle = document.createElement("script");
+    scriptEle.id = collectionName;
+    scriptEle.setAttribute("src", `Content/Collections/${collectionName}/CollectionInfo.js`);
+    document.body.appendChild(scriptEle);
+}
+
+
+
+
+async function SpawnCollectionInfoFromData(collectionName, collectionList, description)
 {
-    var desc = document.getElementById("collection-description");
+    var desc = document.getElementById("info-description");
     // use the collection's data
     desc.innerText = description;
-    LoadCollectionThumbnails(collectionList);
+    await LoadCollectionThumbnails(collectionList);
+
+    // remove the script again in case we need it another time
+    document.getElementById(collectionName).remove();
 }
 
 
@@ -50,15 +63,6 @@ async function AddThumbnailToCollectionList(contentName, contentFolder, parent)
 }
 
 
-
-
-
-
-async function LoadCollectionList(collectionName) {
-    let scriptEle = document.createElement("script");
-    scriptEle.setAttribute("src", `Content/Collections/${collectionName}/CollectionInfo.js`);
-    document.body.appendChild(scriptEle);
-}
 
 
 

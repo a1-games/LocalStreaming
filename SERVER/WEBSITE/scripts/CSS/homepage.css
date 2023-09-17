@@ -5,7 +5,6 @@
     --textColor: #e1ecf8;
     --sectionColor: #1f354d;
     --backgroundColor: #031324;
-    --scrollColor: #205186;
 }
 
 
@@ -38,7 +37,6 @@ body {
     flex-direction: column;
 }
 
-
 .thumbnailrow {
     position: relative;
     display: flex;
@@ -46,7 +44,7 @@ body {
     height: auto;
     margin: 1em;
     /* bottom padding is to make space for the scroll wheel*/
-    padding: 0 0 0.5rem 0;
+    padding: 0 0 1rem 0;
     
     flex-flow: row;
     flex-grow: 2;
@@ -68,16 +66,13 @@ body {
     width: 256px;
 
     
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
     /* background image is set from the thumbnail spawner */
     background-image: none;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
-
-
-
 
 
 

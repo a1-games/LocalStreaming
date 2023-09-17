@@ -1,5 +1,7 @@
 
 movies = [
+    "Avatar_1",
+    "Avatar_2",
     "Shrek_1",
     "Shutter_Island",
     "Interstellar",
@@ -8,4 +10,19 @@ movies = [
     "8_Mile",
     "The_Big_Short",
     "The_Wolf_Of_Wall_Street",
+    // --- Marvel ---
+    "Iron_Man_1",
+    "Iron_Man_2",
+    "Iron_Man_3",
+    "Thor_1",
+    "Thor_2",
+    "Thor_3",
+    "Thor_4",
+    "Avengers_1",
+    "Avengers_2",
+    "Avengers_3",
+    "Avengers_4",
+    "Guardians_Of_The_Galaxy_1",
+    "Guardians_Of_The_Galaxy_2",
+    "Guardians_Of_The_Galaxy_3",
 ]

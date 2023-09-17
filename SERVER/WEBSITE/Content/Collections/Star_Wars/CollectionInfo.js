@@ -1,3 +1,5 @@
+function OnLoadScript() {
+
 // Watch Order
 let watchOrder = [
     {title:"Star_Wars_4", contentType:"M"}, // A New Hope
@@ -27,5 +29,8 @@ collectionDescription += readableDescription[i];
 
 
 // Spawning the data
-SpawnCollectionInfoFromData(watchOrder, collectionDescription);
+SpawnCollectionInfoFromData("Star_Wars", watchOrder, collectionDescription);
 
+
+}
+OnLoadScript();
