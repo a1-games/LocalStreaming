@@ -79,7 +79,7 @@ function ChangeFirstLetter(event)
 function ChangeNameTagColor(event)
 {
     let ligherColor = ShadeColor(colorPicker.value, 160)
-    nameInput.style.backgroundColor = `${ligherColor}70`;
+    nameInput.style.background = `linear-gradient(90deg, #FFFFFF70, ${ligherColor}70`;
 
     // dont trigger parent onclick
     event.stopPropagation();
