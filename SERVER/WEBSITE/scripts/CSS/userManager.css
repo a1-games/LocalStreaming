@@ -51,7 +51,8 @@ body {
     position: relative;
     margin: 1rem auto;
 
-    border-color: black;
+    border-radius: 2.4rem;
+    border-color: var(--backgroundColor);
     border-width: 0.2rem;
     border-style: solid;
 }
@@ -62,7 +63,7 @@ body {
     height: 4rem;
     width: 4rem;
     margin: 1rem;
-    border-radius: 2.4rem;
+    border-radius: 2rem;
     background-color: aliceblue;
 
     align-items: center;
@@ -75,10 +76,101 @@ body {
 
 
 
+#create-user-box {
+    color: white;
+}
+
+#username-input-div {
+    position: relative;
+    display: flex;
+
+    height: 4rem;
+    width: 80%;
+    
+    padding: 0;
+    margin: 1rem auto;
+    
+    border: none;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+#username-input {
+    position: relative;
+    display: flex;
+    
+    height: 100%;
+    width: 100%;
+    
+    padding: 0 2rem;
+    margin: 0;
+
+    outline: none;
+    border: none;
+    background-color: #FFFFFF70;
+    
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+#usercolor-input-div {
+    position: absolute;
+    display: flex;
+    z-index: 1;
+
+    height: 3rem;
+    width: 3rem;
+    top: 50%;
+    right: 0.5rem;
+    transform: translate(0, -50%);
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    border-radius: 1.9rem;
+    border-color: var(--backgroundColor);
+    border-width: 0.2rem;
+    border-style: solid;
+}
+
+#usercolor-input {
+    position: absolute;
+    display: flex;
+    flex-grow: 2;
+
+    height: 5rem;
+    width: 5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+}
+
+#showcase-usericon {
+    margin: auto;
+    z-index: 22;
+    
+    user-select: none;
+    pointer-events: none;
+
+    color: var(--backgroundColor);
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
 
 
-
-
+.create-user-title {
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+}
 
 
 

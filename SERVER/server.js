@@ -12,9 +12,10 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get("/users", (req, res) => {
     // check if username is taken
-    let userList = users.ReadUsers();
-    // respond:
-    res.send(userList)
+    users.ReadUsers()
+        .then(userList => {
+            res.status(200).send(JSON.stringify(userList));
+        })
 });
 
 app.post("/createUser", (req, res) => {

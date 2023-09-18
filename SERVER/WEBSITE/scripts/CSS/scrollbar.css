@@ -1,10 +1,4 @@
 
-:root {
-    --scrollColor: #23548a;
-    --scrollColorActive: #2c6fb8;
-}
-
-
 
 /* Track */
 ::-webkit-scrollbar {
