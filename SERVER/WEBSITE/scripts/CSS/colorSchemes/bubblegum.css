@@ -1,0 +1,14 @@
+
+:root {
+    --textColor: #ffe9e9;
+    --sectionColor: #ffbe46;
+    --backgroundColor: #a30a82;
+    /*--- Hover  ---*/
+    --hoverTransition: all 0.4s ease;
+    --hoverColor: #ffe23d86;
+    /*--- Scroll  ---*/
+    --scrollColor: #e6a52d;
+    --scrollColorActive: #ffd900;
+}
+
+

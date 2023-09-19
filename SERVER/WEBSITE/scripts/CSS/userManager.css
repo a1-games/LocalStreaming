@@ -84,14 +84,14 @@ body {
     position: relative;
     display: flex;
 
-    height: 4rem;
+    height: 3rem;
     width: 80%;
     
     padding: 0;
     margin: 1rem auto;
     
     border: none;
-    border-radius: 2rem;
+    border-radius: 1.5rem;
     overflow: hidden;
 }
 
@@ -102,16 +102,16 @@ body {
     height: 100%;
     width: 100%;
     
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     margin: 0;
 
     outline: none;
     border: none;
     background-color: #FFFFFF70;
     
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-family: 'Roboto', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 #usercolor-input-div {
@@ -119,10 +119,10 @@ body {
     display: flex;
     z-index: 1;
 
-    height: 3rem;
-    width: 3rem;
+    height: 2.5rem;
+    width: 2.5rem;
     top: 50%;
-    right: 0.5rem;
+    right: 0.3rem;
     transform: translate(0, -50%);
 
     margin: 0;
@@ -130,10 +130,7 @@ body {
 
     overflow: hidden;
 
-    border-radius: 1.9rem;
-    border-color: var(--backgroundColor);
-    border-width: 0.2rem;
-    border-style: solid;
+    border-radius: 1.25rem;
 }
 
 #usercolor-input {
@@ -141,8 +138,8 @@ body {
     display: flex;
     flex-grow: 2;
 
-    height: 5rem;
-    width: 5rem;
+    height: 4rem;
+    width: 4rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -153,22 +150,26 @@ body {
     border: none;
 }
 
-#showcase-usericon {
+#showcase-usericon-letter {
+    display: block;
     margin: auto;
     z-index: 22;
     
+    height: 0;
+    line-height: 0;
+
     user-select: none;
     pointer-events: none;
 
     color: var(--backgroundColor);
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
 }
 
 
 .create-user-title {
-    font-size: 2em;
+    font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
 }
 

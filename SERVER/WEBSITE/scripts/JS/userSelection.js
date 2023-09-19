@@ -60,7 +60,7 @@ SpawnUsers();
 // --------- User Creation Client Side ----------
 const colorPicker = document.getElementById("usercolor-input");
 const nameInput = document.getElementById("username-input");
-const firstLetter = document.getElementById("showcase-usericon");
+const firstLetter = document.getElementById("showcase-usericon-letter");
 
 nameInput.addEventListener("input", (ev) => ChangeFirstLetter(ev), false);
 colorPicker.addEventListener("input", (ev) => ChangeNameTagColor(ev), false);
@@ -78,7 +78,7 @@ function ChangeFirstLetter(event)
 
 function ChangeNameTagColor(event)
 {
-    let ligherColor = ShadeColor(colorPicker.value, 160)
+    let ligherColor = ShadeColor(colorPicker.value, 150)
     nameInput.style.background = `linear-gradient(90deg, #FFFFFF70, ${ligherColor}70`;
 
     // dont trigger parent onclick
