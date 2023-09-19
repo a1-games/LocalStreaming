@@ -1,0 +1,80 @@
+
+
+
+
+#colorscheme-box {
+    display: flex;
+    flex-direction: column;
+}
+
+#colorscheme-title {
+    position: relative;
+    display: flex;
+
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    color: var(--textColor);
+    
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+
+}
+
+#colorscheme-dropdown {
+    position: relative;
+    display: flex;
+
+    margin: 0 auto;
+    padding: 0 1rem;
+    
+    height: 2rem;
+    width: auto; 
+
+    border: 0;
+    outline: 0;
+
+    border-radius: 0.5rem;
+
+    color: var(--textColor);
+    background-color: var(--scrollColor);
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.colorscheme-option {
+    border-radius: 0.5rem;
+
+    color: var(--textColor);
+    background-color: var(--scrollColor);
+
+    border: 0;
+    outline: 0;
+}
+.colorscheme-option:hover {
+    background-color: var(--scrollColorActive);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,10 +3,6 @@
 
 
 
-body {
-    background-color: var(--backgroundColor);
-}
-
 .section-title {
     display: flex;
     position: relative;

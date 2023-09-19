@@ -19,12 +19,12 @@ app.get("/users", (req, res) => {
 });
 
 app.post("/createUser", (req, res) => {
-    // check if username is taken
-    // if not:
     let usnam = req.body.Username;
     let col = req.body.Color;
+    let colscheme = req.body.ColorScheme;
 
-    users.CreateUser(usnam, col);
+    // if not taken:
+    users.CreateUser(usnam, col, colscheme);
 
     // respond:
     // this forces a refresh. Ideally this wouldn't be the case but idk how to go around it

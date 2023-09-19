@@ -1,4 +1,9 @@
 
+body {
+    background-color: var(--backgroundColor);
+    transition: var(--hoverTransition);
+}
+
 
 
 #info-title {

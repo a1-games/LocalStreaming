@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="background-color: black;">
 
 <head>
     <link rel="shortcut icon" href="files/IMAGES/Logos/PageIcon16px.ico" type="image/x-icon">
@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Local Stylesheets -->
+    <link rel="stylesheet" href="" media="screen" id="colorscheme">
     <script src="scripts/JS/colorSchemePicker.js" ></script>
     <link rel="stylesheet" href="scripts/CSS/contract.css" media="screen">
     <link rel="stylesheet" href="scripts/CSS/fonts.css" media="screen">
@@ -17,22 +18,22 @@
     
     
     <!-- RequireJS
-    <script data-main="scripts/main" src="scripts/require.js"></script> -->
-
-    <!-- Jquery (load first!) -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
-    
-    <!-- Indie Ads Fetch -->
-    <script src="https://indieads.github.io/indieads.js"></script>
-    
-    <!-- Movie and Series list -->
-    <script src="Content/movies.js"></script>
-    <script src="Content/series.js"></script>
-    <script src="Content/collections.js"></script>
-    
-    <!-- Custom JS -->
-    <script src="scripts/JS/thumbnailSpawner.js"></script>
-    <script src="scripts/JS/infoSpawner.js"></script>
+        <script data-main="scripts/main" src="scripts/require.js"></script> -->
+        
+        <!-- Jquery (load first!) -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+        
+        <!-- Indie Ads Fetch -->
+        <script src="https://indieads.github.io/indieads.js"></script>
+        
+        <!-- Movie and Series list -->
+        <script src="Content/movies.js"></script>
+        <script src="Content/series.js"></script>
+        <script src="Content/collections.js"></script>
+        
+        <!-- Custom JS -->
+        <script src="scripts/JS/thumbnailSpawner.js"></script>
+        <script src="scripts/JS/infoSpawner.js"></script>
 
 </head>
 <body>
@@ -47,9 +48,9 @@
 
     <div id="main-content-box">
         <!-- Users Tab -->
-        <div id="user-manager-box">
+        <div id="sidebar-box" style="height: 100%;">
         </div>
-        <script>$("#user-manager-box").load("userManager.html");</script>
+        <script>$("#sidebar-box").load("sidebar.html");</script>
         
         <!-- Page Content -->
         <div id="rightside">
@@ -59,9 +60,9 @@
 
     </div>
 
-
     
     <script src="scripts/JS/pageManager.js"></script>
+    
 </body>
 
 </html>

@@ -1,0 +1,46 @@
+<head>
+    <link rel="stylesheet" href="scripts/CSS/userManager.css" media="screen">
+    <link rel="stylesheet" href="scripts/CSS/colorschemePicker.css" media="screen">
+</head>
+
+
+
+<div id="user-manager" onclick="OpenCloseUserMenu(true)" onpointerleave="OpenCloseUserMenu(true)">
+    <div id="user-icons-box">
+        <div id="add-user-button" class="userIcon" onclick="OpenCreateUserMenu()">
+            +
+        </div>
+    </div>
+    <div id="create-user-box">
+        <form action="/createUser" method="POST">
+            <div class="input-div">
+                <input id="username-input" type="text" name="Username" value="Username" onclick="DontCloseUserTab(event)" onfocus="EmptyInputOnSelect(this)">
+                <div id="usercolor-input-div" class="create-user-title">
+                    <div id="showcase-usericon-letter">U</div>
+                    <input id="usercolor-input" type="color" name="Color" value="#FFFFFF">
+                </div>
+            </div>
+            <div class="input-div">
+                <button id="create-user-button" type="submit">Save</button>
+            </div>
+            <!-- hidden input for colorscheme submission through javascript -->
+            <input id="colorscheme-input" type="text" value="cyan" hidden>
+        </form>
+    </div>
+    <div id="settings-box">
+        <div id="colorscheme-box">
+            <div id="colorscheme-title">
+                Color Scheme
+            </div>
+            <select id="colorscheme-dropdown" name="Color Scheme" value="Color Scheme" onchange="SelectColorScheme(this.value)">
+            </select>
+        </div>
+    </div>
+
+    <!-- Accounts / User Menu -->
+    <script src="scripts/JS/userSelection.js">    
+    </script>
+    <script>
+        LoadColorschemeDropdown(savedCS);
+    </script>
+</div>
