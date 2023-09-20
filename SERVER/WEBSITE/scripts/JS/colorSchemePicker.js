@@ -1,5 +1,10 @@
 
 
+var colorschemes = [
+    "cyan",
+    "grayscale",
+    "bubblegum",
+];
 
 var colorscheme_CSSElement = document.getElementById("colorscheme");
 
@@ -8,15 +13,40 @@ var colorscheme_Dropdown;
 var savedCS = "";
 
 
-async function SelectColorScheme(schemeName)
+async function SelectColorScheme(schemeName, user)
 {
-    // set user's new color scheme on server
-    
-    // change for client:
+    //console.log(user)
     localStorage.setItem("CURRENT_COLORSCHEME", schemeName);
-    LoadSavedColorScheme();
+    SetColorschemeDropdownSelected(schemeName);
+    
+    if (schemeName != user.ColorScheme && Object.keys(userList).length != 0)
+    {
+        SaveColorschemeToUser(schemeName, user);
+    }
+
+    // load last to get the new updated scheme
+    LoadSavedColorScheme(user);
 }
 
+async function SaveColorschemeToUser(colorscheme, user)
+{
+    // change for client:
+    user.ColorScheme = colorscheme;
+    // set user's new color scheme on server
+    let data = {
+        "Username" : user.Username,
+        "KeyToEdit" : "ColorScheme",
+        "ColorScheme" : colorscheme
+    }
+    fetch('http://localhost:3030/editUser', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+}
 
 
 async function LoadSavedColorScheme(user)
@@ -24,39 +54,39 @@ async function LoadSavedColorScheme(user)
     if (user != null)
     {
         savedCS = user.ColorScheme;
-        let colorscheme_InputElement = document.getElementById("colorscheme-input");
-        console.log(colorscheme_InputElement);
+        localStorage.setItem("CURRENT_COLORSCHEME", savedCS);
     }
+    // if we didnt pass a user as argument
     if (savedCS == null)
+    {
         savedCS = localStorage.getItem("CURRENT_COLORSCHEME");
-
+    }
+    // if this is the first time we load scheme
     if (savedCS == null)
     {
         savedCS = "cyan";
         localStorage.setItem("CURRENT_COLORSCHEME", savedCS);
     }
-    if (user != null)
-    {
-        colorscheme_InputElement.value = savedCS;
-    }
+
     colorscheme_CSSElement.href = `scripts/CSS/colorSchemes/${savedCS}.css`;
 }
 
 
-async function LoadColorschemeDropdown(selectedScheme)
+function SetColorschemeDropdownSelected(colorscheme)
 {
-    colorscheme_Dropdown = document.getElementById("colorscheme-dropdown");
-    let colorschemes = [
-        "cyan",
-        "grayscale",
-        "bubblegum",
-    ];
     for (let i = 0; i < colorschemes.length; i++) {
-        AddDropdownOption(colorschemes[i]);
-        if (colorschemes[i] == selectedScheme)
+        if (colorschemes[i] == colorscheme)
         {
             colorscheme_Dropdown.selectedIndex = i;
         }
+    }
+}
+
+async function LoadColorschemeDropdown()
+{
+    colorscheme_Dropdown = document.getElementById("colorscheme-dropdown");
+    for (let i = 0; i < colorschemes.length; i++) {
+        AddDropdownOption(colorschemes[i]);
     }
 }
 
@@ -71,7 +101,7 @@ function AddDropdownOption(colorscheme)
 }
 
 
-LoadSavedColorScheme();
+//LoadSavedColorScheme();
 
 
 

@@ -1,1 +1,1 @@
-[{"Username":"Asbjørn","Color":"#fbff00"},{"Username":"Username","Color":"#ffffff"},{"Username":"Signe","Color":"#ff0000"},{"Username":"Beth","Color":"#009dff"}]
+{"Asbjørn":{"Username":"Asbjørn","Color":"#00ffd5","ColorScheme":"cyan"},"Hjalte":{"Username":"Hjalte","Color":"#00bd26","ColorScheme":"cyan"},"Signe":{"Username":"Signe","Color":"#fefb9a","ColorScheme":"bubblegum"},"Oskar":{"Username":"Oskar","Color":"#ffffff","ColorScheme":"grayscale"}}

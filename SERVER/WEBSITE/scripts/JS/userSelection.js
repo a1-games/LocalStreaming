@@ -1,19 +1,33 @@
 
-var userList = [];
-var currentUser = {};
+var userList = {};
+var currentUser = {"Username":"Default", "Color":"#FFFFFF","ColorScheme":"cyan"};
 var selectedUserIcon = null;
-const userTab = document.getElementById("user-manager");
+const userTab = document.getElementById("sidebar");
 const userIconsBox = document.getElementById("user-icons-box");
 
-async function SetLocalUser(username)
-{
-    localStorage.setItem("CURRENT_USER", username);
-}
-async function GetLocalUser()
+async function GetLocalUsername()
 {
     let name = localStorage.getItem("CURRENT_USER");
     return name;
 }
+async function LoadCurrentUser()
+{
+    let username = await GetLocalUsername();
+    Object.values(userList).forEach(user => {
+        if (user.Username == username)
+        {
+            currentUser = user;
+            //console.log("Selected user: " + currentUser.Username);
+            return;
+        }
+    });
+    if (currentUser != null)
+    {
+        SelectColorScheme(currentUser.ColorScheme, currentUser);
+        //console.log("setting colorscheme: " + currentUser.Username);
+    }
+}
+
 
 
 async function OpenCloseUserMenu(open)
@@ -32,8 +46,11 @@ function DontCloseUserTab(event)
 
 async function SelectUser(username)
 {
-    SetLocalUser(username);
-    selectedUserIcon.id = "";
+    localStorage.setItem("CURRENT_USER", username);
+    LoadCurrentUser();
+
+    if (selectedUserIcon != null)
+        selectedUserIcon.id = "";
 
     let allIconDivs = userIconsBox.getElementsByClassName("userIcon");
     //                                    -1 bc the "+" icon is in the list
@@ -43,10 +60,10 @@ async function SelectUser(username)
             selectedUserIcon = allIconDivs[i];
             break;
         }
-        console.log(username + "   " + allIconDivs[i].getAttribute("name"))
     }
-    selectedUserIcon.id = "userIcon-chosen";
-    console.log(" selecting user "+username);
+    if (selectedUserIcon != null)
+        selectedUserIcon.id = "userIcon-chosen";
+    //console.log(" selecting user "+username);
 }
 
 async function SpawnUsers()
@@ -54,31 +71,36 @@ async function SpawnUsers()
     let response = await fetch('http://localhost:3030/users');
     userList = await response.json();
 
-    currentUser = await GetLocalUser();
+    await LoadCurrentUser();
 
     //console.log(userList)
 
     // spawn all the icons
-    for (let i = 0; i < userList.length; i++) {
-        let icondiv = document.createElement("div")
-        icondiv.className = "userIcon";
-        icondiv.onclick = () => SelectUser(userList[i].Username);
-        icondiv.innerText = userList[i].Username[0];
-        icondiv.setAttribute("name", userList[i].Username);
-        //icondiv.style.background = `linear-gradient(transparent, ${userList[i].Color})`;
-        icondiv.style.background = `radial-gradient(center center, circle cover, #ffeda3, transparent)`;
-        icondiv.style.color = `var(--backgroundColo)`;
-
-        // select the icon of the stored CURRENTUSER
-        if (userList[i].Username == currentUser)
-        {
-            icondiv.id = "userIcon-chosen";
-            selectedUserIcon = icondiv;
-        }
-
-        userIconsBox.prepend(icondiv);
-    }
+    Object.values(userList).forEach(user => {
+        SpawnOneUser(user);
+    });
     
+}
+
+function SpawnOneUser(user)
+{
+    let icondiv = document.createElement("div")
+    icondiv.className = "userIcon";
+    icondiv.onclick = () => SelectUser(user.Username);
+    icondiv.innerText = user.Username[0];
+    icondiv.setAttribute("name", user.Username);
+    icondiv.style.background = `linear-gradient(transparent, ${user.Color})`;
+    //icondiv.style.background = `radial-gradient(center center, circle cover, #ffeda3, transparent)`;
+    icondiv.style.color = `var(--backgroundColor)`;
+
+    // select the icon of the stored CURRENTUSER
+    if (user.Username == currentUser.Username)
+    {
+        icondiv.id = "userIcon-chosen";
+        selectedUserIcon = icondiv;
+    }
+
+    userIconsBox.prepend(icondiv);
 }
 
 
@@ -104,9 +126,12 @@ colorPicker.addEventListener("input", (ev) => ChangeNameTagColor(ev), false);
 
 
 
-function OpenCreateUserMenu()
+function OpenCreateUserMenu(open)
 {
-    createUserBox.style.display = "block";
+    if (open)
+        createUserBox.style.display = "block";
+    else
+        createUserBox.style.display = "none";
 }
 
 
@@ -165,6 +190,36 @@ function ChangeNameTagColor(event)
 
     // dont trigger parent onclick
     event.stopPropagation();
+}
+
+async function WriteUserOnServer(event)
+{
+    event.preventDefault();
+
+    let newUser = {
+        "Username" : document.getElementById("username-input").value,
+        "Color" : document.getElementById("usercolor-input").value,
+        // savedCS gets set on page load
+        "ColorScheme" : savedCS
+    }
+
+    //console.log("trying to create new user " + newUser.Username);
+
+    // set user's new color scheme on server
+    fetch('http://localhost:3030/createUser', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser),
+    });
+
+    userList[newUser.Username] = newUser;
+    SpawnOneUser(newUser);
+    SelectUser(newUser.Username);
+
+    OpenCreateUserMenu(false);
 }
 
 

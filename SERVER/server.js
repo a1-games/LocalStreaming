@@ -7,7 +7,8 @@ var users = require('./users.js');
 var app = express();
 // Render static files
 app.use(express.static('WEBSITE'));
-app.use(express.urlencoded({ extended: false }));
+//app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ extended: false }));
 
 
 app.get("/users", (req, res) => {
@@ -23,12 +24,25 @@ app.post("/createUser", (req, res) => {
     let col = req.body.Color;
     let colscheme = req.body.ColorScheme;
 
-    // if not taken:
     users.CreateUser(usnam, col, colscheme);
 
     // respond:
     // this forces a refresh. Ideally this wouldn't be the case but idk how to go around it
-    res.status(200).redirect("/");
+    //res.status(200).redirect("/");
+});
+
+
+app.post("/editUser", (req, res) => {
+    let usnam = req.body.Username;
+    let kte = req.body.KeyToEdit;
+    let colscheme = req.body.ColorScheme;
+
+    // this will overwrite the given username
+    users.EditUser(usnam, kte, colscheme);
+
+    // respond:
+    // this forces a refresh. Ideally this wouldn't be the case but idk how to go around it
+    //res.status(200).redirect("/");
 });
 
 

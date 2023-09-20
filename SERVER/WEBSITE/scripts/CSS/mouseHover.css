@@ -9,10 +9,10 @@
 
 
 
-#user-manager {
+#sidebar {
     transition: var(--hoverTransition);
 }
-#user-manager:hover {
+#sidebar:hover {
     background-color: var(--hoverColor);
 }
 

@@ -30,21 +30,6 @@ body {
 
 /* User Manager */
 
-#user-manager {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-
-    top: 0;
-    left: 0;
-
-    width: 8rem;
-    height: 100%;
-
-    z-index: 10;
-
-    background: linear-gradient(90deg, transparent, var(--sectionColor));
-}
 
 
 #user-icons-box {
