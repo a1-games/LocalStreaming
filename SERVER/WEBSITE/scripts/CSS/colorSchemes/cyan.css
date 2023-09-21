@@ -1,6 +1,7 @@
 
 :root {
-    --textColor: #e1ecf8;
+    --textColor: #e1edf8;
+    --textHover: #9fc8f3;
     --sectionColor: #1f354d;
     --backgroundColor: #031324;
     /*--- Hover  ---*/

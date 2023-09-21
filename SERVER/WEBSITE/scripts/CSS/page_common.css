@@ -60,6 +60,22 @@ body {
     flex-direction: column;
 }
 
+.content-thumbnail {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    height: 90px;
+    width: 192px;
+
+    
+    border-radius: 0.5rem;
+    /* background image is set from the thumbnail spawner */
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 
 /* --- Below here is individual element css --- */
 

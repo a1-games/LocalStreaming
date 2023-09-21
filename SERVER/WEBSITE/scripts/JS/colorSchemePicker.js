@@ -68,9 +68,33 @@ async function LoadSavedColorScheme(user)
         localStorage.setItem("CURRENT_COLORSCHEME", savedCS);
     }
 
+    // toggle greyscale
+    if (savedCS == "grayscale")
+    {
+        document.getElementById("rightside").classList.add("grayscale");
+    }
+    else
+    {
+        document.getElementById("rightside").classList.remove("grayscale");
+    }
+
     colorscheme_CSSElement.href = `scripts/CSS/colorSchemes/${savedCS}.css`;
+
+    // change png after 200 milliseconds bc the new css reference above isn't loaded yet
+    // also disable setting a new colorscheme until this is loaded
+    document.body.style.pointerEvents = "none";
+    setTimeout(SetPNGColors, 200);
 }
 
+async function SetPNGColors()
+{
+    // set the png images through javascript instead of css
+    let textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textColor');
+    ColorizePNG(document.getElementById("website-logo"), textColor);
+    ColorizePNG(document.getElementById("search-icon"), textColor);
+    ColorizePNG(document.getElementById("favourites-icon"), textColor);
+    document.body.style.pointerEvents = "all";
+}
 
 function SetColorschemeDropdownSelected(colorscheme)
 {

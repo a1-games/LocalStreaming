@@ -3,6 +3,11 @@
     color: #ffffff;
 }
 
+.grayscale {
+    filter: grayscale(1);
+}
+
+
 .full-width {
     width: 100%;
 }
