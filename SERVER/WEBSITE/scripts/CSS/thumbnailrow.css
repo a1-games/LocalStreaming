@@ -21,6 +21,7 @@
     
     /*                                                     
     width: calc( calc(256px + 0.75rem) * 6 - 0.75rem); */
+    width: fit-content;
     height: auto;
 
     margin: 2rem auto 0 auto;
@@ -53,6 +54,7 @@
     background-position: center;
     
     box-shadow: 0 0.5rem 0.5rem -0.25rem var(--backgroundColor);
+    transition: var(--hoverTransition);
 }
 
 .thumbnail-div {
@@ -69,13 +71,14 @@
     
     background-color: transparent;
     border-radius: 0.5em;
-
+    
     overflow-x: visible;
 }
 .thumbnail-row {
     position: relative;
     display: flex;
     flex-direction: row;
+    transition: var(--hoverTransition);
 }
 
 .thumbnail-active {
@@ -84,7 +87,26 @@
 
 .thumbnail-inactive {
     pointer-events: none;
-    filter: blur(50%);
+    filter: blur(0.125rem) contrast(100%) opacity(50%) saturate(0.4);
+}
+
+
+
+
+
+.arrow-right {
+    position: absolute;
+    display: block;
+
+    height: 4rem;
+    width: 4rem;
+
+    right: 0;
+    top: 50%;
+
+    color: var(--textColor);
+
+    transform: translate(0, 50%);
 }
 
 

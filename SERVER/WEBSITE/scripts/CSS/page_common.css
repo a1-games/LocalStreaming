@@ -106,7 +106,9 @@ html {
 }
 
 
-
+.row {
+    position: relative;
+}
 
 
 

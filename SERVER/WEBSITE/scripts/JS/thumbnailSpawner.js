@@ -76,7 +76,7 @@ async function AddThumbnail(contentName, contentFolder, parent, pageToLoad)
 {
     var clickableElement = document.createElement("a");
     clickableElement.id = contentName;
-    clickableElement.className = "content-thumbnail";
+    clickableElement.classList.add("content-thumbnail");
     clickableElement.href = "#"; // should be to play the video
     
     clickableElement.onclick = function() {

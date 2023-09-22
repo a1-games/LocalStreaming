@@ -27,3 +27,9 @@ ContentPageName = {
 
 
 
+var thumbnailsPerPage = 6;
+
+
+
+
+
