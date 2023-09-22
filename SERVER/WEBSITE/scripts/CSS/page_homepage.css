@@ -18,34 +18,14 @@
 .homepage-section {
     position: relative;
     display: flex;
-    width: auto;
-    margin: 1rem;
+    width: 92%;
+    margin: auto;
     padding: 0;
     
     border-radius: 0.5em;
     background: linear-gradient(90deg, transparent, var(--sectionColor));
 
     flex-direction: column;
-}
-
-.thumbnailrow {
-    position: relative;
-    display: flex;
-    width: auto;
-    height: auto;
-    margin: 1em;
-    /* bottom padding is to make space for the scroll wheel*/
-    padding: 0 0 1rem 0;
-    
-    flex-flow: row;
-    flex-grow: 2;
-    gap: 1em;
-    
-    background-color: transparent;
-    border-radius: 0.5em;
-
-    overflow-x: scroll;
-    overflow-y: hidden;
 }
 
 

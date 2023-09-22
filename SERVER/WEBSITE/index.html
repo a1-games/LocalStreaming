@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background-color: black;">
+<html>
 
 <head>
     <link rel="shortcut icon" href="files/IMAGES/Logos/PageIcon16px.ico" type="image/x-icon">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="scripts/CSS/fonts.css" media="screen">
     <link rel="stylesheet" href="scripts/CSS/scrollbar.css" media="screen">
     <link rel="stylesheet" href="scripts/CSS/mouseHover.css" media="screen">
-    <link rel="stylesheet" href="scripts/CSS/homepage.css" media="screen">
+    <link rel="stylesheet" href="scripts/CSS/page_homepage.css" media="screen">
     <link rel="stylesheet" href="scripts/CSS/page_common.css" media="screen">
     
     
@@ -38,23 +38,18 @@
         <script src="scripts/JS/pngIconColorizer.js"></script>
 
 </head>
-<body>
+<body style="width: 100%;">
     <!-- load header in -->
     <header id="header">
     </header>
     <script>$("#header").load("header.html");</script>
-
+    
+    <!-- Page Content -->
     <div id="main-content-box">
 
-        
-        <!-- Page Content -->
-        <div id="rightside">
-        </div>
-        <script>$("#rightside").load("page_homepage.html");</script>
-
-
     </div>
-
+    <script>$("#main-content-box").load("page_homepage.html");</script>
+    
     
     <script src="scripts/JS/pageManager.js"></script>
     

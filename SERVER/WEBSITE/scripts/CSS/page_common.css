@@ -1,10 +1,25 @@
 
-body {
+html {
     background-color: var(--backgroundColor);
     transition: var(--hoverTransition);
 }
 
 
+/* Glboal Page Fixing */
+#main-content-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+    height: auto;
+    margin: auto;
+    
+    overflow-x: hidden;
+}
+
+
+/* Shared Items */
 
 #info-title {
     display: flex;
@@ -64,9 +79,10 @@ body {
     position: relative;
     display: flex;
     flex-shrink: 0;
-    height: 90px;
-    width: 192px;
+    height: 120px;
+    width: 256px;
 
+    margin-right: 0.75rem;
     
     border-radius: 0.5rem;
     /* background image is set from the thumbnail spawner */
@@ -78,6 +94,30 @@ body {
     box-shadow: 0 0.5rem 0.5rem -0.25rem var(--backgroundColor);
 }
 
+.thumbnailrow {
+    position: relative;
+    display: block;
+
+    width: auto;
+    height: auto;
+    margin: 1em;
+    /* bottom padding is to make space for the scroll wheel*/
+    padding: 0 0 1rem 0;
+    
+    flex-flow: row;
+    flex-grow: 2;
+    gap: 1em;
+    
+    background-color: transparent;
+    border-radius: 0.5em;
+
+    overflow-x: visible;
+}
+.thumbnail-div {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
 
 /* --- Below here is individual element css --- */
 
@@ -107,23 +147,6 @@ body {
 
 #video-player {
     background-color: var(--sectionColor);
-}
-
-#sidebar {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-
-    top: 0;
-    left: 0;
-
-    width: 8rem;
-    height: 100%;
-
-    z-index: 10;
-    overflow: hidden;
-
-    background: linear-gradient(90deg, transparent, var(--sectionColor));
 }
 
 

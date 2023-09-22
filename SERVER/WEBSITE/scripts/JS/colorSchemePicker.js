@@ -71,11 +71,11 @@ async function LoadSavedColorScheme(user)
     // toggle greyscale
     if (savedCS == "grayscale")
     {
-        document.getElementById("rightside").classList.add("grayscale");
+        document.getElementById("main-content-box").classList.add("grayscale");
     }
     else
     {
-        document.getElementById("rightside").classList.remove("grayscale");
+        document.getElementById("main-content-box").classList.remove("grayscale");
     }
 
     colorscheme_CSSElement.href = `scripts/CSS/colorSchemes/${savedCS}.css`;

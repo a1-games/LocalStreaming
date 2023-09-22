@@ -2,7 +2,7 @@
 .homepage-section {
     transition: var(--hoverTransition);
 }
-.homepage-section:hover {
+.homepage-secstion:hover {
     background-color: var(--hoverColor);
 }
 

@@ -7,26 +7,6 @@ body {
 
 
 
-/* Glboal Page Fixing */
-#main-content-box {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    background-color: var(--backgroundColor);
-    
-    width: 100%;
-    height: 100%;
-}
-#rightside {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    width: auto;
-    
-    overflow-x: scroll;
-    overflow-y: hidden;
-}
 
 /* User Manager */
 
