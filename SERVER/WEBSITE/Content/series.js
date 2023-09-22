@@ -8,4 +8,5 @@ series = [
     "HIMYM",
     "The_Office",
     "Game_Of_Thrones",
+    "Loki",
 ]

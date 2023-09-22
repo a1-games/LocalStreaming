@@ -38,11 +38,11 @@ body {
     flex-direction: row;
     align-items: center;
 
-    height: 5rem;
+    height: 4rem;
     width: fit-content;
 
-    margin: 1rem auto;
-    padding: 1rem;
+    margin: auto;
+    padding: 0;
 
     overflow: hidden;
 

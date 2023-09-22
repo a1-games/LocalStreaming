@@ -74,6 +74,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
+    box-shadow: 0 0.5rem 0.5rem -0.25rem var(--backgroundColor);
 }
 
 
