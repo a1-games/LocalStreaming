@@ -1,4 +1,4 @@
-var thumbElems = []
+
 
 
 async function SetCollectionInfo()
@@ -41,30 +41,14 @@ async function SpawnCollectionInfoFromData(collectionName, collectionList, descr
 
 async function LoadCollectionThumbnails(contentList)
 {
-    var thumbnailrow = document.getElementById("thumbnailrow");
+    var thumbnailrow = document.getElementById("thumbnailrow-watchorder");
 
     for (let i = 0; i < contentList.length; i++) {
-        AddThumbnailToCollectionList(contentList[i].title, ContentFolder[contentList[i].contentType], thumbnailrow);
+        let pagename = ContentPageName[contentList[i].contentType];
+        // from thumbnailSpawner:
+        AddThumbnail(contentList[i].title, ContentFolder[contentList[i].contentType], thumbnailrow, pagename);
     }
 }
-
-async function AddThumbnailToCollectionList(contentName, contentFolder, parent)
-{
-    var clickableElement = document.createElement("a");
-    clickableElement.id = contentName;
-    clickableElement.className = "content-thumbnail";
-    clickableElement.href = "#"; // should play the video
-
-    clickableElement.onclick = function() { /* start playing the video */ };
-
-    clickableElement.style.backgroundImage = `url('Content/${contentFolder}/${contentName}/thumbnail.jpg')`;
-
-    thumbElems.push(clickableElement);
-
-    parent.append(clickableElement);
-}
-
-
 
 
 

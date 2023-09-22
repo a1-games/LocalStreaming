@@ -1,18 +1,4 @@
 
-let rndSeries = []
-let rndMovies = []
-let rndCollections = []
-
-var seriesThumbElems = []
-var moviesThumbElems = []
-var collectionsThumbElems = []
-
-ContentFolder = {
-    //key : foldername
-    S:"Series",
-    M:"Movies",
-    C:"Collections",
-};
 
 function RandomizeSeriesList()
 {
@@ -59,7 +45,7 @@ async function LoadAllMovieThumbnails()
 
     // in the future this should also load in the movie data, description etc.
     for (let i = 0; i < rndMovies.length; i++) {
-        AddThumbnail(rndMovies[i], ContentFolder.M, thumbnailrow_m);
+        AddThumbnail(rndMovies[i], ContentFolder.M, thumbnailrow_m, "movie");
     }
 }
 
@@ -69,7 +55,7 @@ async function LoadAllSeriesThumbnails()
 
     // in the future this should also load in the movie data, description etc.
     for (let i = 0; i < rndSeries.length; i++) {
-        AddThumbnail(rndSeries[i], ContentFolder.S, thumbnailrow_s);
+        AddThumbnail(rndSeries[i], ContentFolder.S, thumbnailrow_s, "series");
     }
 }
 
@@ -79,54 +65,32 @@ async function LoadAllCollectionsThumbnails()
 
     // in the future this should also load in the movie data, description etc.
     for (let i = 0; i < rndCollections.length; i++) {
-        AddThumbnail(rndCollections[i], ContentFolder.C, thumbnailrow_c);
+        AddThumbnail(rndCollections[i], ContentFolder.C, thumbnailrow_c, "collection");
     }
 }
 
 
 
 
-async function AddThumbnail(contentName, contentFolder, parent)
+async function AddThumbnail(contentName, contentFolder, parent, pageToLoad)
 {
     var clickableElement = document.createElement("a");
+    clickableElement.id = contentName;
     clickableElement.className = "content-thumbnail";
     clickableElement.href = "#"; // should be to play the video
     
-    if (contentFolder == "Series")
-    {
-        clickableElement.onclick = function() {
-            // set the selected content
-            localStorage.setItem("selectedContent", contentName);
-            // load the page
-            LoadPage("series");
-        };
-    }
-    
-    if (contentFolder == "Movies")
-    {
-        // finnd a better way to do this:
-        moviesThumbElems.push(clickableElement);
-        clickableElement.onclick = function() {
-            // set the selected content
-            localStorage.setItem("selectedContent", contentName);
-            // load the page
-            LoadPage("movies");
-        };
-    }
-
-    if (contentFolder == "Collections")
-    {
-        clickableElement.onclick = function() {
-            // set the selected content
-            localStorage.setItem("selectedContent", contentName);
-            // load the page
-            // load the page
-            LoadPage("collection");
-        };
-    }
+    clickableElement.onclick = function() {
+        // set the selected content
+        localStorage.setItem("selectedContent", contentName);
+        // load the page
+        LoadPage(pageToLoad);
+    };
 
 
-    clickableElement.id = contentName;
+    // finnd a better way to do this:
+    //moviesThumbElems.push(clickableElement);
+
+
     clickableElement.style.backgroundImage = `url('Content/${contentFolder}/${contentName}/thumbnail.jpg')`;
 
     parent.append(clickableElement);
