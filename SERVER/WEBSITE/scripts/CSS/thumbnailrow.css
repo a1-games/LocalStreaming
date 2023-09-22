@@ -19,8 +19,8 @@
     position: relative;
     display: flex;
     
-    /*                                                      */
-    width: calc( calc(256px + 0.75rem) * 6 - 0.75rem);
+    /*                                                     
+    width: calc( calc(256px + 0.75rem) * 6 - 0.75rem); */
     height: auto;
 
     margin: 2rem auto 0 auto;
