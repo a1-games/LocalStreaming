@@ -3,14 +3,14 @@
 
 
 
-const rightsideDiv = document.getElementById("rightside");
+const contentbox = document.getElementById("main-content-box");
 
 
 
 
 function LoadPage(pagename) {
-    rightsideDiv.innerHTML = "";
-    $("#rightside").load(`page_${pagename}.html`);
+    contentbox.innerHTML = "";
+    $("#main-content-box").load(`page_${pagename}.html`);
 };
 
 

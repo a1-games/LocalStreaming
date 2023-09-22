@@ -1,4 +1,4 @@
-
+var thumbElems = []
 
 
 async function SetCollectionInfo()
@@ -58,6 +58,8 @@ async function AddThumbnailToCollectionList(contentName, contentFolder, parent)
     clickableElement.onclick = function() { /* start playing the video */ };
 
     clickableElement.style.backgroundImage = `url('Content/${contentFolder}/${contentName}/thumbnail.jpg')`;
+
+    thumbElems.push(clickableElement);
 
     parent.append(clickableElement);
 }

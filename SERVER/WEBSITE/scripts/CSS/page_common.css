@@ -75,50 +75,6 @@ html {
     flex-direction: column;
 }
 
-.content-thumbnail {
-    position: relative;
-    display: flex;
-    flex-shrink: 0;
-    height: 120px;
-    width: 256px;
-
-    margin-right: 0.75rem;
-    
-    border-radius: 0.5rem;
-    /* background image is set from the thumbnail spawner */
-    background-image: none;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-
-    box-shadow: 0 0.5rem 0.5rem -0.25rem var(--backgroundColor);
-}
-
-.thumbnailrow {
-    position: relative;
-    display: block;
-
-    width: auto;
-    height: auto;
-    margin: 1em;
-    /* bottom padding is to make space for the scroll wheel*/
-    padding: 0 0 1rem 0;
-    
-    flex-flow: row;
-    flex-grow: 2;
-    gap: 1em;
-    
-    background-color: transparent;
-    border-radius: 0.5em;
-
-    overflow-x: visible;
-}
-.thumbnail-div {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-}
-
 /* --- Below here is individual element css --- */
 
 #top-row {

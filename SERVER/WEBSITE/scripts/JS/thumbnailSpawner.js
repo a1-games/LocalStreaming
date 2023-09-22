@@ -3,6 +3,10 @@ let rndSeries = []
 let rndMovies = []
 let rndCollections = []
 
+var seriesThumbElems = []
+var moviesThumbElems = []
+var collectionsThumbElems = []
+
 ContentFolder = {
     //key : foldername
     S:"Series",
@@ -87,6 +91,28 @@ async function AddThumbnail(contentName, contentFolder, parent)
     var clickableElement = document.createElement("a");
     clickableElement.className = "content-thumbnail";
     clickableElement.href = "#"; // should be to play the video
+    
+    if (contentFolder == "Series")
+    {
+        clickableElement.onclick = function() {
+            // set the selected content
+            localStorage.setItem("selectedContent", contentName);
+            // load the page
+            LoadPage("series");
+        };
+    }
+    
+    if (contentFolder == "Movies")
+    {
+        // finnd a better way to do this:
+        moviesThumbElems.push(clickableElement);
+        clickableElement.onclick = function() {
+            // set the selected content
+            localStorage.setItem("selectedContent", contentName);
+            // load the page
+            LoadPage("movies");
+        };
+    }
 
     if (contentFolder == "Collections")
     {
@@ -96,16 +122,6 @@ async function AddThumbnail(contentName, contentFolder, parent)
             // load the page
             // load the page
             LoadPage("collection");
-        };
-    }
-
-    if (contentFolder == "Series")
-    {
-        clickableElement.onclick = function() {
-            // set the selected content
-            localStorage.setItem("selectedContent", contentName);
-            // load the page
-            LoadPage("series");
         };
     }
 

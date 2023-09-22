@@ -1,39 +1,40 @@
 
 
-<div id="series" class="homepage-section">
+<div id="series" class="thumbnail-section">
     <div id="title-series" class="section-title">
         Series
     </div>
-    <div class="thumbnailrow">
-        <div id="thumbnailrow-series" class="thumbnail-div">
+    <div class="thumbnail-div">
+        <div id="thumbnailrow-series" class="thumbnail-row">
 
         </div>
     </div>
 </div>
 
-<div id="movies" class="homepage-section">
+<div id="movies" class="thumbnail-section">
     <div id="title-movies" class="section-title">
         Movies
     </div>
-    <div class="thumbnailrow">
-        <div id="thumbnailrow-movies" class="thumbnail-div">
+    <div id="thumbnaildiv-movies" class="thumbnail-div">
+        <div id="thumbnailrow-movies" class="thumbnail-row">
         
         </div>
     </div>
 </div>
 
-<div id="collections" class="homepage-section">
+<div id="collections" class="thumbnail-section">
     <div id="title-collections" class="section-title">
         Collections
     </div>
-    <div class="thumbnailrow">
-        <div id="thumbnailrow-collections" class="thumbnail-div">
+    <div class="thumbnail-div">
+        <div id="thumbnailrow-collections" class="thumbnail-row">
         
         </div>
     </div>
 </div>
 
 <!-- Spawning Thumbnails -->
+<script src="scripts/JS/thumbnailRowFitter.js"></script>
 <script>
     RandomizeSeriesList();
     RandomizeMoviesList();
@@ -42,4 +43,5 @@
     LoadAllMovieThumbnails();
     LoadAllSeriesThumbnails();
     LoadAllCollectionsThumbnails();        
+
 </script>
