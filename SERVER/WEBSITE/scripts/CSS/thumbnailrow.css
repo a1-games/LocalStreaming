@@ -97,28 +97,47 @@
     position: absolute;
     display: block;
 
-    height: 4rem;
-    width: 4rem;
+    height: 2rem;
+    width: 2rem;
     top: 50%;
 
     z-index: 99;
     color: var(--textColor);
+    user-select: none;
+    cursor: pointer;
+
+    border-radius: 1.3rem;
+    border-color: var(--textColor);
+    color: var(--textColor);
+    border-width: 0.15rem;
+    border-style: solid;
+
+    text-align: center;
+    justify-content: center;
+    line-height: 2rem;
+    transition: var(--hoverTransition);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+}
+.arrow:hover {
+    border-color: var(--scrollColorActive);
+    color: var(--scrollColorActive);
 }
 
 .arrow-right {
     right: 0;
-    transform: translate(0, 50%);
+    transform: translate(200%, -50%);
 }
 
 
 .arrow-left {
     left: 0;
-    transform: translate(0, 50%);
+    transform: translate(-200%, -50%);
 }
 
 .arrow-inactive {
-    filter: blur(0.125rem) opacity(40%);
-    user-select: none;
+    border-color: var(--sectionColor);
+    color: var(--sectionColor);
     pointer-events: none;
 }
 

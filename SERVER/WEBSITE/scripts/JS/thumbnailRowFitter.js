@@ -105,6 +105,19 @@ async function RefreshSelectedThumbnails()
                 break;
             }
         }
+
+        // set arrows:
+        // if we cant go left
+        if (firstindex <= 0)
+            thumbnailRowObject.arrow_l.classList.add("arrow-inactive");
+        else
+            thumbnailRowObject.arrow_l.classList.remove("arrow-inactive");
+
+        // if the row doesn't contain a full page or precisely only contains a full page, disable right arrow
+        if (firstindex + thumbnailsPerPage > thumbnails.length || thumbnailsPerPage == thumbnails.length)
+            thumbnailRowObject.arrow_r.classList.add("arrow-inactive");
+        else
+            thumbnailRowObject.arrow_r.classList.remove("arrow-inactive");
     });
     
 }
@@ -136,6 +149,9 @@ function RefreshThumbnailSizePX()
 {
     // get arbitrary thumbnail and get its size
     let tnsize = window.getComputedStyle(document.querySelectorAll(".content-thumbnail")[0]);
+    let arrow = window.getComputedStyle(document.querySelectorAll(".arrow")[0]);
+
+    arrowSize = parseInt(arrow.width.replace("px", ""));
 
     thumbnailwidth = parseInt(tnsize.width.replace("px", ""));
     spacebetweenthumbnails = parseInt(tnsize.marginRight.replace("px", ""));
@@ -147,7 +163,7 @@ function RefreshThumbRowPXsize(containerWidth)
     let rowWidth = 0;
     thumbnailsPerPage = 0;
 
-    while (rowWidth + thumbnailwidth + 200 <= containerWidth)
+    while (rowWidth + thumbnailwidth + arrowSize*2 <= containerWidth)
     {
         rowWidth += thumbnailwidth;
         thumbnailsPerPage++;
@@ -162,7 +178,6 @@ function RefreshThumbRowPXsize(containerWidth)
 async function ResizeThumbnailDiv(thumbnaildiv)
 {
     thumbnaildiv.style.width = `${thumbnailRowWidth - spacebetweenthumbnails}px`;
-    console.log(thumbnaildiv)
 }
 
 

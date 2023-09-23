@@ -1,18 +1,13 @@
 
-let rndSeries = []
-let rndMovies = []
-let rndCollections = []
 
-var seriesThumbElems = []
-var moviesThumbElems = []
-var collectionsThumbElems = []
+let rndSeries = [];
+let rndMovies = [];
+let rndCollections = [];
 
-ContentFolder = {
-    //key : foldername
-    S:"Series",
-    M:"Movies",
-    C:"Collections",
-};
+var seriesThumbElems = [];
+var moviesThumbElems = [];
+var collectionsThumbElems = [];
+
 
 ContentID = {
     //key : foldername
@@ -23,6 +18,14 @@ ContentID = {
 };
 
 
+ContentFolder = {
+    //key : foldername
+    S:"Series",
+    M:"Movies",
+    C:"Collections",
+};    
+
+
 ContentPageName = {
     //key : foldername
     S:"page_series",
@@ -31,10 +34,10 @@ ContentPageName = {
 };
 
 
-
 var combinedThumbnailWidth = 256;
 var thumbnailwidth = 256;
 var spacebetweenthumbnails = 12;
+var arrowSize = 56;
 
 var thumbnailsPerPage = 6;
 var thumbnailRowWidth = 1000;

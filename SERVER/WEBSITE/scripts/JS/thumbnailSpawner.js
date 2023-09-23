@@ -59,13 +59,13 @@ async function SpawnThumbnailRow(appendParent, contentType, title, contentList =
     let arrow_r = document.createElement("div");
     arrow_r.classList.add("arrow");
     arrow_r.classList.add("arrow-right");
-    arrow_r.innerText = "Go Right";
+    arrow_r.innerText = ">";
     arrow_r.onclick = () => { MoveThumbnails(`thumbnailrow-${ContentID[contentType]}`, true); }
     
     let arrow_l = document.createElement("div");
     arrow_l.classList.add("arrow");
     arrow_l.classList.add("arrow-left");
-    arrow_l.innerText = "Go Back";
+    arrow_l.innerText = "<";
     arrow_l.onclick = () => { MoveThumbnails(`thumbnailrow-${ContentID[contentType]}`, false); }
 
     // thumbnail row parent
@@ -91,9 +91,10 @@ async function SpawnThumbnailRow(appendParent, contentType, title, contentList =
     section.append(titlediv);
     thumbDiv.append(thumbRow);
     section.append(thumbDiv)
+    
+    thumbDiv.append(arrow_l);
+    thumbDiv.append(arrow_r);
 
-    parent.append(arrow_l);
-    parent.append(arrow_r);
     parent.append(section);
 
     appendParent.append(parent);
@@ -110,11 +111,9 @@ async function SpawnThumbnailRow(appendParent, contentType, title, contentList =
     // spawn the thumbnails
     if (contentList != null)
     {
-        console.log("jjjjjjjjjjjjjjjjjjjj")
         LoadAllThumbnails(contentList, contentType, thumbRow);
     }
 
-    console.log(parent);
 }
 
 
