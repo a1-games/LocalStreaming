@@ -14,20 +14,28 @@ ContentFolder = {
     C:"Collections",
 };
 
+ContentID = {
+    //key : foldername
+    S:"series",
+    M:"movies",
+    C:"collections",
+    I:"collectioninfo",
+};
 
 
 ContentPageName = {
-    //key : pagename
-    S:"series",
-    M:"movie",
-    C:"collection",
+    //key : foldername
+    S:"page_series",
+    M:"page_movie",
+    C:"page_collection",
 };
 
 
 
 
-
 var thumbnailsPerPage = 6;
+var thumbnailRowWidth = 1000;
+var thumbRowObjects = {};
 
 
 

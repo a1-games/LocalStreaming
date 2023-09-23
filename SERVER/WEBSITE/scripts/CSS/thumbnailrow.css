@@ -92,20 +92,26 @@
 
 
 
-
-
-.arrow-right {
+.arrow {
     position: absolute;
     display: block;
 
     height: 4rem;
     width: 4rem;
-
-    right: 0;
     top: 50%;
 
+    z-index: 99;
     color: var(--textColor);
+}
 
+.arrow-right {
+    right: 0;
+    transform: translate(0, 50%);
+}
+
+
+.arrow-left {
+    left: 0;
     transform: translate(0, 50%);
 }
 

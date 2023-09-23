@@ -1,57 +1,17 @@
 
-<div class="row">
-    <div class="arrow-right" onclick="MoveThumbnailsRightToLeft('thumbnailrow-series')">
-        GO NEXT 
-    </div>
-    <div id="series" class="thumbnail-section">
-        <div id="title-series" class="section-title">
-            Series
-        </div>
-        <div class="thumbnail-div">
-            <div id="thumbnailrow-series" class="thumbnail-row">
-                
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="row">
-    <div class="arrow-right" onclick="MoveThumbnailsRightToLeft('thumbnailrow-movies')">
-        GO NEXT 
-    </div>
-    <div id="movies" class="thumbnail-section">
-        <div id="title-movies" class="section-title">
-            Movies
-        </div>
-        <div class="thumbnail-div">
-            <div id="thumbnailrow-movies" class="thumbnail-row">
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="collections" class="thumbnail-section">
-    <div id="title-collections" class="section-title">
-        Collections
-    </div>
-    <div class="thumbnail-div">
-        <div id="thumbnailrow-collections" class="thumbnail-row">
-        
-        </div>
-    </div>
-</div>
-
-<!-- Spawning Thumbnails -->
 <script src="scripts/JS/thumbnailRowFitter.js"></script>
 <script>
+    
     RandomizeSeriesList();
     RandomizeMoviesList();
     RandomizeCollectionsList();
-    
-    LoadAllMovieThumbnails();
-    LoadAllSeriesThumbnails();
-    LoadAllCollectionsThumbnails();        
 
-    AddThumbnailScrollBehaviour();
+    // cant define var, gives error on reuse
+    SpawnThumbnailRow(document.getElementById("main-content-box"), "S", "Series", rndSeries)
+    SpawnThumbnailRow(document.getElementById("main-content-box"), "M", "Movies", rndMovies)
+    SpawnThumbnailRow(document.getElementById("main-content-box"), "C", "Collections", rndCollections)
+
+    ResizeAllThumbnailDivs();
+    console.log(thumbRowObjects);
 </script>

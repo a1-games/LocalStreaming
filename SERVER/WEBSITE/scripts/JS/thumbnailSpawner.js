@@ -39,37 +39,79 @@ function RandomizeCollectionsList()
 
 
 
-async function LoadAllMovieThumbnails()
+async function LoadAllThumbnails(thumblist, contentType, thumbRow)
 {
-    var thumbnailrow_m = document.getElementById("thumbnailrow-movies");
-
-    // in the future this should also load in the movie data, description etc.
-    for (let i = 0; i < rndMovies.length; i++) {
-        AddThumbnail(rndMovies[i], ContentFolder.M, thumbnailrow_m, "movie");
-    }
-}
-
-async function LoadAllSeriesThumbnails()
-{
-    var thumbnailrow_s = document.getElementById("thumbnailrow-series");
-
-    // in the future this should also load in the movie data, description etc.
-    for (let i = 0; i < rndSeries.length; i++) {
-        AddThumbnail(rndSeries[i], ContentFolder.S, thumbnailrow_s, "series");
-    }
-}
-
-async function LoadAllCollectionsThumbnails()
-{
-    var thumbnailrow_c = document.getElementById("thumbnailrow-collections");
-
-    // in the future this should also load in the movie data, description etc.
-    for (let i = 0; i < rndCollections.length; i++) {
-        AddThumbnail(rndCollections[i], ContentFolder.C, thumbnailrow_c, "collection");
+    for (let i = 0; i < thumblist.length; i++) {
+        AddThumbnail(thumblist[i], ContentFolder[contentType], thumbRow, ContentPageName[contentType]);
     }
 }
 
 
+
+async function SpawnThumbnailRow(appendParent, contentType, title, contentList = null)
+{
+    // parent row div
+    let parent = document.createElement("div");
+    parent.classList.add("row");
+    parent.id = ContentID[contentType];
+    
+    // arrows
+    let arrow_r = document.createElement("div");
+    arrow_r.classList.add("arrow");
+    arrow_r.classList.add("arrow-right");
+    arrow_r.innerText = "Go Right";
+    arrow_r.onclick = () => { MoveThumbnails(`thumbnailrow-${ContentID[contentType]}`, true); }
+    
+    let arrow_l = document.createElement("div");
+    arrow_l.classList.add("arrow");
+    arrow_l.classList.add("arrow-left");
+    arrow_l.innerText = "Go Back";
+    arrow_l.onclick = () => { MoveThumbnails(`thumbnailrow-${ContentID[contentType]}`, false); }
+
+    // thumbnail row parent
+    let section = document.createElement("div");
+    section.classList.add("thumbnail-section");
+
+    // title div
+    let titlediv = document.createElement("div");
+    titlediv.classList.add("section-title");
+    titlediv.id = `title-${ContentID[contentType]}`;
+    titlediv.innerHTML = title;
+    
+    // thumb fixed size
+    let thumbDiv = document.createElement("div");
+    thumbDiv.classList.add("thumbnail-div");
+    
+    // thumb auto size
+    let thumbRow = document.createElement("div");
+    thumbRow.classList.add("thumbnail-row");
+    thumbRow.id = `thumbnailrow-${ContentID[contentType]}`;
+    
+    // set the hierarchy
+    section.append(titlediv);
+    thumbDiv.append(thumbRow);
+    section.append(thumbDiv)
+
+    parent.append(arrow_l);
+    parent.append(arrow_r);
+    parent.append(section);
+
+    appendParent.append(parent);
+
+    thumbRowObjects[`thumbnailrow-${ContentID[contentType]}`] = {
+        "thumbRow" : thumbRow,
+        "thumbnails" : [],
+        "firstindex" : 0,
+        "xPos" : 0,
+    };
+    
+    // spawn the thumbnails
+    if (contentList != null)
+    {
+        LoadAllThumbnails(contentList, contentType, thumbRow);
+    }
+
+}
 
 
 async function AddThumbnail(contentName, contentFolder, parent, pageToLoad)
@@ -77,6 +119,7 @@ async function AddThumbnail(contentName, contentFolder, parent, pageToLoad)
     var clickableElement = document.createElement("a");
     clickableElement.id = contentName;
     clickableElement.classList.add("content-thumbnail");
+    clickableElement.classList.add("thumbnail-inactive");
     clickableElement.href = "#"; // should be to play the video
     
     clickableElement.onclick = function() {
@@ -86,15 +129,21 @@ async function AddThumbnail(contentName, contentFolder, parent, pageToLoad)
         LoadPage(pageToLoad);
     };
 
-
-    // finnd a better way to do this:
-    //moviesThumbElems.push(clickableElement);
-
+    thumbRowObjects[parent.id].thumbnails.push(clickableElement);
 
     clickableElement.style.backgroundImage = `url('Content/${contentFolder}/${contentName}/thumbnail.jpg')`;
 
     parent.append(clickableElement);
 }
+
+
+
+
+
+
+
+
+
 
 
 

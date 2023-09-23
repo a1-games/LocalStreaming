@@ -1,108 +1,53 @@
 var parentDiv = document.getElementById("main-content-box");
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-function MoveThumbnailsRightToLeft(rowID)
+function MoveThumbnails(rowID, right = true)
 {
-    var thumbnailRow = document.getElementById(rowID);
-    var thumbnails = thumbnailRow.querySelectorAll(".content-thumbnail");
+    let thumbnailRow = thumbRowObjects[rowID].thumbRow;
 
-    // get the first index of the currently showcased items
-    let firstindex = 0;
-    for (let i = 0; i < thumbnails.length; i++) {
-        if (thumbnails[i].classList.contains("thumbnail-active"))
-        {
-            firstindex = i;
-            break;
-        }
-    }
+    UnselectThumbnails(thumbRowObjects[rowID]);
 
-    // get the last index of the currently showcased items
-    let lastindex = 0;
-    for (let i = firstindex; i < thumbnails.length; i++) {
-        if (thumbnails[i].classList.contains("thumbnail-inactive"))
-        {
-            lastindex = i;
-            break;
-        }
-        else // remove active status if not
-        {
-            thumbnails[i].classList.remove("thumbnail-active");
-            thumbnails[i].classList.add("thumbnail-inactive");
-        }
-    }
+    thumbRowObjects[rowID].xPos += right ? thumbnailRowWidth : -thumbnailRowWidth;
+    thumbRowObjects[rowID].firstindex += right ? thumbnailsPerPage : -thumbnailsPerPage;
+    thumbnailRow.style.transform = `translateX(-${thumbRowObjects[rowID].xPos}px)`;
 
-
-     // set the new couple elements as selected
-    for (let i = lastindex; i < thumbnails.length; i++) {
-        thumbnails[i].classList.remove("thumbnail-inactive");
-        thumbnails[i].classList.add("thumbnail-active");
-        if (i >= lastindex + thumbnailsPerPage-1)
-        {
-            break;
-        }
-    }
-
-    let pageNr = 1 + firstindex / thumbnailsPerPage;
-
-    thumbnailRow.style.transform = `translateX(-${GetThumbRowPXsize(parentDiv.offsetWidth)*pageNr}px)`;
-
+    RefreshSelectedThumbnails();
 }
 
-
-
-
-
-
-async function AddThumbnailScrollBehaviour()
+function UnselectThumbnails(thumbRowObject)
 {
-    var thumbnailRows = document.querySelectorAll(".thumbnail-row")
+    let thumbnails = thumbRowObject.thumbnails;
+    let firstindex = thumbRowObject.firstindex;
 
-    thumbnailRows.forEach ( (thumbnailRow, i) => {
-        var thumbnails = thumbnailRow.querySelectorAll(".content-thumbnail");
+    // set the inactive again
+    for (let i = firstindex; i < thumbnails.length; i++) {
+        thumbnails[i].classList.remove("thumbnail-active");
+        thumbnails[i].classList.add("thumbnail-inactive");
+        if (i >= firstindex + thumbnailsPerPage-1)
+        {
+            break;
+        }
+    }
+}
 
-        for (let i = 0; i < thumbnails.length; i++) {
-            if (i < thumbnailsPerPage)
+async function RefreshSelectedThumbnails()
+{
+    Object.values(thumbRowObjects).forEach ( (thumbnailRowObject, x) => {
+        var thumbnails = thumbnailRowObject.thumbnails;
+        // get the first index of the currently showcased items
+        let firstindex = thumbnailRowObject.firstindex;
+
+        for (let i = firstindex; i < thumbnails.length; i++) {
+            thumbnails[i].classList.remove("thumbnail-inactive");
+            thumbnails[i].classList.add("thumbnail-active");
+            if (i >= firstindex + thumbnailsPerPage-1)
             {
-                thumbnails[i].classList.add("thumbnail-active");
-            }
-            else
-            {
-                thumbnails[i].classList.add("thumbnail-inactive");
+                break;
             }
         }
-
-
-
     });
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -112,14 +57,22 @@ async function AddThumbnailScrollBehaviour()
 function ResizeAllThumbnailDivs()
 {
     var thumbnailDivs = document.querySelectorAll(".thumbnail-div")
+    
+    // unselect all
+    Object.values(thumbRowObjects).forEach ( (thumbnailRowObject, x) => {
+        UnselectThumbnails(thumbnailRowObject);
+    });
+
+    RefreshThumbRowPXsize(parentDiv.offsetWidth);
 
     for (let i = 0; i < thumbnailDivs.length; i++) {
-        ResizeThumbnailRow(thumbnailDivs[i], parentDiv);
+        ResizeThumbnailRow(thumbnailDivs[i]);
     }
 
+    RefreshSelectedThumbnails();
 }
 
-function GetThumbRowPXsize(containerWidth)
+function RefreshThumbRowPXsize(containerWidth)
 {
     let thumbnailwidth = 256;
     let spacebetweenthumbnails = 12;
@@ -133,45 +86,21 @@ function GetThumbRowPXsize(containerWidth)
         thumbnailsPerPage++;
         rowWidth += spacebetweenthumbnails;
 
-        if (rowWidth + thumbnailwidth + 200 < containerWidth)
-        {
-        }
-        else
+        if (rowWidth + thumbnailwidth + 200 >= containerWidth)
         {
             break;
         }
     }
 
-    return rowWidth;
+    thumbnailRowWidth = rowWidth;
 }
 
 
-async function ResizeThumbnailRow(thumbnailrow, parentcontainer)
+async function ResizeThumbnailRow(thumbnailrow)
 {
-    let thumbnailwidth = 256;
     let spacebetweenthumbnails = 12;
-    let containerWidth = parentcontainer.offsetWidth;
 
-    let rowWidth = 0;
-    thumbnailsPerPage = 0;
-
-    while (true)
-    {
-        rowWidth += thumbnailwidth;
-        thumbnailsPerPage++;
-
-        if (rowWidth + thumbnailwidth + 200 < containerWidth)
-        {
-            rowWidth += spacebetweenthumbnails;
-        }
-        else
-        {
-            break;
-        }
-    }
-
-    thumbnailrow.style.width = `${rowWidth}px`;
-    
+    thumbnailrow.style.width = `${thumbnailRowWidth - spacebetweenthumbnails}px`;
 }
 
 
