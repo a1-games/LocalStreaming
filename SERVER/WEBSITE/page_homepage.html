@@ -1,17 +1,27 @@
 
 
-<script src="scripts/JS/thumbnailRowFitter.js"></script>
 <script>
-    
+        
     RandomizeSeriesList();
     RandomizeMoviesList();
     RandomizeCollectionsList();
-
+    
     // cant define var, gives error on reuse
     SpawnThumbnailRow(document.getElementById("main-content-box"), "S", "Series", rndSeries)
     SpawnThumbnailRow(document.getElementById("main-content-box"), "M", "Movies", rndMovies)
     SpawnThumbnailRow(document.getElementById("main-content-box"), "C", "Collections", rndCollections)
-
-    ResizeAllThumbnailDivs();
-    console.log(thumbRowObjects);
+    
+    // its called in the script row fitterS
+    //ResizeAllThumbnailDivs();
+    
+    //console.log(thumbRowObjects);
 </script>
+
+
+
+<script src="scripts/JS/thumbnailRowFitter.js"></script>
+
+
+
+
+

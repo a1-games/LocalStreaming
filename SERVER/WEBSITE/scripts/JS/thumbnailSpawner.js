@@ -99,18 +99,22 @@ async function SpawnThumbnailRow(appendParent, contentType, title, contentList =
     appendParent.append(parent);
 
     thumbRowObjects[`thumbnailrow-${ContentID[contentType]}`] = {
-        "thumbRow" : thumbRow,
         "thumbnails" : [],
-        "firstindex" : 0,
+        "thumbRow" : thumbRow,
         "xPos" : 0,
+        "firstindex" : 0,
+        "arrow_l" : arrow_l,
+        "arrow_r" : arrow_r,
     };
     
     // spawn the thumbnails
     if (contentList != null)
     {
+        console.log("jjjjjjjjjjjjjjjjjjjj")
         LoadAllThumbnails(contentList, contentType, thumbRow);
     }
 
+    console.log(parent);
 }
 
 

@@ -30,7 +30,7 @@ let watchOrder = [
     {title:"Ant_Man_2", contentType:"M"},
     {title:"Avengers_3", contentType:"M"},
     {title:"Avengers_4", contentType:"M"},
-    {title:"Loki_1", contentType:"M"},
+    {title:"Loki_1", contentType:"S"},
     {title:"Spiderman_Tom_2", contentType:"M"},
     {title:"Shang_Chi_1", contentType:"M"},
     {title:"Eternals_1", contentType:"M"},
@@ -55,16 +55,9 @@ let readableDescription = [
     "This is line 5",
     "This is line 6",
 ];
-let collectionDescription = "";
-for (let i = 0; i < readableDescription.length; i++) {
-    if (i != 0)
-    collectionDescription += "\n";
-collectionDescription += readableDescription[i];
-}
-
 
 // Spawning the data
-SpawnCollectionInfoFromData("Marvel", watchOrder, collectionDescription);
+SpawnCollectionInfoFromData("Marvel", watchOrder, readableDescription);
 
 }
 OnLoadScript();

@@ -26,19 +26,28 @@ async function LoadCollectionList(collectionName) {
 
 
 
-async function SpawnCollectionInfoFromData(collectionName, collectionList, description)
+async function SpawnCollectionInfoFromData(collectionName, collectionList, readableDescription)
 {
-    var desc = document.getElementById("info-description");
+    var descElem = document.getElementById("info-description");
 
+    let collectionDescription = "";
+    for (let i = 0; i < readableDescription.length; i++) {
+        if (i != 0)
+            collectionDescription += "\n";
+        collectionDescription += readableDescription[i];
+    }
+    
     // use the collection's data
-    desc.innerText = description;
+    descElem.innerText = collectionDescription;
 
     // spawn thumb row
     let parent = document.getElementById("collection-content")
     SpawnThumbnailRow(parent, "I", "Watch Order")
-
+    
     // spawn thumbnails
     let thumbRow = document.getElementById(`thumbnailrow-${ContentID["I"]}`);
+    console.log(thumbRowObjects)
+
     for (let i = 0; i < collectionList.length; i++) {
         AddThumbnail(collectionList[i].title, ContentFolder[collectionList[i].contentType], thumbRow, ContentPageName[collectionList[i].contentType]);
     }

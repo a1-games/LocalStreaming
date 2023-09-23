@@ -53,7 +53,6 @@
     background-size: cover;
     background-position: center;
     
-    box-shadow: 0 0.5rem 0.5rem -0.25rem var(--backgroundColor);
     transition: var(--hoverTransition);
 }
 
@@ -78,14 +77,16 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    transition: var(--hoverTransition);
+    transition: all 0.6s ease;;
 }
 
 .thumbnail-active {
     pointer-events: all;
+    box-shadow: 0 0.5rem 0.5rem -0.25rem var(--backgroundColor);
 }
 
 .thumbnail-inactive {
+    transform: scale(0.85);
     pointer-events: none;
     filter: blur(0.125rem) contrast(100%) opacity(50%) saturate(0.4);
 }
@@ -115,5 +116,10 @@
     transform: translate(0, 50%);
 }
 
+.arrow-inactive {
+    filter: blur(0.125rem) opacity(40%);
+    user-select: none;
+    pointer-events: none;
+}
 
 

@@ -1,3 +1,6 @@
+:root {
+    --hoverTransition: all 0.4s ease;
+}
 
 .homepage-section {
     transition: var(--hoverTransition);

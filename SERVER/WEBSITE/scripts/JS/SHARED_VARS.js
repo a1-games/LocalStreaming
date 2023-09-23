@@ -32,11 +32,13 @@ ContentPageName = {
 
 
 
+var combinedThumbnailWidth = 256;
+var thumbnailwidth = 256;
+var spacebetweenthumbnails = 12;
 
 var thumbnailsPerPage = 6;
 var thumbnailRowWidth = 1000;
 var thumbRowObjects = {};
-
 
 
 

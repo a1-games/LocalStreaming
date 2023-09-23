@@ -20,16 +20,10 @@ let readableDescription = [
     "All Star Wars movies in the correct viewing order, according to some superfan that wrote an article about it.",
     "The list is missing some series but I'm not gonna bother with those. All the movies from the list are included.",
 ];
-let collectionDescription = "";
-for (let i = 0; i < readableDescription.length; i++) {
-    if (i != 0)
-    collectionDescription += "\n";
-collectionDescription += readableDescription[i];
-}
 
 
 // Spawning the data
-SpawnCollectionInfoFromData("Star_Wars", watchOrder, collectionDescription);
+SpawnCollectionInfoFromData("Star_Wars", watchOrder, readableDescription);
 
 
 }
