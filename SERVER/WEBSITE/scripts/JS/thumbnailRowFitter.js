@@ -158,7 +158,6 @@ function RefreshThumbnailSizePX()
     spacebetweenthumbnails = parseInt(Math.ceil(tnsize.marginRight.replace("px", "")));
 
     combinedThumbnailWidth = Math.ceil(thumbnailwidth + spacebetweenthumbnails);
-    console.log("combined size: " + combinedThumbnailWidth)
 
 }
 function RefreshThumbRowPXsize(containerWidth)
