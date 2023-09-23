@@ -7,7 +7,7 @@ let watchOrder = [
     {title:"Spiderman_Toby_3", contentType:"M"},
     {title:"Spiderman_Andrew_1", contentType:"M"},
     {title:"Spiderman_Andrew_2", contentType:"M"},
-    {title:"Catain_America_1", contentType:"M"},
+    {title:"Captain_America_1", contentType:"M"},
     {title:"Captain_Marvel_1", contentType:"M"},
     {title:"Iron_Man_1", contentType:"M"},
     {title:"Iron_Man_2", contentType:"M"},

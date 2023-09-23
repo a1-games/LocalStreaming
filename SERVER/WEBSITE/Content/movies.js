@@ -25,4 +25,11 @@ movies = [
     "Guardians_Of_The_Galaxy_1",
     "Guardians_Of_The_Galaxy_2",
     "Guardians_Of_The_Galaxy_3",
+    "Spiderman_Toby_1",
+    "Spiderman_Toby_2",
+    "Spiderman_Toby_3",
+    "Spiderman_Andrew_1",
+    "Spiderman_Andrew_2",
+    "Captain_America_1",
+    "Captain_America_2",
 ]

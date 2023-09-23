@@ -151,11 +151,14 @@ function RefreshThumbnailSizePX()
     let tnsize = window.getComputedStyle(document.querySelectorAll(".content-thumbnail")[0]);
     let arrow = window.getComputedStyle(document.querySelectorAll(".arrow")[0]);
 
-    arrowSize = parseInt(arrow.width.replace("px", ""));
+    arrowSize = parseInt(Math.ceil(arrow.width.replace("px", "")));
 
-    thumbnailwidth = parseInt(tnsize.width.replace("px", ""));
-    spacebetweenthumbnails = parseInt(tnsize.marginRight.replace("px", ""));
-    combinedThumbnailWidth = thumbnailwidth + spacebetweenthumbnails;
+    thumbnailwidth = parseInt(Math.ceil(tnsize.width.replace("px", "")));
+
+    spacebetweenthumbnails = parseInt(Math.ceil(tnsize.marginRight.replace("px", "")));
+
+    combinedThumbnailWidth = Math.ceil(thumbnailwidth + spacebetweenthumbnails);
+    console.log("combined size: " + combinedThumbnailWidth)
 
 }
 function RefreshThumbRowPXsize(containerWidth)
