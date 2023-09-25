@@ -1,7 +1,16 @@
 function OnLoadScript() {
 
+
+// content Name
+let _contentName = "Star_Wars";
+
+// content Title
+let _contentTitle = "Star Wars";
+    
+
+
 // Watch Order
-let watchOrder = [
+let _watchOrder = [
     {title:"Star_Wars_4", contentType:"M"}, // A New Hope
     {title:"Rogue_One", contentType:"M"},
     {title:"Star_Wars_5", contentType:"M"}, // Empire Strikes Back
@@ -16,14 +25,20 @@ let watchOrder = [
 ]
 
 // Description
-let readableDescription = [
+let _readableDescription = [
     "All Star Wars movies in the correct viewing order, according to some superfan that wrote an article about it.",
     "The list is missing some series but I'm not gonna bother with those. All the movies from the list are included.",
 ];
 
+data = {
+    contentName:_contentName,
+    title:_contentTitle,
+    watchOrder:_watchOrder,
+    readableDescription:_readableDescription,
+}
 
 // Spawning the data
-SpawnCollectionInfoFromData("Star_Wars", watchOrder, readableDescription);
+SpawnCollectionInfoFromData(data);
 
 
 }

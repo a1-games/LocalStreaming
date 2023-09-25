@@ -42,7 +42,13 @@ function RandomizeCollectionsList()
 async function LoadAllThumbnails(thumblist, contentType, thumbRow)
 {
     for (let i = 0; i < thumblist.length; i++) {
-        AddThumbnail(thumblist[i], ContentFolder[contentType], thumbRow, ContentPageName[contentType]);
+        var onclick = function() {
+            // set the selected content
+            localStorage.setItem("selectedContent", thumblist[i]);
+            // load the page
+            LoadPage(ContentPageName[contentType]);
+        };
+        AddThumbnail(thumblist[i], `${ContentFolder[contentType]}/${thumblist[i]}/thumbnail.jpg`, thumbRow, onclick);
     }
 }
 
@@ -117,7 +123,7 @@ async function SpawnThumbnailRow(appendParent, contentType, title, contentList =
 }
 
 
-async function AddThumbnail(contentName, contentFolder, parent, pageToLoad)
+async function AddThumbnail(contentName, contentURL, parent, onclick, thumbnailText = null)
 {
     var clickableElement = document.createElement("a");
     clickableElement.id = contentName;
@@ -125,16 +131,19 @@ async function AddThumbnail(contentName, contentFolder, parent, pageToLoad)
     clickableElement.classList.add("thumbnail-inactive");
     clickableElement.href = "#"; // should be to play the video
     
-    clickableElement.onclick = function() {
-        // set the selected content
-        localStorage.setItem("selectedContent", contentName);
-        // load the page
-        LoadPage(pageToLoad);
-    };
+    clickableElement.onclick = () => onclick();
 
     thumbRowObjects[parent.id].thumbnails.push(clickableElement);
 
-    clickableElement.style.backgroundImage = `url('Content/${contentFolder}/${contentName}/thumbnail.jpg')`;
+    clickableElement.style.backgroundImage = `url('Content/${contentURL}`;
+
+    if (thumbnailText != null)
+    {
+        let textEl = document.createElement("div");
+        textEl.classList.add("thumbnail-text");
+        textEl.innerText = thumbnailText;
+        clickableElement.append(textEl);
+    }
 
     parent.append(clickableElement);
 }

@@ -46,14 +46,39 @@
 
     margin-right: 0.75rem;
     
+    color: var(--textColor);
+
     border-radius: 0.5rem;
     /* background image is set from the thumbnail spawner */
     background-image: none;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    text-decoration: none !important;
     
     transition: var(--hoverTransition);
+}
+.content-thumbnail:hover {
+    color: var(--scrollColorActive);
+}
+
+.thumbnail-text {
+    position: relative;
+    display: flex;
+
+    height: auto;
+    width: auto;
+    margin: 0.25rem 0.6rem;
+
+    color: inherit;
+
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    text-decoration: inherit;
+    text-align: left;
+    align-items: end;
+    
+    user-select: none;
 }
 
 .thumbnail-div {

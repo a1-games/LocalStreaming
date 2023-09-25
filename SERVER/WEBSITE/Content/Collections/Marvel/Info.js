@@ -1,7 +1,15 @@
 function OnLoadScript() {
 
+
+// content Name
+let _contentName = "Marvel";
+
+// content Title
+let _contentTitle = "Marvel";
+    
+
 // Watch Order
-let watchOrder = [
+let _watchOrder = [
     {title:"Spiderman_Toby_1", contentType:"M"},
     {title:"Spiderman_Toby_2", contentType:"M"},
     {title:"Spiderman_Toby_3", contentType:"M"},
@@ -47,7 +55,7 @@ let watchOrder = [
 ]
 
 // Description
-let readableDescription = [
+let _readableDescription = [
     "This is line 1",
     "This is line 2",
     "This is line 3",
@@ -56,8 +64,16 @@ let readableDescription = [
     "This is line 6",
 ];
 
+data = {
+    contentName:_contentName,
+    title:_contentTitle,
+    watchOrder:_watchOrder,
+    readableDescription:_readableDescription,
+}
+
+
 // Spawning the data
-SpawnCollectionInfoFromData("Marvel", watchOrder, readableDescription);
+SpawnCollectionInfoFromData(data);
 
 }
 OnLoadScript();

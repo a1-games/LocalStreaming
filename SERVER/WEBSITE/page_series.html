@@ -19,13 +19,26 @@
     <div id="video-player" class="info-section">
 
     </div>
+
+    
+
+
 </div>
 
-<div id="other-episodes" class="info-section">
-    <div id="thumbnailrow" class="thumbnailrow">
+
+<div id="season-box">
+    <div id="season-box">
+        <div class="section-title">
+            Season
+        </div>
+        <select id="season-dropdown" name="Season" value="Season 1" onchange="SelectSeason(this.value)">
+        </select>
     </div>
 </div>
 
+<div id="episodes">
+</div>
+
 <script> 
-    SetCollectionInfo();
+    SetContentInfo("S");
 </script>

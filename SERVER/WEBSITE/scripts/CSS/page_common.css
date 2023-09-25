@@ -32,7 +32,9 @@ html {
 
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    font-size: 3rem;
+    font-size: 2rem;
+    text-wrap: wrap;
+    word-break: break-word;
     color: var(--textColor);
 }
 
@@ -82,6 +84,8 @@ html {
     display: flex;
     flex-direction: row;
     height: 600px;
+    width: 92%;
+    margin: auto;
 }
 
 #info-box {
