@@ -3,14 +3,14 @@ function OnLoadScript() {
 
 
 // content Name
-let _contentName = "8_Mile";
+let _contentName = "Ant_Man_2";
 
 // content Title
-let _contentTitle = "8 Mile";
+let _contentTitle = "Ant Man and The Wasp";
 
 // Description
 let readableDescription = [
-    "Eminem's origin story.",
+    "Man becomes small with girl hehe.",
 ];
 
 // Spawning the data

@@ -4,25 +4,27 @@
 
 
 
-async function SpawnMovieInfoFromData(movieName, readableDescription)
+async function SpawnMovieInfo()
 {
     var titlediv = document.getElementById("info-title");
     var descElem = document.getElementById("info-description");
+    var thumb = document.getElementById("info-thumbnail");
 
-    titlediv.innerText = movieName;
+    var movieObject = movieObjects[localStorage.getItem("selectedContent")];
+    
+    thumb.style.backgroundImage = `url('Content/Movies/${movieObject.contentID}/thumbnail.jpg')`;
+    titlediv.innerText = movieObject.contentTitle;
 
     let movieDescription = "";
-    for (let i = 0; i < readableDescription.length; i++) {
+    for (let i = 0; i < movieObject.readableDescription.length; i++) {
         if (i != 0)
             movieDescription += "\n";
-        movieDescription += readableDescription[i];
+        movieDescription += movieObject.readableDescription[i];
     }
     
     // use the data
     descElem.innerText = movieDescription;
 
-    // remove the script again in case we need it another time
-    document.getElementById(movieName).remove();
 }
 
 

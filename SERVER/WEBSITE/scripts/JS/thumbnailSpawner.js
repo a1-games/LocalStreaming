@@ -15,7 +15,7 @@ function RandomizeSeriesList()
 function RandomizeMoviesList()
 {
     rndMovies = [];
-    _movies = [...movies]
+    _movies = [...Object.keys(movieObjects)]
     let len = _movies.length > 20 ? 20 : _movies.length;
 
     for (let i = 0; i < len; i++) {

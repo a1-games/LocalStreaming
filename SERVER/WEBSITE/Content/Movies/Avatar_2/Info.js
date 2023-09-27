@@ -3,14 +3,14 @@ function OnLoadScript() {
 
 
 // content Name
-let _contentName = "8_Mile";
+let _contentName = "Avatar_2";
 
 // content Title
-let _contentTitle = "8 Mile";
+let _contentTitle = "Avatar: The Way of Water";
 
 // Description
 let readableDescription = [
-    "Eminem's origin story.",
+    "blue man immigrates to green men",
 ];
 
 // Spawning the data

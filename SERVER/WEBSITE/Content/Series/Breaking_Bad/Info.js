@@ -11,7 +11,7 @@ let _contentTitle = "Breaking Bad";
 // Watch Order
 let _seasons = [
     {episodeCount:"12"},
-    {episodeCount:"12"},
+    {episodeCount:"11"},
 ]
 
 // Description
