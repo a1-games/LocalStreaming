@@ -3,7 +3,7 @@
 function RandomizeSeriesList()
 {
     rndSeries = [];
-    _series = [...series]
+    _series = [...Object.keys(seriesObjects)]
     let len = _series.length > 20 ? 20 : _series.length;
 
     for (let i = 0; i < len; i++) {
@@ -27,7 +27,7 @@ function RandomizeMoviesList()
 function RandomizeCollectionsList()
 {
     rndCollections = [];
-    _collections = [...collections]
+    _collections = [...Object.keys(collectionObjects)]
     let len = _collections.length;
 
     for (let i = 0; i < len; i++) {
