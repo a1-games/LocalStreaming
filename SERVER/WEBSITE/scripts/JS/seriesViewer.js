@@ -27,6 +27,7 @@ function SpawnSeriesEpisodes(seriesObject, seasonIndex)
 
 async function ClearEpisodes()
 {
+
     let thumbRow = document.getElementById(`thumbnailrow-${ContentID["S"]}`);
     let test = thumbRow.querySelectorAll(".content-thumbnail");
     for (let i = 0; i < test.length; i++) {
@@ -34,6 +35,7 @@ async function ClearEpisodes()
     }
     // clear references
     thumbRowObjects[`thumbnailrow-${ContentID["S"]}`].thumbnails = [];
+
 }
 
 
@@ -43,6 +45,10 @@ async function SelectSeason(seasonIndex)
     var seriesObject = seriesObjects[localStorage.getItem("selectedContent")];
     SpawnSeriesEpisodes(seriesObject, seasonIndex)
 
+    
+    // set the episodes to start index 0
+    SetThumbRowObjectValues(thumbRowObjects[`thumbnailrow-${ContentID["S"]}`], 0, 0);
+    
     ResizeAllThumbnailDivs();
 }
 

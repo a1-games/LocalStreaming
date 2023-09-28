@@ -2,8 +2,9 @@
 var userList = {};
 var currentUser = {"Username":"Default", "Color":"#FFFFFF","ColorScheme":"cyan"};
 var selectedUserIcon = null;
-const userTab = document.getElementById("sidebar");
+const settingsBox = document.getElementById("settings-box");
 const userIconsBox = document.getElementById("user-icons-box");
+const chosenUserIconBox = document.getElementById("chosen-user-icon-box");
 
 async function GetLocalUsername()
 {
@@ -29,13 +30,22 @@ async function LoadCurrentUser()
 }
 
 
-
-async function OpenCloseUserMenu(open)
+let menuIsOpen = false;
+async function OpenCloseUserMenu()
 {
-    if (open)
-        userTab.style.width = "22vw";
+    // set transition here because if we do it on load then the hiding of the box is animated
+    settingsBox.style.transition = "var(--hoverTransition)";
+
+    if (!menuIsOpen)
+    {
+        settingsBox.style.transform = "translate(-1rem, calc(100% - 1rem))";
+        menuIsOpen = true;
+    }
     else
-        userTab.style.width = "8rem";
+    {
+        settingsBox.style.transform = "translate(100%, calc(100% - 1rem))";
+        menuIsOpen = false;
+    }
 }
 
 function DontCloseUserTab(event)
@@ -46,13 +56,20 @@ function DontCloseUserTab(event)
 
 async function SelectUser(username)
 {
+
+    // set new item
     localStorage.setItem("CURRENT_USER", username);
     LoadCurrentUser();
 
     if (selectedUserIcon != null)
+    {
         selectedUserIcon.id = "";
 
-    let allIconDivs = userIconsBox.getElementsByClassName("userIcon");
+        // move old chosen icon back
+        userIconsBox.prepend(selectedUserIcon);
+    }
+
+    let allIconDivs = userIconsBox.querySelectorAll(".userIcon");
     //                                    -1 bc the "+" icon is in the list
     for (let i = 0; i < allIconDivs.length-1; i++) {
         if (allIconDivs[i].getAttribute("name") == username)
@@ -62,8 +79,14 @@ async function SelectUser(username)
         }
     }
     if (selectedUserIcon != null)
+    {
         selectedUserIcon.id = "userIcon-chosen";
+
+        // move new chosen to chosen icon box
+        chosenUserIconBox.prepend(selectedUserIcon);
+    }
     //console.log(" selecting user "+username);
+
 }
 
 async function SpawnUsers()
@@ -77,20 +100,24 @@ async function SpawnUsers()
 
     // spawn all the icons
     Object.values(userList).forEach(user => {
-        SpawnOneUser(user);
+        if (user.Username != currentUser.Username)
+        {
+            SpawnOneUser(user, userIconsBox);
+        }
     });
     
+    SpawnOneUser(currentUser, chosenUserIconBox);
 }
 
-function SpawnOneUser(user)
+function SpawnOneUser(user, parentDiv)
 {
     let icondiv = document.createElement("div")
     icondiv.className = "userIcon";
     icondiv.onclick = () => SelectUser(user.Username);
     icondiv.innerText = user.Username[0];
     icondiv.setAttribute("name", user.Username);
-    icondiv.style.background = `linear-gradient(transparent, ${user.Color})`;
-    //icondiv.style.background = `radial-gradient(center center, circle cover, #ffeda3, transparent)`;
+    icondiv.style.background = `radial-gradient(circle, ${user.Color} 40%, transparent 100%)`;
+    //icondiv.style.background = `radial-gradient(circle, rgba(170,170,170,0) 0%, rgba(228,228,228,1) 16%, rgba(255,255,255,1) 100%)`;
     icondiv.style.color = `var(--backgroundColor)`;
 
     // select the icon of the stored CURRENTUSER
@@ -100,7 +127,7 @@ function SpawnOneUser(user)
         selectedUserIcon = icondiv;
     }
 
-    userIconsBox.prepend(icondiv);
+    parentDiv.prepend(icondiv);
 }
 
 
@@ -216,7 +243,7 @@ async function WriteUserOnServer(event)
     });
 
     userList[newUser.Username] = newUser;
-    SpawnOneUser(newUser);
+    SpawnOneUser(newUser, userIconsBox);
     SelectUser(newUser.Username);
 
     OpenCreateUserMenu(false);

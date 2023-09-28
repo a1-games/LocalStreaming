@@ -1,19 +1,27 @@
 
-Make an actual video player
+make user creation work as a fold out menu from top bar
+
+
+make video player
+
+
 
 Make a watch progress system
+- for each collection show completed elements out of collectionelements
 - for each show / movie save the last timestamp watched(-15sec)
 - for each episode / movie, save a bool "HasWatched" as true if watched.
-- add the option to clear watch progress for each show / movie
+- add the option to clear watch progress for each show / movie OR full reset all
 
-make user system
 
-ui:
-make user choice / login screen
-make homepage + search bar
 
-make a display that shows the thumbnails like netflix
 
+make a search engine
 make everything sortable by #tags such as #disney #christmas #series #movie
 
+
+
 probably won't need suggestions but if needed that's last priority
+
+
+
+

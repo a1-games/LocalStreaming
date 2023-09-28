@@ -93,6 +93,7 @@ async function SetPNGColors()
     ColorizePNG(document.getElementById("website-logo"), textColor);
     ColorizePNG(document.getElementById("search-icon"), textColor);
     ColorizePNG(document.getElementById("favourites-icon"), textColor);
+    ColorizePNG(document.getElementById("settings-icon"), textColor);
     document.body.style.pointerEvents = "all";
 }
 
