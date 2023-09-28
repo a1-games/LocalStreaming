@@ -1,6 +1,4 @@
 
-make user creation work as a fold out menu from top bar
-
 
 make video player
 

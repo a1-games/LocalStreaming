@@ -1,7 +1,6 @@
 
 <head>
     <!-- Local Stylesheets -->
-    <link rel="stylesheet" href="scripts/CSS/page_common.css" media="screen">
     <link rel="stylesheet" href="scripts/CSS/page_movie.css" media="screen">
 </head>
 <!-- Page Content -->
@@ -16,8 +15,21 @@
         <div id="info-description" class="info-description">
         </div>
     </div>
-    <div id="video-player" class="info-section">
+    <div id="video-player-box" class="info-section">
+        <video controls class="video" id="video-player" preload="metadata" poster="Content/Series/Game_Of_Thrones/Season_1/S1E1.jpg">
+            <source src="Content/Series/Game_Of_Thrones/Season_1/S1E1.mkv" type="video/mp4"></source>
+        </video>
+        <div id="video-control-bar">
+            <div id="button-play-pause" class="video-button"></div>
+            <div id="video-timer">
+                <time id="time-elapsed">00:00</time>
+                <span> / </span>
+                <time id="duration">00:00</time>
+            </div>
+            <div id="button-airplay" class="video-button"></div>
+            <div id="button-fullscreen" class="video-button"></div>
 
+        </div>
     </div>
 </div>
 
@@ -25,3 +37,4 @@
 <script> 
     SpawnContentInfo(movieObjects, "M");
 </script>
+<script src="scripts/JS/videoPlayer.js"></script>

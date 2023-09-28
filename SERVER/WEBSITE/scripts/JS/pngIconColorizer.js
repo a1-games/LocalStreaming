@@ -273,7 +273,7 @@ class Solver {
     function fmt(idx, multiplier = 1) {
       return Math.round(filters[idx] * multiplier);
     }
-    return `filter: invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%);`;
+    return `invert(${fmt(0)}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) hue-rotate(${fmt(3, 3.6)}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%)`;
   }
 }
 
@@ -294,7 +294,7 @@ function hexToRgb(hex) {
     : null;
 }
 
-function ColorizePNG(element, hexColor)
+function ColorizePNG(element, hexColor, opacity = 1)
 {
     // get rgb color
     let rgb = hexToRgb(hexColor);
@@ -303,5 +303,5 @@ function ColorizePNG(element, hexColor)
     let solver = new Solver(color);
     let result = solver.solve();
 
-    element.style = result.filter;
+    element.style = `filter: ${result.filter} opacity(${opacity});`;
 }
