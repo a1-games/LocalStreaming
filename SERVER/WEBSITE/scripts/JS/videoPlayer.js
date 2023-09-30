@@ -53,8 +53,8 @@ video.addEventListener('pause', () => {
 
 
 
-
-//video.controls = false;
+// disable default controls
+video.controls = false;
 
 
 
@@ -155,9 +155,10 @@ function skipAhead(event) {
     video.currentTime = skipTo;
     seek.value = skipTo;
     progressBar.value = skipTo;
+    console.log("skipahead " + skipTo);
+
     SetThumbPos(skipTo);
 
-    console.log("skipahead");
 }
 seek.addEventListener('input', skipAhead);
 seek.addEventListener('onclick', skipAhead);
@@ -167,7 +168,7 @@ function SetThumbPos(timevalue)
 {
     let valueFactor = timevalue / video.duration;
     console.log("skipping to " + valueFactor)
-    seekThumb.style.left = `${clamp(valueFactor*100, 0, 100)}%`;
+    seekThumb.style.left = `${Math.floor(clamp(valueFactor*100, 0, 100))}%`;
 }
 
 function ShowHideThumb(show)
