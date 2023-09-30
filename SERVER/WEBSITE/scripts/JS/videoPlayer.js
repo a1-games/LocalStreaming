@@ -1,30 +1,43 @@
 
-const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
 
-const video = document.getElementById('video-player');
+video = document.getElementById('video-player');
 
-const videoControlBar = document.getElementById("video-control-bar");
-const playpauseButton = document.getElementById('button-play-pause');
-const airplayButton = document.getElementById('button-airplay');
-const fullscreenButton = document.getElementById('button-fullscreen');
+videoControlBar = document.getElementById("video-control-bar");
+playpauseButton = document.getElementById('button-play-pause');
+airplayButton = document.getElementById('button-airplay');
+fullscreenButton = document.getElementById('button-fullscreen');
 
-const scrubber = document.getElementById('video-progress-scrubber');
-const seekTooltip = document.getElementById('seek-tooltip');
-const seekThumb = document.getElementById('video-scrubber-thumb');
-const seek = document.getElementById('seek');
-const progressBar = document.getElementById('progress-bar');
-const bufferBar = document.getElementById('buffered-progress-bar');
+scrubber = document.getElementById('video-progress-scrubber');
+seekTooltip = document.getElementById('seek-tooltip');
+seekThumb = document.getElementById('video-scrubber-thumb');
+seek = document.getElementById('seek');
+progressBar = document.getElementById('progress-bar');
+bufferBar = document.getElementById('buffered-progress-bar');
 
-const timeElapsed = document.getElementById('time-elapsed');
-const duration = document.getElementById('duration');
+timeElapsed = document.getElementById('time-elapsed');
+duration = document.getElementById('duration');
 
-let textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textColor');
+textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textColor');
 ColorizePNG(playpauseButton, textColor, 1);
 ColorizePNG(airplayButton, textColor, 1);
 ColorizePNG(fullscreenButton, textColor, 1);
 
 
+function SetEventListener(element, eventKey, action)
+{
+    if (element.getAttribute(`${eventKey}_listener`) == "true") return;
+    element.setAttribute(`${eventKey}_listener`, "true");
+
+    element.addEventListener(eventKey, (params) => {
+        // only allow it in the movie page
+        if (currentPageName == ContentPageName["M"])
+        {
+            action(params);
+        }
+    });
+}
 
 
 function togglePlay() 
@@ -38,19 +51,35 @@ function togglePlay()
         video.pause();
     }
 }
-playpauseButton.addEventListener('click', togglePlay);
+
+SetEventListener(playpauseButton, 'click', togglePlay);
+SetEventListener(video, 'click', togglePlay);
 
 // do when video starts playing
-video.addEventListener('play', () => {
+SetEventListener(video, 'play', () => {
     playpauseButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_pause.png')";
     videoControlBar.style.display = "flex";
 });
 // do when video becomes paused
-video.addEventListener('pause', () => {
+SetEventListener(video, 'pause', () => {
     playpauseButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_play.png')";
     videoControlBar.style.display = "flex";
 });
 
+SetEventListener(document.body, 'keyup', (e) => {
+    if (e.code === "ArrowUp")
+    {
+        // volume up
+    }
+    if (e.code === "ArrowDown")
+    {
+        // volumde down
+    }
+    if (e.code == "Space")
+    {
+        togglePlay();
+    }
+});
 
 
 // disable default controls
@@ -64,8 +93,8 @@ video.controls = false;
 // minutes and seconds
 function formatTime(timeInSeconds)
 {
-    const result = new Date(timeInSeconds * 1000).toISOString().substr(11, 8);
-  
+    let result = new Date(timeInSeconds * 1000).toISOString().substr(11, 8);
+    
     return {
         hours: result.substr(0, 2),
         minutes: result.substr(3, 2),
@@ -96,15 +125,15 @@ function updateTimeElapsed()
     SetThumbPos(video.currentTime);
 }
 
-video.addEventListener('progress', function() {
-    let bf = this.buffered;
+SetEventListener(video, 'progress', () => {
+    let bf = video.buffered;
     let range = bf.length-1;
-
+    
     // length has to be at least 1
     if (range < 0) return;
-
-    let loadStartPercentage = bf.start(0) / this.duration;
-    let loadEndPercentage = bf.end(range) / this.duration;
+    
+    let loadStartPercentage = bf.start(0) / video.duration;
+    let loadEndPercentage = bf.end(range) / video.duration;
     let loadPercentage = loadEndPercentage - loadStartPercentage;
     
     bufferBar.style.width = `${loadPercentage * 100}%`;
@@ -115,10 +144,10 @@ function initializeVideo()
 {
     let videoDuration = Math.round(video.duration);
     let time = formatTime(videoDuration);
-
+    
     seek.setAttribute('max', videoDuration);
     progressBar.setAttribute('max', videoDuration);
-
+    
     // if the video is over an hour, show hours
     let h = parseInt(time.hours)
     if (h > 0)
@@ -134,8 +163,9 @@ function initializeVideo()
     console.log("INITIALIZED VIDEO");
 }
 
-video.addEventListener('loadedmetadata', initializeVideo);
-video.addEventListener('timeupdate', updateTimeElapsed);
+SetEventListener(video, 'loadedmetadata', initializeVideo);
+
+SetEventListener(video, 'timeupdate', updateTimeElapsed);
 
 
 
@@ -149,25 +179,23 @@ function updateSeekTooltip(event)
     seekTooltip.textContent = `${t.minutes}:${t.seconds}`;
     seekTooltip.style.left = `${event.pageX - rect.left}px`;
 }
-seek.addEventListener('mousemove', updateSeekTooltip);
+SetEventListener(seek, 'mousemove', updateSeekTooltip);
 function skipAhead(event) {
     let skipTo = event.target.dataset.seek ? event.target.dataset.seek : event.target.value;
     video.currentTime = skipTo;
     seek.value = skipTo;
     progressBar.value = skipTo;
-    console.log("skipahead " + skipTo);
-
+    
     SetThumbPos(skipTo);
-
+    
 }
-seek.addEventListener('input', skipAhead);
-seek.addEventListener('onclick', skipAhead);
+SetEventListener(seek, 'input', skipAhead);
+SetEventListener(seek, 'onclick', skipAhead);
 
 
 function SetThumbPos(timevalue)
 {
     let valueFactor = timevalue / video.duration;
-    console.log("skipping to " + valueFactor)
     seekThumb.style.left = `${Math.floor(clamp(valueFactor*100, 0, 100))}%`;
 }
 
@@ -183,13 +211,15 @@ function ShowHideThumb(show)
     }
 }
 
-seek.addEventListener("mouseenter", () => ShowHideThumb(true));
-seek.addEventListener("mouseenter", () => seekTooltip.style.color = "var(--textColor)");
+SetEventListener(seek, "mouseenter", () => {
+    ShowHideThumb(true);
+    seekTooltip.style.color = "var(--textColor)";
+});
 
-seek.addEventListener("mouseleave", () => ShowHideThumb(false));
-seek.addEventListener("mouseleave", () => seekTooltip.style.color = "transparent");
-
-
+SetEventListener(seek, "mouseleave", () => {
+    ShowHideThumb(false);
+    seekTooltip.style.color = "transparent";
+});
 
 
 
