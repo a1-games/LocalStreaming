@@ -17,16 +17,32 @@
     </div>
     <div id="video-player-box" class="info-section">
         <video controls class="video" id="video-player" preload="metadata" poster="Content/Series/Game_Of_Thrones/Season_1/S1E1.jpg">
-            <source src="Content/Series/Game_Of_Thrones/Season_1/S1E1.mkv" type="video/mp4"></source>
+            <source src="Content/Series/Game_Of_Thrones/Season_1/S1E1.mp4" type="video/mp4"></source>
         </video>
         <div id="video-control-bar">
-            <div id="button-play-pause" class="video-button"></div>
-            <div id="video-timer">
-                <time id="time-elapsed">00:00</time>
-                <span> / </span>
-                <time id="duration">00:00</time>
+
+            <!-- progress bar on top with absolute positioning -->
+            <div id="video-progress-parent">
+                <div id="video-progress-scrubber">
+                    <div class="seek-tooltip" id="seek-tooltip">00:00</div>
+                    <div id="video-scrubber-thumb"></div>
+                    <div id="video-progress-bar">
+                        <div id="buffered-progress-bar"></div>
+                        <progress id="progress-bar" value="0" min="0"></progress>
+                        <input id="seek" value="0" min="0" type="range">
+                    </div>
+                </div>
+                <div id="video-timer">
+                    <time id="time-elapsed">00:00</time>
+                    <span class="slash"> / </span>
+                    <time id="duration">00:00</time>
+                </div>
             </div>
+
+            <div id="button-play-pause" class="video-button"></div>
+            
             <div id="button-airplay" class="video-button"></div>
+            
             <div id="button-fullscreen" class="video-button"></div>
 
         </div>
