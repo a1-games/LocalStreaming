@@ -1,13 +1,14 @@
 
 clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
-
+videoDuration = 0.0;
 video = document.getElementById('video-player');
 
 videoControlBar = document.getElementById("video-control-bar");
 playpauseButton = document.getElementById('button-play-pause');
 airplayButton = document.getElementById('button-airplay');
 fullscreenButton = document.getElementById('button-fullscreen');
+volumeButton = document.getElementById('button-volume');
 
 scrubber = document.getElementById('video-progress-scrubber');
 seekTooltip = document.getElementById('seek-tooltip');
@@ -23,6 +24,7 @@ textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textCol
 ColorizePNG(playpauseButton, textColor, 1);
 ColorizePNG(airplayButton, textColor, 1);
 ColorizePNG(fullscreenButton, textColor, 1);
+ColorizePNG(volumeButton, textColor, 1);
 
 
 function SetEventListener(element, eventKey, action)
@@ -102,27 +104,33 @@ function formatTime(timeInSeconds)
     };
 };
 
-
-function updateTimeElapsed()
+function getTimeString(timeObject)
 {
-    let time = formatTime(Math.round(video.currentTime));
-    // if the video is over an hour, show hour field
-    let h = parseInt(time.hours)
+    let h = parseInt(timeObject.hours)
     if (h > 0)
     {
-        timeElapsed.innerText = `${h}:${time.minutes}:${time.seconds}`;
-        timeElapsed.setAttribute('datetime', `${h}h ${time.minutes}m ${time.seconds}s`)
+        return `${h}:${timeObject.minutes}:${timeObject.seconds}`;
     }
     // if the video is under an hour, only show minutes and seconds
     else
     {
-        timeElapsed.innerText = `${time.minutes}:${time.seconds}`;
-        timeElapsed.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`)
+        return `${timeObject.minutes}:${timeObject.seconds}`;
     }
+}
+
+
+function updateTimeElapsed()
+{
+    let time = formatTime(video.currentTime);
+    
+    // show the time
+    timeElapsed.innerText = getTimeString(time);
+    timeElapsed.setAttribute('datetime', getTimeString(time))
     
     seek.value = video.currentTime;
     progressBar.value = video.currentTime;
-    SetThumbPos(video.currentTime);
+
+    //SetThumbPos(video.currentTime);
 }
 
 SetEventListener(video, 'progress', () => {
@@ -142,24 +150,16 @@ SetEventListener(video, 'progress', () => {
 
 function initializeVideo()
 {
-    let videoDuration = Math.round(video.duration);
+    videoDuration = Math.floor(video.duration);
     let time = formatTime(videoDuration);
     
     seek.setAttribute('max', videoDuration);
     progressBar.setAttribute('max', videoDuration);
     
-    // if the video is over an hour, show hours
-    let h = parseInt(time.hours)
-    if (h > 0)
-    {
-        duration.innerText = `${h}:${time.minutes}:${time.seconds}`;
-        duration.setAttribute('datetime', `${h}h ${time.minutes}m ${time.seconds}s`)
-    }
-    else
-    {
-        duration.innerText = `${time.minutes}:${time.seconds}`;
-        duration.setAttribute('datetime', `${time.minutes}m ${time.seconds}s`)
-    }
+    // set time text
+    duration.innerText = getTimeString(time);
+    duration.setAttribute('datetime', getTimeString(time))
+
     console.log("INITIALIZED VIDEO");
 }
 
@@ -173,14 +173,17 @@ SetEventListener(video, 'timeupdate', updateTimeElapsed);
 
 function updateSeekTooltip(event)
 {
-    let skipTo = Math.round((event.offsetX / event.target.clientWidth) * parseInt(event.target.getAttribute('max'), 10));
-    let t = formatTime(skipTo);
-    let rect = video.getBoundingClientRect();
-    seekTooltip.textContent = `${t.minutes}:${t.seconds}`;
-    seekTooltip.style.left = `${event.pageX - rect.left}px`;
+    let skipTo = clamp(Math.round((event.offsetX / event.target.clientWidth) * parseInt(event.target.getAttribute('max'), 10)), 0, videoDuration);
+    let time = formatTime(skipTo);
+    seekTooltip.textContent = getTimeString(time);
+    
+    let valueFactor = skipTo / videoDuration;
+    seekTooltip.style.left = `${clamp(valueFactor*100, 0.0, 100.0)}%`;
 }
 SetEventListener(seek, 'mousemove', updateSeekTooltip);
+
 function skipAhead(event) {
+
     let skipTo = event.target.dataset.seek ? event.target.dataset.seek : event.target.value;
     video.currentTime = skipTo;
     seek.value = skipTo;
@@ -195,8 +198,8 @@ SetEventListener(seek, 'onclick', skipAhead);
 
 function SetThumbPos(timevalue)
 {
-    let valueFactor = timevalue / video.duration;
-    seekThumb.style.left = `${Math.floor(clamp(valueFactor*100, 0, 100))}%`;
+    let valueFactor = timevalue / videoDuration;
+    seekThumb.style.left = `${clamp(valueFactor*100, 0.0, 100.0)}%`;
 }
 
 function ShowHideThumb(show)

@@ -227,9 +227,11 @@
     font-size: 1rem;
     font-family: "Oswald", sans-serif;
 
-    transform: translate(-100%, -100%);
+    transform: translate(-50%, -100%);
 
     margin: 0;
+
+    user-select: none;
 
     color: transparent;
     transition: color 0.2s ease;
@@ -257,6 +259,35 @@
     box-shadow: 1px 1px 3px #000031;
     background-color: var(--scrollColor);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+#volume-slider {
+    position: absolute;
+}
+
+#button-volume {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    background-image: url('../../files/IMAGES/Icons/video_volume_3.png');
+}
+
+
+
+
+
 
 
 
