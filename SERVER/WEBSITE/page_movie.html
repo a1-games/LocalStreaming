@@ -15,46 +15,61 @@
         <div id="info-description" class="info-description">
         </div>
     </div>
-    <div id="video-player-box" class="info-section">
-        <video controls class="video" id="video-player" preload="metadata" poster="Content/Series/Game_Of_Thrones/Season_1/S1E1.jpg">
-            <source src="Content/Series/Game_Of_Thrones/Season_1/S1E1.mkv" type="video/mp4"></source>
-        </video>
-        <div id="video-control-bar">
-
-            <!-- progress bar on top with absolute positioning -->
-            <div id="video-progress-parent">
-                <div id="video-progress-scrubber">
-                    <div class="seek-tooltip" id="seek-tooltip">00:00</div>
-                    <div id="video-scrubber-thumb"></div>
-                    <div id="video-progress-bar">
-                        <div id="buffered-progress-bar"></div>
-                        <progress id="progress-bar" value="0" min="0"></progress>
-                        <input id="seek" value="0" min="0" type="range">
+    <div id="rightside-box" class="info-section">
+        <div id="video-player-box">
+            <video controls class="video" id="video-player" preload="metadata" poster="Content/Series/Game_Of_Thrones/Season_1/S1E1.jpg">
+                <source src="Content/Series/Game_Of_Thrones/Season_1/S1E1.mkv" type="video/mp4"></source>
+            </video>
+            <div id="video-control-bar">
+    
+                <!-- progress bar on top with absolute positioning -->
+                <div id="video-progress-parent">
+                    <div id="video-progress-scrubber">
+                        <div class="seek-tooltip" id="seek-tooltip">00:00</div>
+                        <div id="video-scrubber-thumb"></div>
+                        <div id="video-progress-bar">
+                            <div id="buffered-progress-bar"></div>
+                            <progress id="progress-bar" value="0" min="0"></progress>
+                            <input id="seek" value="0" min="0" type="range">
+                        </div>
                     </div>
                 </div>
+    
+                <div id="button-play-pause" class="video-button"></div>
+    
+                <div class="video-button">
+                    <div id="button-volume" class="video-button"></div>
+                    
+                    <div id="volume-slider-box">
+                        <input id="volume-slider" value="1" type="range" max="1" min="0" step="0.01">
+                        <progress id="volume-progress-bar" value="0" min="0" max="1" min="0"></progress>
+                    </div>
+                </div>
+    
+                
                 <div id="video-timer">
                     <time id="time-elapsed">00:00</time>
                     <span class="slash"> / </span>
                     <time id="duration">00:00</time>
                 </div>
+    
+                <div id="button-airplay" class="video-button"></div>
+                
+                <div id="button-fullscreen" class="video-button"></div>
+    
             </div>
-
-            <div id="button-play-pause" class="video-button"></div>
-
-            <div id="button-volume" class="video-button">
-                <input id="volume-slider" value="1" type="range" max="1" min="0" step="0.01">
-            </div>
-            
-            <div id="button-airplay" class="video-button"></div>
-            
-            <div id="button-fullscreen" class="video-button"></div>
-
         </div>
     </div>
+    
 </div>
 
 
 <script> 
     SpawnContentInfo(movieObjects, "M");
 </script>
+
 <script src="scripts/JS/videoPlayer.js"></script>
+
+<script> 
+    LoadVideo(null);
+</script>

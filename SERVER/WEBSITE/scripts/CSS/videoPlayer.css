@@ -3,20 +3,31 @@
 
 
 
+#rightside-box{
+    background-color: linear-gradient(90deg, transparent, var(--sectionColor));
+    padding: 2rem;
 
+    height: fit-content;
+}
 
 
 #video-player-box {
-    background-color: var(--sectionColor);
-
+    position: relative;
     border-radius: 0.5rem;
     overflow: hidden;
+    
+    margin-left: auto;
+    
+    width: 56rem;
 }
 
 
 #video-player {
+    display: block;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -36,6 +47,8 @@
 
 
 .video-button {
+    position: relative;
+
     height: 2rem;
     width: 5rem;
 
@@ -44,6 +57,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+
+    cursor: pointer;
 }
 
 #button-play-pause {
@@ -136,6 +151,7 @@
     width: auto;
 
     line-break: strict;
+    user-select: none;
 }
 
 
@@ -272,9 +288,6 @@
 
 
 
-#volume-slider {
-    position: absolute;
-}
 
 #button-volume {
     position: relative;
@@ -284,9 +297,104 @@
     background-image: url('../../files/IMAGES/Icons/video_volume_3.png');
 }
 
+#volume-slider-box {
+    position: absolute;
+    display: block;
+
+    height: auto;
+    width: auto;
+
+    top: 0;
+    left: 0;
+    transform: translate(-1rem, -5.2125rem) rotate(270deg) ;
+
+    z-index: 5;
+    background-color: #00000044;
+
+    transition: var(--hoverTransition);
+}
+
+#volume-progress-bar {
+    position: absolute;
+
+    height: 0.43rem;
+    width: 5rem;
+
+    bottom: 50%;
+    left: 50%;
+
+    border-radius: 0.125rem;
+
+    transform: translate(-50%, 50%);
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    z-index: 22;
+    user-select: none;
+    pointer-events: none;
+}
+#volume-progress-bar:focus::-webkit-slider-runnable-track {
+    background: transparent;
+}
+#volume-progress-bar::-webkit-progress-bar {
+    background: transparent;
+}
+#volume-progress-bar::-webkit-progress-value {
+    background: var(--scrollColor);
+}
 
 
+#volume-slider {
+    position: relative;
+    
+    height: 0.425rem;
+    width: 5rem;
 
+    margin: 1rem;
+    
+
+    border-radius: 0.125rem;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background-color: transparent;
+}
+
+#volume-slider::-webkit-slider-runnable-track {
+    background: #00000044;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: var(--scrollColor);
+
+    height: 0.825rem;
+    width: 0.825rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transform: translate(0, -0.18rem);
+}
+
+#volume-slider::-webkit-scrollbar-track {
+    background-color: var(--scrollColor);
+    color: red;
+}
+
+#volume-slider::-webkit-scrollbar {
+    background-color: var(--scrollColor);
+    color: red;
+}
+
+#volume-slider::-webkit-progress-bar {
+    background-color: var(--scrollColor);
+    color: red;
+}
 
 
 

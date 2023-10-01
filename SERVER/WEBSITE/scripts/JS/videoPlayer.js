@@ -1,15 +1,26 @@
 
+
+// if picture in picture becomes requested,
+// it is stated how to add it in this article
+// https://freshman.tech/custom-html5-video/
+// article about streaming the video
+// https://img.ly/blog/how-to-stream-videos-using-javascript-and-html5/
+
+
 clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
 videoDuration = 0.0;
+videoVolume = 1.0;
 video = document.getElementById('video-player');
+
+videoPlayerBox = document.getElementById("video-player-box");
 
 videoControlBar = document.getElementById("video-control-bar");
 playpauseButton = document.getElementById('button-play-pause');
 airplayButton = document.getElementById('button-airplay');
 fullscreenButton = document.getElementById('button-fullscreen');
-volumeButton = document.getElementById('button-volume');
 
+scrubberParent = document.getElementById('video-progress-parent');
 scrubber = document.getElementById('video-progress-scrubber');
 seekTooltip = document.getElementById('seek-tooltip');
 seekThumb = document.getElementById('video-scrubber-thumb');
@@ -19,6 +30,11 @@ bufferBar = document.getElementById('buffered-progress-bar');
 
 timeElapsed = document.getElementById('time-elapsed');
 duration = document.getElementById('duration');
+
+volumeButton = document.getElementById('button-volume');
+volumeSlider = document.getElementById("volume-slider");
+volumeSliderBox = document.getElementById("volume-slider-box");
+volumeProgressBar = document.getElementById("volume-progress-bar");
 
 textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textColor');
 ColorizePNG(playpauseButton, textColor, 1);
@@ -169,8 +185,6 @@ SetEventListener(video, 'timeupdate', updateTimeElapsed);
 
 
 
-// https://freshman.tech/custom-html5-video/
-
 function updateSeekTooltip(event)
 {
     let skipTo = clamp(Math.round((event.offsetX / event.target.clientWidth) * parseInt(event.target.getAttribute('max'), 10)), 0, videoDuration);
@@ -227,19 +241,112 @@ SetEventListener(seek, "mouseleave", () => {
 
 
 
+// --- VOLUME ---
+
+function ToggleMuted() {
+    //unmute
+    if (video.muted)
+    {
+        video.muted = false;
+        UpdateVolume(videoVolume);
+        volumeSlider.value = videoVolume;
+    }
+    //mute
+    else
+    {
+        video.muted = true;
+        video.volume = 0.0;
+        // do not call UpdateVolume as it overwrites videoVolume which is used to untoggle mute
+        volumeSlider.value = 0.0;
+        volumeProgressBar.value = 0.0;
+        volumeButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_volume_0.png')";
+    }
+}
+SetEventListener(volumeButton, 'click', ToggleMuted)
+SetEventListener(volumeSlider, 'click', (e) => e.stopPropagation() )
+
+function UpdateVolume(volume) {
+    if (video.muted)
+        video.muted = false;
+    
+    // set the values
+    videoVolume = volume;
+    video.volume = videoVolume;
+    
+    // set the icon
+    if ( volume <= 0.22 )
+        volumeButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_volume_1.png')";
+    else if ( 0.22 < volume && volume <= 0.6 )
+        volumeButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_volume_2.png')";
+    else if ( 0.6 < volume )
+        volumeButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_volume_3.png')";
+
+    volumeProgressBar.value = volume;
+    localStorage.setItem("VOLUME", volume);
+}
+
+SetEventListener(volumeSlider, 'input', () => UpdateVolume(volumeSlider.value))
+
+volumeBarTimeout = null;
+
+function ShowVolumeBar(show)
+{
+    if (show)
+    {
+        volumeSliderBox.style.display = "block";
+        scrubberParent.style.display = "none";
+    }
+    else
+    {
+        volumeSliderBox.style.display = "none";
+        scrubberParent.style.display = "flex";
+    }
+}
+SetEventListener(volumeButton, 'mouseenter', () => KeepVolumeBarVisible() );
+SetEventListener(volumeButton, 'mouseleave', () => HideVolumeBar() );
+SetEventListener(volumeSliderBox, 'mouseenter', () => KeepVolumeBarVisible() );
+SetEventListener(volumeSliderBox, 'mouseleave', () => HideVolumeBar() );
 
 
+async function KeepVolumeBarVisible()
+{
+    clearTimeout(volumeBarTimeout);
+    ShowVolumeBar(true);
+}
 
+async function HideVolumeBar()
+{
+    clearTimeout(volumeBarTimeout);
+    volumeBarTimeout = setTimeout(() => ShowVolumeBar(false), 800); // 0.8 sec
+}
 
-
+// fullscreen
+SetEventListener(fullscreenButton, 'click', () => {
+    if (document.fullscreenElement)
+    {
+        document.exitFullscreen();
+    }
+    else
+    {
+        videoPlayerBox.requestFullscreen();
+    }
+})
 
 
 
 async function LoadVideo(contentObject)
 {
 
-}
+    let volString = localStorage.getItem("VOLUME");
 
+    let vol = parseFloat(volString != null ? volString : 1.0);
+
+    volumeSlider.value = vol;
+    UpdateVolume(vol);
+
+    ShowVolumeBar(false);
+
+}
 
 
 
