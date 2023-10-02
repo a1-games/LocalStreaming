@@ -1,13 +1,17 @@
 
 
-let rndSeries = [];
-let rndMovies = [];
-let rndCollections = [];
-
 var seriesThumbElems = [];
 var moviesThumbElems = [];
 var collectionsThumbElems = [];
 
+var currentContentObject = {};
+
+function SelectContentObject(obj, contentType)
+{
+    currentContentObject = obj;
+    currentContentObject.contentType = contentType;
+    localStorage.setItem("selectedContent", currentContentObject.contentID);
+}
 
 ContentID = {
     //key : foldername
@@ -43,6 +47,8 @@ var thumbnailsPerPage = 6;
 var thumbnailRowWidth = 1000;
 var thumbRowObjects = {};
 
+var selectedSeason = 0;
+var selectedEpisode = 0;
 
 
 

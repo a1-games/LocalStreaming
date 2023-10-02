@@ -1,6 +1,7 @@
 
 
 make video player
+- make it fade out after 1 second of mouse inactivity, even when not fullscreen (?)
 
 
 

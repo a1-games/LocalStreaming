@@ -10,7 +10,7 @@ seriesObjects = {
         seasons:[
             { // Season 1
                 episodes:[
-                    { title:"First Episode", description:"", },
+                    { title:"First Episode", description:"", fileType:"mkv", },
                 ],
             },
         ],
@@ -25,30 +25,30 @@ seriesObjects = {
         seasons:[
             { // Season 1
                 episodes:[
-                    { title:"Winter Is Coming", description:"", },
-                    { title:"The Kingsroad", description:"", },
-                    { title:"Lord Snow", description:"", },
-                    { title:"Cripples, Bastards, and Broken Things", description:"", },
-                    { title:"The Wolf and the Lion", description:"", },
-                    { title:"Golden Crown", description:"", },
-                    { title:"You Win Or You Die", description:"", },
-                    { title:"The Pointy End", description:"", },
-                    { title:"Baelor", description:"", },
-                    { title:"Fire and Blood", description:"", },
+                    { title:"Winter Is Coming", description:"", fileType:"mkv", },
+                    { title:"The Kingsroad", description:"", fileType:"mkv", },
+                    { title:"Lord Snow", description:"", fileType:"mkv", },
+                    { title:"Cripples, Bastards, and Broken Things", description:"", fileType:"mkv", },
+                    { title:"The Wolf and the Lion", description:"", fileType:"mkv", },
+                    { title:"Golden Crown", description:"", fileType:"mkv", },
+                    { title:"You Win Or You Die", description:"", fileType:"mkv", },
+                    { title:"The Pointy End", description:"", fileType:"mkv", },
+                    { title:"Baelor", description:"", fileType:"mkv", },
+                    { title:"Fire and Blood", description:"", fileType:"mkv", },
                 ],
             },
             { // Season 2
                 episodes:[
-                    { title:"The North Remembers", description:"", },
-                    { title:"The Night Lands", description:"", },
-                    { title:"What is Dead May Never Die", description:"", },
-                    { title:"Garden of Bones", description:"", },
-                    { title:"The Ghost of Harrenhal", description:"", },
-                    { title:"The Old Gods and the New", description:"", },
-                    { title:"A Man Without Honor", description:"", },
-                    { title:"The Prince of Winterfell", description:"", },
-                    { title:"Blackwater", description:"", },
-                    { title:"Valar Morghulis", description:"", },
+                    { title:"The North Remembers", description:"", fileType:"mkv", },
+                    { title:"The Night Lands", description:"", fileType:"mkv", },
+                    { title:"What is Dead May Never Die", description:"", fileType:"mkv", },
+                    { title:"Garden of Bones", description:"", fileType:"mkv", },
+                    { title:"The Ghost of Harrenhal", description:"", fileType:"mkv", },
+                    { title:"The Old Gods and the New", description:"", fileType:"mkv", },
+                    { title:"A Man Without Honor", description:"", fileType:"mkv", },
+                    { title:"The Prince of Winterfell", description:"", fileType:"mkv", },
+                    { title:"Blackwater", description:"", fileType:"mkv", },
+                    { title:"Valar Morghulis", description:"", fileType:"mkv", },
                 ],
             },
         ],
@@ -63,7 +63,7 @@ seriesObjects = {
         seasons:[
             { // Season 1
                 episodes:[
-                    { title:"First Episode", description:"", },
+                    { title:"First Episode", description:"", fileType:"mkv", },
                 ],
             },
         ],
@@ -78,7 +78,7 @@ seriesObjects = {
         seasons:[
             { // Season 1
                 episodes:[
-                    { title:"First Episode", description:"", },
+                    { title:"First Episode", description:"", fileType:"mkv", },
                 ],
             },
         ],
@@ -93,7 +93,7 @@ seriesObjects = {
         seasons:[
             { // Season 1
                 episodes:[
-                    { title:"First Episode", description:"", },
+                    { title:"First Episode", description:"", fileType:"mkv", },
                 ],
             },
         ],
@@ -108,7 +108,7 @@ seriesObjects = {
         seasons:[
             { // Season 1
                 episodes:[
-                    { title:"First Episode", description:"", },
+                    { title:"First Episode", description:"", fileType:"mkv", },
                 ],
             },
         ],
@@ -123,7 +123,7 @@ seriesObjects = {
         seasons:[
             { // Season 1
                 episodes:[
-                    { title:"First Episode", description:"", },
+                    { title:"First Episode", description:"", fileType:"mkv", },
                 ],
             },
         ],
@@ -138,7 +138,7 @@ seriesObjects = {
         seasons:[
             { // Season 1
                 episodes:[
-                    { title:"First Episode", description:"", },
+                    { title:"First Episode", description:"", fileType:"mkv", },
                 ],
             },
         ],
@@ -153,7 +153,7 @@ seriesObjects = {
         seasons:[
             { // Season 1
                 episodes:[
-                    { title:"First Episode", description:"", },
+                    { title:"First Episode", description:"", fileType:"mkv", },
                 ],
             },
         ],
@@ -168,7 +168,7 @@ seriesObjects = {
         seasons:[
             { // Season 1
                 episodes:[
-                    { title:"First Episode", description:"", },
+                    { title:"First Episode", description:"", fileType:"mkv", },
                 ],
             },
         ],

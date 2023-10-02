@@ -1,14 +1,30 @@
 
+#season-banner-row {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    width: 92%;
+    justify-content: center;
+}
 
+#season-banner-box {
+    position: relative;
+    display: flex;
+    flex-grow: 2;
+    width: auto;
+    flex-direction: column;
+}
 
-
-
-
-
-
-
-
-
+#episode-banner {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    flex-grow: 0;
+    width: auto;
+    height: fit-content;
+}
 
 
 #season-box {
@@ -17,10 +33,6 @@
 
     width: 92%;
     height: 2rem;
-
-    margin: auto;
-
-
 
 
 }

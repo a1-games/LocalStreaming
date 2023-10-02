@@ -3,40 +3,64 @@
     <!-- Local Stylesheets -->
     <link rel="stylesheet" href="scripts/CSS/page_series.css" media="screen">
 </head>
+
 <!-- Page Content -->
-<div id="top-row" >
-    <div id="info-box">
+<div id="season-banner-row" class="row">
+    <div id="season-banner-box">
         <div id="info-banner" class="info-section">
             <a id="info-thumbnail" class="content-thumbnail">
             </a>
             <div id="info-title" class="info-title">
             </div>
         </div>
+    </div>
+</div>
+
+<div id="top-row" class="row">
+    <div id="rightside-box" class="info-section">
+    </div>
+    <script>$("#rightside-box").load("videoplayer.html");</script>
+
+
+    <div id="info-box">
+        <div id="episode-banner" class="info-section">
+            <a id="episode-thumbnail" class="content-thumbnail">
+            </a>
+            <div id="episode-title" class="info-title">
+            </div>
+        </div>
         <div id="info-description" class="info-description">
         </div>
     </div>
-    <div id="video-player" class="info-section">
-
-    </div>
 
     
-
-
 </div>
 
 
-<div id="season-box">
-    <div id="season-box">
+
+
+<div class="row" id="series">
+    <div id="arrow-l-episodes" class="arrow arrow-left" onclick="MoveThumbnails('thumbnailrow-series', false)">
+        <
+    </div>
+    <div id="arrow-r-episodes" class="arrow arrow-right" onclick="MoveThumbnails('thumbnailrow-series', true)">
+        >
+    </div>
+    <div class="thumbnail-section">
         <select id="season-dropdown" name="Season" value="Season 1" onchange="SelectSeason(this.value)">
         </select>
+        <div class="thumbnail-div row">
+            <div id="thumbnailrow-series" class="thumbnail-row">
+
+            </div>
+        </div>
     </div>
 </div>
 
-<div id="episodes">
-</div>
+
 
 <script>
     SpawnContentInfo(seriesObjects, "S");
 </script>
 
-<script src="scripts/JS/thumbnailRowFitter.js"></script>
+

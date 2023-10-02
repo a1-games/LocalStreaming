@@ -1,0 +1,53 @@
+
+<div id="video-player-box">
+    <video controls class="video" id="video-player" preload="metadata" poster="">
+        <source src="" type="video/mp4" id="video-source"></source>
+    </video>
+    <div id="video-control-bar">
+
+        <!-- progress bar on top with absolute positioning -->
+        <div id="video-progress-parent">
+            <div id="video-progress-scrubber">
+                <div class="seek-tooltip" id="seek-tooltip">00:00</div>
+                <div id="video-scrubber-thumb"></div>
+                <div id="video-progress-bar">
+                    <div id="buffered-progress-bar"></div>
+                    <progress id="progress-bar" value="0" min="0"></progress>
+                    <input id="seek" value="0" min="0" type="range">
+                </div>
+            </div>
+        </div>
+
+        <div id="button-play-pause" class="video-button"></div>
+
+        <div class="video-button">
+            <div id="button-volume" class="video-button"></div>
+            
+            <div id="volume-slider-box">
+                <input id="volume-slider" value="1" type="range" max="1" min="0" step="0.01">
+                <progress id="volume-progress-bar" value="0" min="0" max="1" min="0"></progress>
+            </div>
+        </div>
+
+        
+        <div id="video-timer">
+            <time id="time-elapsed">00:00</time>
+            <span class="slash"> / </span>
+            <time id="duration">00:00</time>
+        </div>
+
+        <div id="button-airplay" class="video-button"></div>
+        
+        <div id="button-fullscreen" class="video-button"></div>
+
+    </div>
+
+    
+</div>
+
+<script src="scripts/JS/videoPlayer.js"></script>
+
+
+<script>
+    LoadVideo();
+</script>

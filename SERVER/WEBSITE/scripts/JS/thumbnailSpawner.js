@@ -1,54 +1,35 @@
 
 
-function RandomizeSeriesList()
+function GetRandomKeyListFromContent(contentObjectDictionary)
 {
-    rndSeries = [];
-    _series = [...Object.keys(seriesObjects)]
-    let len = _series.length > 20 ? 20 : _series.length;
+    rndKeys = [];
+    _contentKeys = [...Object.keys(contentObjectDictionary)];
+    let len = Object.keys(_contentKeys).length;
 
     for (let i = 0; i < len; i++) {
-        let rnd = Math.floor(Math.random() * _series.length);
-        rndSeries[i] = (_series[rnd]);
-        _series.splice(rnd, 1);
+        let rnd = Math.floor(Math.random() * _contentKeys.length);
+        rndKeys[i] = (_contentKeys[rnd]);
+        _contentKeys.splice(rnd, 1);
     }
-}
-function RandomizeMoviesList()
-{
-    rndMovies = [];
-    _movies = [...Object.keys(movieObjects)]
-    let len = _movies.length > 20 ? 20 : _movies.length;
 
-    for (let i = 0; i < len; i++) {
-        let rnd = Math.floor(Math.random() * _movies.length);
-        rndMovies[i] = (_movies[rnd]);
-        _movies.splice(rnd, 1);
-    }
-}
-function RandomizeCollectionsList()
-{
-    rndCollections = [];
-    _collections = [...Object.keys(collectionObjects)]
-    let len = _collections.length;
-
-    for (let i = 0; i < len; i++) {
-        let rnd = Math.floor(Math.random() * _collections.length);
-        rndCollections[i] = (_collections[rnd]);
-        _collections.splice(rnd, 1);
-    }
+    return rndKeys;
 }
 
 
-
-async function LoadAllThumbnails(thumblist, contentType, thumbRow)
+async function LoadAllThumbnails(objectList, contentType, thumbRow)
 {
-    for (let i = 0; i < thumblist.length; i++) {
+    let randomKeys = GetRandomKeyListFromContent(objectList);
+
+    for (let i = 0; i < randomKeys.length; i++) {
         var onclick = function() {
             // set the selected content
-            localStorage.setItem("selectedContent", thumblist[i]);
+            SelectContentObject(objectList[randomKeys[i]], contentType);
             // load the page
             LoadPage(ContentPageName[contentType]);
+
+
         };
-        AddThumbnail(thumblist[i], `${ContentFolder[contentType]}/${thumblist[i]}/thumbnail.jpg`, thumbRow, onclick);
+        AddThumbnail(randomKeys[i], `${ContentFolder[contentType]}/${randomKeys[i]}/thumbnail.jpg`, thumbRow, onclick);
     }
 }
 
@@ -56,6 +37,9 @@ async function LoadAllThumbnails(thumblist, contentType, thumbRow)
 
 async function SpawnThumbnailRow(appendParent, contentType, title, contentList = null)
 {
+
+
+
     // parent row div
     let parent = document.createElement("div");
     parent.classList.add("row");

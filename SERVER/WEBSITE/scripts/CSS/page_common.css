@@ -21,7 +21,7 @@ html {
 
 /* Shared Items */
 
-#info-title {
+.info-title {
     display: flex;
     position: relative;
     margin: auto 0;
@@ -48,7 +48,7 @@ html {
 
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 1.2rem;
     color: var(--textColor);
 
     overflow-x: hidden;
@@ -68,7 +68,7 @@ html {
     flex-grow: 1;
     width: auto;
     height: auto;
-    margin: 1rem;
+    margin: 0;
     padding: 0;
     
     border-radius: 0.5em;
@@ -83,16 +83,18 @@ html {
     position: relative;
     display: flex;
     flex-direction: row;
-    height: 600px;
+    height: auto;
     width: 92%;
-    margin: auto;
+    justify-content: center;
+
+    gap: 1rem;
 }
 
 #info-box {
     position: relative;
     display: flex;
-    flex-grow: 0;
-    width: 30%;
+    flex-grow: 2;
+    width: auto;
     flex-direction: column;
 }
 
@@ -103,11 +105,13 @@ html {
     gap: 1em;
     flex-grow: 0;
     width: auto;
+    height: fit-content;
 }
 
 
 
 .row {
+    margin: 2rem auto 0 auto;
     position: relative;
 }
 

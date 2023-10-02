@@ -12,6 +12,7 @@ clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 videoDuration = 0.0;
 videoVolume = 1.0;
 video = document.getElementById('video-player');
+videosource = document.getElementById('video-source');
 
 videoPlayerBox = document.getElementById("video-player-box");
 
@@ -50,7 +51,8 @@ function SetEventListener(element, eventKey, action)
 
     element.addEventListener(eventKey, (params) => {
         // only allow it in the movie page
-        if (currentPageName == ContentPageName["M"])
+        if (currentPageName == ContentPageName["M"] ||
+            currentPageName == ContentPageName["S"] )
         {
             action(params);
         }
@@ -176,10 +178,16 @@ function initializeVideo()
     duration.innerText = getTimeString(time);
     duration.setAttribute('datetime', getTimeString(time))
 
-    console.log("INITIALIZED VIDEO");
+    console.log("VIDEO INITIALIZED");
 }
 
-SetEventListener(video, 'loadedmetadata', initializeVideo);
+SetEventListener(video, 'loadedmetadata', () => {
+    
+    initializeVideo();
+
+    LoadSavedVolume();
+    
+});
 
 SetEventListener(video, 'timeupdate', updateTimeElapsed);
 
@@ -242,7 +250,6 @@ SetEventListener(seek, "mouseleave", () => {
 
 
 // --- VOLUME ---
-
 function ToggleMuted() {
     //unmute
     if (video.muted)
@@ -332,11 +339,9 @@ SetEventListener(fullscreenButton, 'click', () => {
     }
 })
 
-
-
-async function LoadVideo(contentObject)
+async function LoadSavedVolume()
 {
-
+    // set saved volume
     let volString = localStorage.getItem("VOLUME");
 
     let vol = parseFloat(volString != null ? volString : 1.0);
@@ -345,15 +350,30 @@ async function LoadVideo(contentObject)
     UpdateVolume(vol);
 
     ShowVolumeBar(false);
-
 }
 
+async function LoadVideo()
+{
+    let CCO = currentContentObject;
 
+    // MOVIE
+    if (CCO.contentType == "M")
+    {
+        videosource.src = `Content/${ContentFolder["M"]}/${CCO.contentID}/${CCO.contentID}.${CCO.fileType}`;
+        video.poster = `Content/${ContentFolder["M"]}/${CCO.contentID}/thumbnail.jpg`;
+    }
+    
+    // SERIES
+    if (CCO.contentType == "S")
+    {
+        let episodeObject = CCO.seasons[selectedSeason].episodes[selectedEpisode];
+        videosource.src = `Content/${ContentFolder["S"]}/${CCO.contentID}/Season_${selectedSeason+1}/S${selectedSeason+1}E${selectedEpisode+1}.${episodeObject.fileType}`;
+        video.poster = `Content/${ContentFolder["S"]}/${CCO.contentID}/Season_${selectedSeason+1}/S${selectedSeason+1}E${selectedEpisode+1}.jpg`;
+        console.log(episodeObject);
+    }
 
-
-
-
-
+    video.load();
+}
 
 
 

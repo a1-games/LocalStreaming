@@ -13,9 +13,6 @@ function GetSingleStringDescription(readableDescription)
 }
 
 
-
-
-
 async function SpawnContentInfo(contentObjects, contentType)
 {
     var titlediv = document.getElementById("info-title");
@@ -35,11 +32,24 @@ async function SpawnContentInfo(contentObjects, contentType)
     if (contentType == "S")
     {
         // spawn thumb row
-        let parent = document.getElementById("episodes")
-        SpawnThumbnailRow(parent, "S", "Season 1")
+        //let parent = document.getElementById("episodes")
+        //SpawnThumbnailRow(parent, "S", "Season 1")
+            
+        thumbRowObjects[`thumbnailrow-series`] = {
+            "thumbnails" : [],
+            "thumbRow" : document.getElementById(`thumbnailrow-series`),
+            "xPos" : 0,
+            "firstindex" : 0,
+            "arrow_l" : document.getElementById(`arrow-l-episodes`),
+            "arrow_r" : document.getElementById(`arrow-r-episodes`),
+        };
  
         // spawn season one, let user change it themselves
         SpawnSeriesEpisodes(contentObject, 0);
+
+        // set the episode info to episode 1
+        // this should be the last watched episode or that +1 if it was finished
+        SetEpisodeInfo(contentObject, 0, 0);
 
         // season choser dropdown
         let seasonDropdown = document.getElementById("season-dropdown");

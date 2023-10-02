@@ -7,6 +7,7 @@ movieObjects = {
         readableDescription:[
             "james camerons master piece with the blue guys",
         ],
+        fileType:"mp4",
     },
     "Avatar_2":
     {
@@ -15,6 +16,7 @@ movieObjects = {
         readableDescription:[
             "james camerons master piece with the blue guys (2)",
         ],
+        fileType:"mp4",
     },
     "Shrek_1":
     {
@@ -25,6 +27,7 @@ movieObjects = {
             "Shrek makes friend.",
             "Shrek is no longer alone.",
         ],
+        fileType:"mp4",
     },
     "Interstellar":
     {
@@ -35,6 +38,7 @@ movieObjects = {
             "Space.",
             "Family.",
         ],
+        fileType:"mp4",
     },
     "Shutter_Island":
     {
@@ -43,6 +47,7 @@ movieObjects = {
         readableDescription:[
             "leo capri good movie",
         ],
+        fileType:"mp4",
     },
     "Okja":
     {
@@ -51,6 +56,7 @@ movieObjects = {
         readableDescription:[
             "Asian movie about a girl and her pet alien cowpottamos",
         ],
+        fileType:"mp4",
     },
     "Inception":
     {
@@ -59,6 +65,7 @@ movieObjects = {
         readableDescription:[
             "Inception",
         ],
+        fileType:"mp4",
     },
     "8_Mile":
     {
@@ -67,6 +74,7 @@ movieObjects = {
         readableDescription:[
             "8 Mile.",
         ],
+        fileType:"mp4",
     },
     "The_Big_Short":
     {
@@ -75,6 +83,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "The_Wolf_Of_Wall_Street":
     {
@@ -83,6 +92,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     
     // --- Marvel ---
@@ -93,6 +103,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Iron_Man_2":
     {
@@ -101,6 +112,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Iron_Man_3":
     {
@@ -109,6 +121,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Thor_1":
     {
@@ -117,6 +130,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Thor_2":
     {
@@ -125,6 +139,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Thor_3":
     {
@@ -133,6 +148,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Thor_4":
     {
@@ -141,6 +157,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Avengers_1":
     {
@@ -149,6 +166,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Avengers_2":
     {
@@ -157,6 +175,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Avengers_3":
     {
@@ -165,6 +184,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Avengers_4":
     {
@@ -173,6 +193,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Guardians_Of_The_Galaxy_1":
     {
@@ -181,6 +202,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Guardians_Of_The_Galaxy_2":
     {
@@ -189,6 +211,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Guardians_Of_The_Galaxy_3":
     {
@@ -197,6 +220,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Spiderman_Toby_1":
     {
@@ -205,6 +229,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Spiderman_Toby_2":
     {
@@ -213,6 +238,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Spiderman_Toby_3":
     {
@@ -221,6 +247,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Spiderman_Andrew_1":
     {
@@ -229,6 +256,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Spiderman_Andrew_2":
     {
@@ -237,6 +265,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Captain_America_1":
     {
@@ -245,6 +274,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Captain_America_2":
     {
@@ -253,6 +283,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Captain_America_3":
     {
@@ -261,6 +292,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Ant_Man_1":
     {
@@ -269,6 +301,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Ant_Man_2":
     {
@@ -277,6 +310,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Ant_Man_3":
     {
@@ -285,6 +319,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Black_Widow_1":
     {
@@ -293,6 +328,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Eternals_1":
     {
@@ -301,6 +337,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "The_Hulk_1":
     {
@@ -309,6 +346,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     "Spiderman_Tom_1":
     {
@@ -317,6 +355,7 @@ movieObjects = {
         readableDescription:[
             ".",
         ],
+        fileType:"mp4",
     },
     
     

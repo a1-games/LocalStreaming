@@ -2,14 +2,10 @@
 
 <script>
         
-    RandomizeSeriesList();
-    RandomizeMoviesList();
-    RandomizeCollectionsList();
-    
-    // cant define var, gives error on reuse
-    SpawnThumbnailRow(document.getElementById("main-content-box"), "S", "Series", rndSeries)
-    SpawnThumbnailRow(document.getElementById("main-content-box"), "M", "Movies", rndMovies)
-    SpawnThumbnailRow(document.getElementById("main-content-box"), "C", "Collections", rndCollections)
+
+    SpawnThumbnailRow(document.getElementById("main-content-box"), "S", "Series", seriesObjects)
+    SpawnThumbnailRow(document.getElementById("main-content-box"), "M", "Movies", movieObjects)
+    SpawnThumbnailRow(document.getElementById("main-content-box"), "C", "Collections", collectionObjects)
     
     // its called in the script row fitterS
     //ResizeAllThumbnailDivs();

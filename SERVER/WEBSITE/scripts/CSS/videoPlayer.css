@@ -3,11 +3,14 @@
 
 
 
-#rightside-box{
+#rightside-box {
     background-color: linear-gradient(90deg, transparent, var(--sectionColor));
     padding: 2rem;
 
     height: fit-content;
+    width: fit-content;
+
+    flex-grow: 0;
 }
 
 
@@ -15,10 +18,9 @@
     position: relative;
     border-radius: 0.5rem;
     overflow: hidden;
-    
-    margin-left: auto;
-    
+    margin: 0;
     width: 56rem;
+    flex-grow: 0;
 }
 
 
