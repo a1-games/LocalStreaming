@@ -3,11 +3,8 @@ var IP_ADDRESS = "";
 
 async function GetWebsiteIP()
 {
-    await fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-            .then(data => {
-                IP_ADDRESS = data.ip;
-            });
+    IP_ADDRESS = window.location.host;
+    console.log(IP_ADDRESS)
 }
 // this is the first function that is called, hopefully it executes before the rest
 GetWebsiteIP();

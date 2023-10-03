@@ -92,10 +92,9 @@ async function SelectUser(username)
 
 async function SpawnUsers()
 {
-    if (IP_ADDRESS == "")
-        await GetWebsiteIP();
 
-    let response = await fetch(`http://${IP_ADDRESS}:3030/users`);
+
+    let response = await fetch(`http://${IP_ADDRESS}/users`);
     userList = await response.json();
 
     await LoadCurrentUser();
@@ -243,7 +242,7 @@ async function WriteUserOnServer(event)
     //console.log("trying to create new user " + newUser.Username);
 
     // set user's new color scheme on server
-    fetch(`http://${IP_ADDRESS}:3030/createUser`, {
+    fetch(`http://${IP_ADDRESS}/createUser`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
