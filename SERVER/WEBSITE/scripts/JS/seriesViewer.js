@@ -19,12 +19,9 @@ async function SetEpisodeInfo(seriesObject, seasonIndex, episodeIndex)
 
 function SpawnSeriesEpisodes(seriesObject, seasonIndex)
 {
-    let thumbRow = document.getElementById(`thumbnailrow-${ContentID["S"]}`);
-    let thumbRowTitle =  document.getElementById(`title-series`);
-    
+    let thumbRow = document.getElementById(`thumbnailrow-episodes`);
+
     let S = parseInt(seasonIndex)+1;
-    if (thumbRowTitle != undefined)
-        thumbRowTitle.innerText = `Season ${S}`;
     
     // spawn season one, let user change it themselves
     for (let i = 0; i < seriesObject.seasons[seasonIndex].episodes.length; i++) {
@@ -38,18 +35,18 @@ function SpawnSeriesEpisodes(seriesObject, seasonIndex)
         AddThumbnail(`${seriesObject.contentID}_S${S}E${i+1}`, `Series/${seriesObject.contentID}/Season_${S}/S${S}E${i+1}.jpg`, thumbRow, onclick, `${seriesObject.seasons[seasonIndex].episodes[i].title}`);
     }
 
+    LoadWatchProgressForContentType("E");
 }
 
 async function ClearEpisodes()
 {
-
-    let thumbRow = document.getElementById(`thumbnailrow-${ContentID["S"]}`);
+    let thumbRow = document.getElementById(`thumbnailrow-episodes`);
     let test = thumbRow.querySelectorAll(".content-thumbnail");
     for (let i = 0; i < test.length; i++) {
         test[i].remove();
     }
     // clear references
-    thumbRowObjects[`thumbnailrow-${ContentID["S"]}`].thumbnails = [];
+    thumbRowObjects[`thumbnailrow-episodes`].thumbnails = [];
 
 }
 
@@ -63,7 +60,7 @@ async function SelectSeason(seasonIndex)
 
     
     // set the episodes to start index 0
-    SetThumbRowObjectValues(thumbRowObjects[`thumbnailrow-${ContentID["S"]}`], 0, 0);
+    SetThumbRowObjectValues(thumbRowObjects[`thumbnailrow-episodes}`], 0, 0);
     
     ResizeAllThumbnailDivs();
 }

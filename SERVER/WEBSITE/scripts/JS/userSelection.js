@@ -1,6 +1,6 @@
 
 var userList = {};
-var currentUser = {"Username":"Default", "Color":"#FFFFFF","ColorScheme":"cyan"};
+var currentUser = {"Username":"Default", "Color":"#FFFFFF","ColorScheme":"cyan","WatchProgress":{}};
 var selectedUserIcon = null;
 const settingsBox = document.getElementById("settings-box");
 const userIconsBox = document.getElementById("user-icons-box");
@@ -107,6 +107,12 @@ async function SpawnUsers()
     });
     
     SpawnOneUser(currentUser, chosenUserIconBox);
+
+
+    // we need user to be loaded to call this, which is why we do it here
+    LoadWatchProgressForContentType("M");
+    LoadWatchProgressForContentType("S");
+    LoadWatchProgressForContentType("C");
 }
 
 function SpawnOneUser(user, parentDiv)

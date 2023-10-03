@@ -57,6 +57,7 @@
     text-decoration: none !important;
     
     transition: var(--hoverTransition);
+    overflow: hidden;
 }
 .content-thumbnail:hover {
     color: var(--scrollColorActive);
@@ -79,6 +80,20 @@
     align-items: end;
     
     user-select: none;
+}
+
+.thumbnail-wp {
+    display: block;
+    position: absolute;
+    
+    height: 0.275rem;
+    border-radius: 0.1rem;
+
+    left: 0;
+    bottom: 0;
+
+    background-color: var(--scrollColorActive);
+    filter: opacity(0.65);
 }
 
 .thumbnail-div {

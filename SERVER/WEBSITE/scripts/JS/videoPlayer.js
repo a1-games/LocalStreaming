@@ -107,12 +107,22 @@ video.controls = false;
 
 
 
-
-
 // formatTime takes a time length in seconds and returns the time in
 // minutes and seconds
 function formatTime(timeInSeconds)
 {
+    // if time is not valid, return nonnull zero time
+    if (timeInSeconds == undefined ||
+        timeInSeconds == null ||
+        isNaN(timeInSeconds) )
+    {
+        return {
+            hours: "00",
+            minutes: "00",
+            seconds: "00",
+        }
+    }
+
     let result = new Date(timeInSeconds * 1000).toISOString().substr(11, 8);
     
     return {
@@ -136,7 +146,8 @@ function getTimeString(timeObject)
     }
 }
 
-
+lastMinute = 0;
+updates = 0;
 function updateTimeElapsed()
 {
     let time = formatTime(video.currentTime);
@@ -149,6 +160,28 @@ function updateTimeElapsed()
     progressBar.value = video.currentTime;
 
     //SetThumbPos(video.currentTime);
+
+    // this prevents it from subtracting 5 seconds every time the page refreshes.
+    // it will instead wait a couple frames before counting
+    if (updates <= 5)
+    {
+        updates++;
+    }
+    // do this every minute
+    else
+    {
+        let secondsPassed = video.currentTime;
+        let minutesPassed = parseInt(secondsPassed / 60);
+        if (lastMinute < minutesPassed)
+        {
+            lastMinute = minutesPassed;
+    
+            let watchedSeconds = parseInt(secondsPassed);
+            // save 5 seconds before to refresh the users memory
+            let percentageWP = (watchedSeconds - 5) / videoDuration;
+            SaveWatchProgress(currentUser, percentageWP);
+        }
+    }
 }
 
 SetEventListener(video, 'progress', () => {
@@ -185,7 +218,19 @@ SetEventListener(video, 'loadedmetadata', () => {
     
     initializeVideo();
 
-    LoadSavedVolume();
+
+    let watchedPercentage = GetWatchProgressFromCurrentObject();
+    let watchedSeconds = watchedPercentage * videoDuration;
+
+    // skipahead but without the passed event:
+    if (!isNaN(watchedSeconds))
+    {
+        video.currentTime = watchedSeconds;
+        seek.value = watchedSeconds;
+        progressBar.value = watchedSeconds;
+        
+        SetThumbPos(watchedSeconds);
+    }
     
 });
 
@@ -352,6 +397,8 @@ async function LoadSavedVolume()
     ShowVolumeBar(false);
 }
 
+LoadSavedVolume();
+
 async function LoadVideo()
 {
     let CCO = currentContentObject;
@@ -369,7 +416,7 @@ async function LoadVideo()
         let episodeObject = CCO.seasons[selectedSeason].episodes[selectedEpisode];
         videosource.src = `Content/${ContentFolder["S"]}/${CCO.contentID}/Season_${selectedSeason+1}/S${selectedSeason+1}E${selectedEpisode+1}.${episodeObject.fileType}`;
         video.poster = `Content/${ContentFolder["S"]}/${CCO.contentID}/Season_${selectedSeason+1}/S${selectedSeason+1}E${selectedEpisode+1}.jpg`;
-        console.log(episodeObject);
+        //console.log(episodeObject);
     }
 
     video.load();

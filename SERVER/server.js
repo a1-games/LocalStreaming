@@ -35,15 +35,17 @@ app.post("/createUser", (req, res) => {
 app.post("/editUser", (req, res) => {
     let usnam = req.body.Username;
     let kte = req.body.KeyToEdit;
-    let colscheme = req.body.ColorScheme;
+    let newValue = req.body.NewValue;
 
-    // this will overwrite the given username
-    users.EditUser(usnam, kte, colscheme);
+    // this will overwrite the given key for the given username
+    users.EditUser(usnam, kte, newValue);
 
     // respond:
     // this forces a refresh. Ideally this wouldn't be the case but idk how to go around it
     //res.status(200).redirect("/");
 });
+
+
 
 
 

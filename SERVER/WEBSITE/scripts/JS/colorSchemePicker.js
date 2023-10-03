@@ -36,7 +36,7 @@ async function SaveColorschemeToUser(colorscheme, user)
     let data = {
         "Username" : user.Username,
         "KeyToEdit" : "ColorScheme",
-        "ColorScheme" : colorscheme
+        "NewValue" : colorscheme
     }
     fetch('http://localhost:3030/editUser', {
         method: 'POST',

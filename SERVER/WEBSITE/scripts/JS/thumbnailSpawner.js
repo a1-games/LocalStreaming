@@ -16,29 +16,9 @@ function GetRandomKeyListFromContent(contentObjectDictionary)
 }
 
 
-async function LoadAllThumbnails(objectList, contentType, thumbRow)
-{
-    let randomKeys = GetRandomKeyListFromContent(objectList);
-
-    for (let i = 0; i < randomKeys.length; i++) {
-        var onclick = function() {
-            // set the selected content
-            SelectContentObject(objectList[randomKeys[i]], contentType);
-            // load the page
-            LoadPage(ContentPageName[contentType]);
-
-
-        };
-        AddThumbnail(randomKeys[i], `${ContentFolder[contentType]}/${randomKeys[i]}/thumbnail.jpg`, thumbRow, onclick);
-    }
-}
-
-
 
 async function SpawnThumbnailRow(appendParent, contentType, title, contentList = null)
 {
-
-
 
     // parent row div
     let parent = document.createElement("div");
@@ -106,14 +86,31 @@ async function SpawnThumbnailRow(appendParent, contentType, title, contentList =
 
 }
 
+async function LoadAllThumbnails(objectList, contentType, thumbRow)
+{
+    let randomKeys = GetRandomKeyListFromContent(objectList);
 
-async function AddThumbnail(contentName, contentURL, parent, onclick, thumbnailText = null)
+    for (let i = 0; i < randomKeys.length; i++) {
+        var onclick = function() {
+            // set the selected content
+            SelectContentObject(objectList[randomKeys[i]], contentType);
+            // load the page
+            LoadPage(ContentPageName[contentType]);
+
+
+        };
+        AddThumbnail(randomKeys[i], `${ContentFolder[contentType]}/${randomKeys[i]}/thumbnail.jpg`, thumbRow, onclick);
+    }
+}
+
+
+
+async function AddThumbnail(contentID, contentURL, parent, onclick, thumbnailText = null)
 {
     var clickableElement = document.createElement("a");
-    clickableElement.id = contentName;
+    clickableElement.id = contentID;
     clickableElement.classList.add("content-thumbnail");
     clickableElement.classList.add("thumbnail-inactive");
-    clickableElement.href = "#"; // should be to play the video
     
     clickableElement.onclick = () => onclick();
 
@@ -129,11 +126,39 @@ async function AddThumbnail(contentName, contentURL, parent, onclick, thumbnailT
         clickableElement.append(textEl);
     }
 
+    // watch progress to 0
+    let progress = document.createElement("div");
+    progress.classList.add("thumbnail-wp");
+    progress.id = `progress_${contentID}`;
+
+    clickableElement.append(progress);
+
     parent.append(clickableElement);
 }
 
 
+async function LoadWatchProgressForContentType(contentType)
+{
+    //let contenttypediv = `thumbnailrow-${ContentID[contentType]}`
+    //let thumbWPs = contenttypediv.que (".thumbnail-wp");
+    //console.log(contentType)
+    
+    let thumbWPs = document.getElementById(`thumbnailrow-${ContentID[contentType]}`).querySelectorAll(".thumbnail-wp");
+    
+    for (let i = 0; i < thumbWPs.length; i++) {
+        let thumbEl = thumbWPs[i];
+        let wpID = thumbEl.id;
+        wpID = wpID.replace("progress_", "");
+        let prog = GetWatchProgress(wpID, contentType);
+        if (contentType == "E")
+            prog = GetEpisodeWatchProgress(selectedSeason, i);
 
+        // only do the next stuff if we actually have a saved progress for this
+        if (isNaN(prog)) continue;
+        //console.log(thumbWPs[i])
+        thumbEl.style.width = `${prog * 100}%`;
+    }
+}
 
 
 

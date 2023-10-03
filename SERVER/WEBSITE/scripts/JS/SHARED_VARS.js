@@ -19,6 +19,7 @@ ContentID = {
     M:"movies",
     C:"collections",
     I:"collectioninfo",
+    E:"episodes",
 };
 
 

@@ -35,7 +35,7 @@ async function SpawnContentInfo(contentObjects, contentType)
         //let parent = document.getElementById("episodes")
         //SpawnThumbnailRow(parent, "S", "Season 1")
             
-        thumbRowObjects[`thumbnailrow-series`] = {
+        thumbRowObjects[`thumbnailrow-episodes`] = {
             "thumbnails" : [],
             "thumbRow" : document.getElementById(`thumbnailrow-series`),
             "xPos" : 0,
