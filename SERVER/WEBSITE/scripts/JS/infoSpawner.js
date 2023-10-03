@@ -37,7 +37,7 @@ async function SpawnContentInfo(contentObjects, contentType)
             
         thumbRowObjects[`thumbnailrow-episodes`] = {
             "thumbnails" : [],
-            "thumbRow" : document.getElementById(`thumbnailrow-series`),
+            "thumbRow" : document.getElementById(`thumbnailrow-episodes`),
             "xPos" : 0,
             "firstindex" : 0,
             "arrow_l" : document.getElementById(`arrow-l-episodes`),
