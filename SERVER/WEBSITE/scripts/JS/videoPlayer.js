@@ -420,6 +420,9 @@ async function LoadVideo()
     }
 
     video.load();
+
+
+    
 }
 
 

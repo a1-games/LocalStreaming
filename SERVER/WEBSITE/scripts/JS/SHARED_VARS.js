@@ -1,4 +1,16 @@
 
+var IP_ADDRESS = "";
+
+async function GetWebsiteIP()
+{
+    await fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+            .then(data => {
+                IP_ADDRESS = data.ip;
+            });
+}
+// this is the first function that is called, hopefully it executes before the rest
+GetWebsiteIP();
 
 var seriesThumbElems = [];
 var moviesThumbElems = [];
