@@ -25,6 +25,9 @@ async function RemoveWatchProgress(user, contentID)
 
 function GetWatchProgressFromCurrentObject()
 {
+    if (!(currentContentObject.contentID in currentUser.WatchProgress))
+        return 0;
+
     let wp = currentUser.WatchProgress[currentContentObject.contentID];
 
     // the current selected episode in a series
@@ -39,6 +42,9 @@ function GetWatchProgressFromCurrentObject()
 
 function GetEpisodeWatchProgress(seasonIndex, episodeIndex)
 {
+    if (!(currentContentObject.contentID in currentUser.WatchProgress))
+        return 0;
+
     wp = currentUser.WatchProgress[currentContentObject.contentID]
 
     return wp[`S${seasonIndex+1}E${episodeIndex+1}`];
