@@ -149,8 +149,8 @@ async function SaveWatchProgress(user, progress = 0)
         "KeyToEdit" : "WatchProgress",
         "NewValue" : currentWP,
     }
-    console.log("saved data to server: ")
-    console.log(data)
+    //console.log("saved data to server: ")
+    //console.log(data)
 
     fetch(`http://${IP_ADDRESS}/editUser`, {
         method: 'POST',
