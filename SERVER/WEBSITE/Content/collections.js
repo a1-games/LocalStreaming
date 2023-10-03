@@ -11,6 +11,23 @@ collectionObjects = {
             {title:"Avatar_2", contentType:"M"},
         ],
     },
+    "Harry_Potter":{
+        contentID:"Harry_Potter",
+        contentTitle:"Harry Potter",
+        readableDescription:[
+            "Harry Potter and hogwarts stuff.",
+        ],
+        watchOrder:[
+            {title:"Harry_Potter_1", contentType:"M"},
+            {title:"Harry_Potter_2", contentType:"M"},
+            {title:"Harry_Potter_3", contentType:"M"},
+            {title:"Harry_Potter_4", contentType:"M"},
+            {title:"Harry_Potter_5", contentType:"M"},
+            {title:"Harry_Potter_6", contentType:"M"},
+            {title:"Harry_Potter_7", contentType:"M"},
+            {title:"Harry_Potter_8", contentType:"M"},
+        ],
+    },
     "Star_Wars":{
         contentID:"Star_Wars",
         contentTitle:"Star Wars",
