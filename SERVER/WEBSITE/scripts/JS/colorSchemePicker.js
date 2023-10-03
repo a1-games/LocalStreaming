@@ -38,7 +38,7 @@ async function SaveColorschemeToUser(colorscheme, user)
         "KeyToEdit" : "ColorScheme",
         "NewValue" : colorscheme
     }
-    fetch('http://localhost:3030/editUser', {
+    fetch(`http://${IP_ADDRESS}/editUser`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
