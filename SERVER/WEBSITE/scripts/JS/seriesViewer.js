@@ -54,7 +54,7 @@ async function ClearEpisodes()
 async function SelectSeason(seasonIndex)
 {
     ClearEpisodes();
-    selectedSeason = seasonIndex;
+    selectedSeason = parseInt(seasonIndex);
     var seriesObject = seriesObjects[localStorage.getItem("selectedContent")];
     SpawnSeriesEpisodes(seriesObject, seasonIndex)
 
