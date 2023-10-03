@@ -143,7 +143,7 @@ async function SaveWatchProgress(user, progress = 0)
         "KeyToEdit" : "WatchProgress",
         "NewValue" : currentWP,
     }
-    fetch('http://localhost:3030/editUser', {
+    fetch(`http://${IP_ADDRESS}/editUser`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
