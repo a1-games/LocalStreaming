@@ -60,7 +60,7 @@ async function SelectSeason(seasonIndex)
 
     
     // set the episodes to start index 0
-    SetThumbRowObjectValues(thumbRowObjects[`thumbnailrow-episodes}`], 0, 0);
+    SetThumbRowObjectValues(thumbRowObjects[`thumbnailrow-episodes`], 0, 0);
     
     ResizeAllThumbnailDivs();
 }
