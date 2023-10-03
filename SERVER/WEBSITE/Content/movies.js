@@ -74,7 +74,7 @@ movieObjects = {
         readableDescription:[
             "8 Mile.",
         ],
-        fileType:"mp4",
+        fileType:"mov",
     },
     "The_Big_Short":
     {
