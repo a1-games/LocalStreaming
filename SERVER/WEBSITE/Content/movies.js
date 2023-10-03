@@ -358,6 +358,79 @@ movieObjects = {
         fileType:"mp4",
     },
     
+    // --- Harry Potter ---
+    "Harry_Potter_1":
+    {
+        contentID:"Harry_Potter_1",
+        contentTitle:"Harry Potter and the Sorceror's Stone",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Harry_Potter_2":
+    {
+        contentID:"Harry_Potter_2",
+        contentTitle:"Harry Potter and the Chamber of Secrets",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Harry_Potter_3":
+    {
+        contentID:"Harry_Potter_3",
+        contentTitle:"Harry Potter and the Prisoner of Azkaban",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Harry_Potter_4":
+    {
+        contentID:"Harry_Potter_4",
+        contentTitle:"Harry Potter and the Goblet of Fire",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Harry_Potter_5":
+    {
+        contentID:"Harry_Potter_5",
+        contentTitle:"Harry Potter and the Order of the Phoenix",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Harry_Potter_6":
+    {
+        contentID:"Harry_Potter_6",
+        contentTitle:"Harry Potter and the Half-Blood Prince",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Harry_Potter_7":
+    {
+        contentID:"Harry_Potter_7",
+        contentTitle:"Harry Potter and the Deathly Hallows Part 1",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Harry_Potter_8":
+    {
+        contentID:"Harry_Potter_8",
+        contentTitle:"Harry Potter and the Deathly Hallows Part 2",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
     
 }
 
