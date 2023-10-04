@@ -1,4 +1,5 @@
 
 RUN_SERVER.bat
+*.bat
 *.mkv
 *.mp4
