@@ -78,9 +78,13 @@ async function SpawnContentInfo(contentObjects, contentType)
         // spawn thumbnails
         let collectionList = contentObject.watchOrder;
         for (let i = 0; i < collectionList.length; i++) {
+            let CT = collectionList[i].contentType;
             let onclick = function() {
                 // set the selected content
-                localStorage.setItem("selectedContent", collectionList[i].title);
+                if (CT == "M")
+                    SelectContentObject(movieObjects[collectionList[i].title], CT);
+                if (CT == "S")
+                    SelectContentObject(seriesObjects[collectionList[i].title], CT);
                 // load the page
                 LoadPage(ContentPageName[collectionList[i].contentType]);
             };
