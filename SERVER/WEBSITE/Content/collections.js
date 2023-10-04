@@ -37,13 +37,13 @@ collectionObjects = {
         ],
         watchOrder:[
             {title:"Star_Wars_4", contentType:"M"}, // A New Hope
-            {title:"Rogue_One", contentType:"M"},
+            {title:"Star_Wars_Rogue_One", contentType:"M"},
             {title:"Star_Wars_5", contentType:"M"}, // Empire Strikes Back
             {title:"Star_Wars_1", contentType:"M"}, // Phantom Menace
             {title:"Star_Wars_2", contentType:"M"}, // Attack of the Clones
             {title:"Star_Wars_3", contentType:"M"}, // Revenge of the Sith
             {title:"Star_Wars_6", contentType:"M"}, // Return of the jedi
-            {title:"Han_Solo_1", contentType:"M"}, // Solo: A Star Wars Story
+            {title:"Star_Wars_Han_Solo_1", contentType:"M"}, // Solo: A Star Wars Story
             {title:"Star_Wars_7", contentType:"M"}, // The Force Awakens
             {title:"Star_Wars_8", contentType:"M"}, // The Last Jedi
             {title:"Star_Wars_9", contentType:"M"}, // The Rise of Skywalker

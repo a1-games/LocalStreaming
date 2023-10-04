@@ -432,6 +432,106 @@ movieObjects = {
         fileType:"mkv",
     },
     
+    // --- Star Wars ---
+    "Star_Wars_1":
+    {
+        contentID:"Star_Wars_1",
+        contentTitle:"Star Wars: Phantom Menace",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Star_Wars_2":
+    {
+        contentID:"Star_Wars_2",
+        contentTitle:"Star Wars: Attack of the Clones",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Star_Wars_3":
+    {
+        contentID:"Star_Wars_3",
+        contentTitle:"Star Wars: Revenge of the Sith",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Star_Wars_4":
+    {
+        contentID:"Star_Wars_4",
+        contentTitle:"Star Wars: A New Hope",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Star_Wars_5":
+    {
+        contentID:"Star_Wars_5",
+        contentTitle:"Star Wars: Empire Strikes Back",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Star_Wars_6":
+    {
+        contentID:"Star_Wars_6",
+        contentTitle:"Star Wars: Return of the jedi",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Star_Wars_7":
+    {
+        contentID:"Star_Wars_7",
+        contentTitle:"Star Wars: The Force Awakens",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Star_Wars_8":
+    {
+        contentID:"Star_Wars_8",
+        contentTitle:"Star Wars: The Last Jedi",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Star_Wars_9":
+    {
+        contentID:"Star_Wars_9",
+        contentTitle:"Star Wars: The Rise of Skywalker",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Star_Wars_Rogue_One":
+    {
+        contentID:"Star_Wars_Rogue_One",
+        contentTitle:"Star Wars: Rogue One",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
+    "Star_Wars_Han_Solo_1":
+    {
+        contentID:"Star_Wars_Han_Solo_1",
+        contentTitle:"Solo: A Star Wars Story",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mkv",
+    },
 }
 
 

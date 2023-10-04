@@ -1,11 +1,22 @@
 
 
 <script>
-        
+    
 
-    SpawnThumbnailRow(document.getElementById("main-content-box"), "S", "Series", seriesObjects)
-    SpawnThumbnailRow(document.getElementById("main-content-box"), "M", "Movies", movieObjects)
-    SpawnThumbnailRow(document.getElementById("main-content-box"), "C", "Collections", collectionObjects)
+    SpawnThumbnailRow(document.getElementById("main-content-box"), "S", "Series", seriesObjects);
+
+    let movies = {};
+
+    Object.keys(movieObjects).forEach(movieKey => {
+        if (!hiddenMovies.includes(movieKey))
+        {
+            movies[movieKey] = movieObjects[movieKey];
+        }
+    });
+
+    SpawnThumbnailRow(document.getElementById("main-content-box"), "M", "Movies", movies);
+
+    SpawnThumbnailRow(document.getElementById("main-content-box"), "C", "Collections", collectionObjects);
     
     // its called in the script row fitterS
     //ResizeAllThumbnailDivs();

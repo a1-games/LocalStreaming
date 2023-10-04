@@ -15,6 +15,21 @@ seriesObjects = {
             },
         ],
     },
+    "ATLA":
+    {
+        contentID:"ATLA",
+        contentTitle:"Avatar: The Last Airbender",
+        readableDescription:[
+            "Avatar: The Last Airbender",
+        ],
+        seasons:[
+            { // Season 1
+                episodes:[
+                    { title:"First Episode", description:"", fileType:"mkv", },
+                ],
+            },
+        ],
+    },
     "Game_Of_Thrones":
     {
         contentID:"Game_Of_Thrones",
