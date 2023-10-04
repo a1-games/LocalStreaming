@@ -5,6 +5,11 @@ hiddenMovies = [
     // Avatar
     "Avatar_1",
     "Avatar_2",
+    // Shrek
+    "Shrek_1",
+    "Shrek_2",
+    "Shrek_3",
+    "Shrek_4",
     // Star Wars
     "Star_Wars_1",
     "Star_Wars_2",

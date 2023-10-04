@@ -18,17 +18,6 @@ movieObjects = {
         ],
         fileType:"mp4",
     },
-    "Shrek_1":
-    {
-        contentID:"Shrek_1",
-        contentTitle:"Shrek",
-        readableDescription:[
-            "Shrek wants to be alone.",
-            "Shrek makes friend.",
-            "Shrek is no longer alone.",
-        ],
-        fileType:"mp4",
-    },
     "Interstellar":
     {
         contentID:"Interstellar",
@@ -91,6 +80,46 @@ movieObjects = {
         contentTitle:"The Wolf of Wall Street",
         readableDescription:[
             ".",
+        ],
+        fileType:"mp4",
+    },
+
+    // --- Marvel ---
+    "Shrek_1":
+    {
+        contentID:"Shrek_1",
+        contentTitle:"Shrek",
+        readableDescription:[
+            "Shrek wants to be alone.",
+            "Shrek makes friend.",
+            "Shrek is no longer alone.",
+        ],
+        fileType:"mp4",
+    },
+    "Shrek_2":
+    {
+        contentID:"Shrek_2",
+        contentTitle:"Shrek 2",
+        readableDescription:[
+            "Shrek 2.",
+        ],
+        fileType:"mp4",
+    },
+    "Shrek_3":
+    {
+        contentID:"Shrek_3",
+        contentTitle:"Shrek the Third",
+        readableDescription:[
+            "Shrek 3.",
+        ],
+        fileType:"mp4",
+    },
+    "Shrek_4":
+    {
+        contentID:"Shrek_4",
+        contentTitle:"Shrek Forever After",
+        readableDescription:[
+            "Shrek 4.",
         ],
         fileType:"mp4",
     },

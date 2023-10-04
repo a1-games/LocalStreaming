@@ -11,6 +11,19 @@ collectionObjects = {
             {title:"Avatar_2", contentType:"M"},
         ],
     },
+    "Shrek":{
+        contentID:"Shrek",
+        contentTitle:"Shrek",
+        readableDescription:[
+            "Shrek",
+        ],
+        watchOrder:[
+            {title:"Shrek_1", contentType:"M"},
+            {title:"Shrek_2", contentType:"M"},
+            {title:"Shrek_3", contentType:"M"},
+            {title:"Shrek_4", contentType:"M"},
+        ],
+    },
     "Harry_Potter":{
         contentID:"Harry_Potter",
         contentTitle:"Harry Potter",
