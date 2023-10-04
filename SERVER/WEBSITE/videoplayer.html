@@ -1,8 +1,11 @@
 
 <div id="video-player-box">
-    <video controls class="video" id="video-player" preload="metadata" poster="">
-        <source src="" type="video/mp4" id="video-source"></source>
+    <video controls class="video" id="video-player" preload="metadata" poster="" autoplay>
+        
     </video>
+    <div id="skip-intro-button" onclick="SkipTo(introEnd)">
+        Skip Intro >>
+    </div>
     <div id="video-control-bar">
 
         <!-- progress bar on top with absolute positioning -->

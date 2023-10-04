@@ -45,6 +45,7 @@
     right: 0;
 
     background-color: #00000044;
+    transition: filter ease 1s;
 }
 
 
@@ -89,7 +90,7 @@
     right: 0;
 
     height: 2rem;
-    background-color: #00000044;
+    background-color: inherit;
 
 }
 
@@ -116,7 +117,7 @@
     border-radius: 0.25rem;
     overflow: hidden;
 
-    background-color: rgba(0, 0, 0, 0.13);
+    background-color: #00000044;
 }
 
 
@@ -398,6 +399,32 @@
     color: red;
 }
 
+
+
+
+
+
+#skip-intro-button {
+    display: none;
+    position: absolute;
+
+    justify-content: center;
+    text-align: center;
+
+    right: 1rem;
+    bottom: 6rem;
+
+    border-radius: 0.5rem;
+    padding: 1rem;
+
+    background: linear-gradient(180deg, transparent, var(--sectionColor));
+    color: var(--textColor);
+
+    font-size: 2rem;
+    font-family: 'Oswald', sans-serif;
+
+    cursor: pointer;
+}
 
 
 

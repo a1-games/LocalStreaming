@@ -186,7 +186,6 @@ async function ResizeThumbnailDiv(thumbnaildiv)
 
 
 
-ResizeAllThumbnailDivs();
 
 window.onresize = ResizeAllThumbnailDivs;
 

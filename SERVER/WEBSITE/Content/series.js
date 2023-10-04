@@ -40,8 +40,8 @@ seriesObjects = {
         seasons:[
             { // Season 1
                 episodes:[
-                    { title:"Winter Is Coming", description:"", fileType:"mkv", },
-                    { title:"The Kingsroad", description:"", fileType:"mkv", },
+                    { title:"Winter Is Coming", description:"", fileType:"mkv", intro:{start:435,end:535}, },
+                    { title:"The Kingsroad", description:"", fileType:"mkv", intro:{start:0,end:105}, },
                     { title:"Lord Snow", description:"", fileType:"mkv", },
                     { title:"Cripples, Bastards, and Broken Things", description:"", fileType:"mkv", },
                     { title:"The Wolf and the Lion", description:"", fileType:"mkv", },

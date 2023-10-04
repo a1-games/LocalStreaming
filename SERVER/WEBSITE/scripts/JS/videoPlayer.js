@@ -13,6 +13,12 @@ videoDuration = 0.0;
 videoVolume = 1.0;
 video = document.getElementById('video-player');
 videosource = document.getElementById('video-source');
+videoIsPlaying = false;
+
+introStart = -1;
+introEnd = -1;
+
+skipIntroButton = document.getElementById("skip-intro-button");
 
 videoPlayerBox = document.getElementById("video-player-box");
 
@@ -64,7 +70,19 @@ function togglePlay()
 {
     if (video.paused)
     {
-        video.play();
+        let playpromise = video.play();
+
+        if (playpromise !== undefined) {
+            playpromise.then(_ => {
+            // Automatic playback started!
+            // Show playing UI.
+          })
+          .catch(error => {
+            // Auto-play was prevented
+            // Show paused UI.
+            console.log(error)
+          });
+        }
     }
     else
     {
@@ -78,12 +96,12 @@ SetEventListener(video, 'click', togglePlay);
 // do when video starts playing
 SetEventListener(video, 'play', () => {
     playpauseButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_pause.png')";
-    videoControlBar.style.display = "flex";
+    videoIsPlaying = true;
 });
 // do when video becomes paused
 SetEventListener(video, 'pause', () => {
     playpauseButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_play.png')";
-    videoControlBar.style.display = "flex";
+    videoIsPlaying = false;
 });
 
 SetEventListener(document.body, 'keyup', (e) => {
@@ -147,10 +165,12 @@ function getTimeString(timeObject)
 }
 
 lastMinute = 0;
+lastSecond = 0;
 updates = 0;
 function updateTimeElapsed()
 {
     let time = formatTime(video.currentTime);
+    let secondsPassed = parseInt(video.currentTime);
     
     // show the time
     timeElapsed.innerText = getTimeString(time);
@@ -161,6 +181,46 @@ function updateTimeElapsed()
 
     //SetThumbPos(video.currentTime);
 
+
+
+    
+    // do this every 1 second
+    if (lastSecond + 0 < secondsPassed )
+    {
+        lastSecond = secondsPassed;
+
+    
+        // if for some reason the skip button isnt hidden
+        if (!skipButtonIsHidden)
+        {
+            // hide if not playing the intro
+            if (secondsPassed < introStart ||
+                secondsPassed > introEnd)
+            {
+                ShowHideSkipIntroButton(false);
+            }
+        }
+        else // if it is hidden
+        {
+            // showing skip intro button if intro is defined and playing
+            // this will run from 0 until the intro is over
+            if (introStart != -1 &&
+                secondsPassed <= introEnd &&
+                secondsPassed >= introStart )
+            {
+                if (secondsPassed >= introStart)
+                {
+                    ShowHideSkipIntroButton(true);
+                }
+                if (secondsPassed >= introEnd)
+                {
+                    ShowHideSkipIntroButton(false);
+                }
+            }
+        }
+    }
+
+
     // this prevents it from subtracting 5 seconds every time the page refreshes.
     // it will instead wait a couple frames before counting
     if (updates <= 5)
@@ -170,13 +230,12 @@ function updateTimeElapsed()
     // do this every minute
     else
     {
-        let secondsPassed = video.currentTime;
-        let minutesPassed = parseInt(secondsPassed / 60);
+        let minutesPassed = secondsPassed / 60;
         if (lastMinute < minutesPassed)
         {
             lastMinute = minutesPassed;
     
-            let watchedSeconds = parseInt(secondsPassed);
+            let watchedSeconds = secondsPassed;
             // save 5 seconds before to refresh the users memory
             let percentageWP = (watchedSeconds - 5) / videoDuration;
             SaveWatchProgress(currentUser, percentageWP);
@@ -196,7 +255,6 @@ SetEventListener(video, 'progress', () => {
     let loadPercentage = loadEndPercentage - loadStartPercentage;
     
     bufferBar.style.width = `${loadPercentage * 100}%`;
-    
 });
 
 function initializeVideo()
@@ -222,15 +280,9 @@ SetEventListener(video, 'loadedmetadata', () => {
     let watchedPercentage = GetWatchProgressFromCurrentObject();
     let watchedSeconds = watchedPercentage * videoDuration;
 
-    // skipahead but without the passed event:
+    // skip to last watched
     if (!isNaN(watchedSeconds))
-    {
-        video.currentTime = watchedSeconds;
-        seek.value = watchedSeconds;
-        progressBar.value = watchedSeconds;
-        
-        SetThumbPos(watchedSeconds);
-    }
+        SkipTo(watchedSeconds)
     
 });
 
@@ -249,12 +301,23 @@ function updateSeekTooltip(event)
 }
 SetEventListener(seek, 'mousemove', updateSeekTooltip);
 
+function SkipTo(seconds)
+{
+    video.currentTime = seconds;
+    seek.value = seconds;
+    progressBar.value = seconds;
+    lastSecond = 0;
+    
+    SetThumbPos(seconds);
+    
+}
 function skipAhead(event) {
 
     let skipTo = event.target.dataset.seek ? event.target.dataset.seek : event.target.value;
     video.currentTime = skipTo;
     seek.value = skipTo;
     progressBar.value = skipTo;
+    lastSecond = 0;
     
     SetThumbPos(skipTo);
     
@@ -339,8 +402,12 @@ function UpdateVolume(volume) {
 
 SetEventListener(volumeSlider, 'input', () => UpdateVolume(volumeSlider.value))
 
-volumeBarTimeout = null;
 
+
+
+
+// shifting between volume and time scrubber
+volumeBarTimeout = null;
 function ShowVolumeBar(show)
 {
     if (show)
@@ -372,6 +439,24 @@ async function HideVolumeBar()
     volumeBarTimeout = setTimeout(() => ShowVolumeBar(false), 800); // 0.8 sec
 }
 
+// showing toolbar on mouse moved
+controlBarTimeout = null;
+async function ShowControlBar()
+{
+    videoControlBar.style.filter = "";
+    videoPlayerBox.style.cursor = "auto";
+    clearTimeout(controlBarTimeout);
+    controlBarTimeout = setTimeout(() => 
+    { // do this when mouse has been still for 1.5 sec
+        videoControlBar.style.filter = "opacity(0)";
+        videoPlayerBox.style.cursor = "none";
+    }, 1500); // 1.5 sec
+}
+SetEventListener(videoControlBar, 'mousemove', ShowControlBar);
+SetEventListener(video, 'mousemove', ShowControlBar);
+
+
+
 // fullscreen
 SetEventListener(fullscreenButton, 'click', () => {
     if (document.fullscreenElement)
@@ -399,14 +484,16 @@ async function LoadSavedVolume()
 
 LoadSavedVolume();
 
-async function LoadVideo()
+// anything handling video.load / video.play() must not be async!
+function LoadVideo()
 {
     let CCO = currentContentObject;
 
     // MOVIE
     if (CCO.contentType == "M")
     {
-        videosource.src = `Content/${ContentFolder["M"]}/${CCO.contentID}/${CCO.contentID}.${CCO.fileType}`;
+        video.src = `Content/${ContentFolder["M"]}/${CCO.contentID}/${CCO.contentID}.${CCO.fileType}`;
+        //videosource.src = `Content/${ContentFolder["M"]}/${CCO.contentID}/${CCO.contentID}.${CCO.fileType}`;
         video.poster = `Content/${ContentFolder["M"]}/${CCO.contentID}/thumbnail.jpg`;
     }
     
@@ -414,19 +501,37 @@ async function LoadVideo()
     if (CCO.contentType == "S")
     {
         let episodeObject = CCO.seasons[selectedSeason].episodes[selectedEpisode];
-        videosource.src = `Content/${ContentFolder["S"]}/${CCO.contentID}/Season_${selectedSeason+1}/S${selectedSeason+1}E${selectedEpisode+1}.${episodeObject.fileType}`;
+        video.src = `Content/${ContentFolder["S"]}/${CCO.contentID}/Season_${selectedSeason+1}/S${selectedSeason+1}E${selectedEpisode+1}.${episodeObject.fileType}`;
+        //videosource.src = `Content/${ContentFolder["S"]}/${CCO.contentID}/Season_${selectedSeason+1}/S${selectedSeason+1}E${selectedEpisode+1}.${episodeObject.fileType}`;
         video.poster = `Content/${ContentFolder["S"]}/${CCO.contentID}/Season_${selectedSeason+1}/S${selectedSeason+1}E${selectedEpisode+1}.jpg`;
         //console.log(episodeObject);
+
+        // skip intro button stuff
+        // only do this if we defined the intro start and end for this episode
+        if ("intro" in episodeObject)
+        {
+            introStart = episodeObject.intro.start;
+            introEnd = episodeObject.intro.end;
+        }
     }
 
     video.load();
-
-
-    
 }
 
 
-
+skipButtonIsHidden = true;
+function ShowHideSkipIntroButton(show)
+{
+    if (show)
+    {
+        skipIntroButton.style.display = "block";
+    }
+    else
+    {
+        skipIntroButton.style.display = "none";
+    }
+    skipButtonIsHidden = !show;
+}
 
 
 
