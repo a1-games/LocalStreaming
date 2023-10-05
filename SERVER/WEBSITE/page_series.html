@@ -40,10 +40,10 @@
 
 
 <div class="row" id="episodes">
-    <div id="arrow-l-episodes" class="arrow arrow-left" onclick="MoveThumbnails('thumbnailrow-series', false)">
+    <div id="arrow-l-episodes" class="arrow arrow-left" onclick="MoveThumbnails('thumbnailrow-episodes', false)">
         <
     </div>
-    <div id="arrow-r-episodes" class="arrow arrow-right" onclick="MoveThumbnails('thumbnailrow-series', true)">
+    <div id="arrow-r-episodes" class="arrow arrow-right" onclick="MoveThumbnails('thumbnailrow-episodes', true)">
         >
     </div>
     <div class="thumbnail-section">
@@ -60,9 +60,11 @@
 
 
 <script>
+    ResizeAllThumbnailDivs();
+    
     SpawnContentInfo(seriesObjects, "S");
 
-    ResizeAllThumbnailDivs();
+    //SelectSeason(selectedSeason);
 </script>
 
 

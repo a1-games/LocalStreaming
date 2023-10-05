@@ -45,11 +45,11 @@ async function SpawnContentInfo(contentObjects, contentType)
         };
  
         // spawn season one, let user change it themselves
-        SpawnSeriesEpisodes(contentObject, 0);
+        SpawnSeriesEpisodes(contentObject, selectedSeason);
 
         // set the episode info to episode 1
         // this should be the last watched episode or that +1 if it was finished
-        SetEpisodeInfo(contentObject, 0, 0);
+        SetEpisodeInfo(contentObject, selectedSeason, selectedEpisode);
 
         // season choser dropdown
         let seasonDropdown = document.getElementById("season-dropdown");
@@ -62,6 +62,7 @@ async function SpawnContentInfo(contentObjects, contentType)
             
             seasonDropdown.append(option);
         }
+        seasonDropdown.value = selectedSeason;
 
     }
     

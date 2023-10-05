@@ -24,11 +24,13 @@ function SpawnSeriesEpisodes(seriesObject, seasonIndex)
     let S = parseInt(seasonIndex)+1;
     
     // spawn season one, let user change it themselves
+    console.log(seasonIndex)
     for (let i = 0; i < seriesObject.seasons[seasonIndex].episodes.length; i++) {
         var onclick = function() {
             // set the description info
             SetEpisodeInfo(seriesObject, seasonIndex, i);
             selectedEpisode = i;
+            localStorage.setItem("EPISODE_SELECTED_"+seriesObject.contentID, i);
             // play the video'
             LoadVideo();
         };
@@ -58,6 +60,8 @@ async function SelectSeason(seasonIndex)
     var seriesObject = seriesObjects[localStorage.getItem("selectedContent")];
     SpawnSeriesEpisodes(seriesObject, seasonIndex)
 
+    // save selected
+    localStorage.setItem("SEASON_SELECTED_"+seriesObject.contentID, selectedSeason);
     
     // set the episodes to start index 0
     SetThumbRowObjectValues(thumbRowObjects[`thumbnailrow-episodes`], 0, 0);

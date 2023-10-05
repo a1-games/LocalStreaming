@@ -20,6 +20,15 @@ function SelectContentObject(obj, contentType)
     currentContentObject = obj;
     currentContentObject.contentType = contentType;
     localStorage.setItem("selectedContent", currentContentObject.contentID);
+
+    if (contentType == "S")
+    {
+        let season = parseInt(localStorage.getItem("SEASON_SELECTED_"+obj.contentID));
+        selectedSeason = isNaN(season) ? 0 : season;
+        console.log(selectedSeason)
+        let episode = parseInt(localStorage.getItem("EPISODE_SELECTED_"+obj.contentID));
+        selectedEpisode = isNaN(episode) ? 0 : episode;
+    }
 }
 
 ContentID = {
