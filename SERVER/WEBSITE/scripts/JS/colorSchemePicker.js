@@ -80,10 +80,10 @@ async function LoadSavedColorScheme(user)
 
     colorscheme_CSSElement.href = `scripts/CSS/colorSchemes/${savedCS}.css`;
 
-    // change png after 200 milliseconds bc the new css reference above isn't loaded yet
+    // change png after 400 milliseconds bc the new css reference above isn't loaded yet
     // also disable setting a new colorscheme until this is loaded
     document.body.style.pointerEvents = "none";
-    setTimeout(SetPNGColors, 200);
+    setTimeout(SetPNGColors, 400);
 }
 
 async function SetPNGColors()

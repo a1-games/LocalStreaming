@@ -5,6 +5,9 @@
 // https://freshman.tech/custom-html5-video/
 // article about streaming the video
 // https://img.ly/blog/how-to-stream-videos-using-javascript-and-html5/
+// article showing how to implement subtitles
+// https://blog.addpipe.com/10-advanced-features-in-html5-video-player/#showingcaptionsorsubtitlesduringplayback
+// this is needed for dothraki and other GOT subs
 
 
 clamp = (num, min, max) => Math.min(Math.max(num, min), max);
@@ -179,7 +182,7 @@ function updateTimeElapsed()
     seek.value = video.currentTime;
     progressBar.value = video.currentTime;
 
-    //SetThumbPos(video.currentTime);
+    SetThumbPos(video.currentTime);
 
 
 
@@ -220,7 +223,7 @@ function updateTimeElapsed()
         }
     }
 
-
+    
     // this prevents it from subtracting 5 seconds every time the page refreshes.
     // it will instead wait a couple frames before counting
     if (updates <= 5)
@@ -230,11 +233,12 @@ function updateTimeElapsed()
     // do this every minute
     else
     {
-        let minutesPassed = secondsPassed / 60;
+        let minutesPassed = parseInt(secondsPassed / 60);
         if (lastMinute < minutesPassed)
         {
+            console.log(minutesPassed)
             lastMinute = minutesPassed;
-    
+            
             let watchedSeconds = secondsPassed;
             // save 5 seconds before to refresh the users memory
             let percentageWP = (watchedSeconds - 5) / videoDuration;
@@ -242,6 +246,10 @@ function updateTimeElapsed()
         }
     }
 }
+
+SetEventListener(video, 'timeupdate', updateTimeElapsed);
+
+
 
 SetEventListener(video, 'progress', () => {
     let bf = video.buffered;
@@ -286,7 +294,33 @@ SetEventListener(video, 'loadedmetadata', () => {
     
 });
 
-SetEventListener(video, 'timeupdate', updateTimeElapsed);
+SetEventListener(video, 'loadstart', () => {
+    console.log("VIDEO started LOADING.")
+});
+
+
+// error stuff
+SetEventListener(video, 'error', (e) => {
+    console.log("VIDEO had en ERROR. - " + e);
+});
+
+SetEventListener(video, 'abort', (e) => {
+    console.log("VIDEO load was ABORTED. - " + e);
+});
+
+SetEventListener(video, 'stalled', (e) => {
+    console.log("VIDEO load is STALLED. - " + e);
+    video.pause();
+    // this is when we are stuck with no data
+});
+
+SetEventListener(video, 'suspend', (e) => {
+    console.log("VIDEO load is SUSPENDED. - " + e);
+});
+
+SetEventListener(video, 'waiting', (e) => {
+    console.log("VIDEO load is WAITING to load data. - " + e);
+});
 
 
 
