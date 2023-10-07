@@ -20,14 +20,6 @@
 }
 
 
-.content-thumbnail {
-    transition: var(--hoverTransition);
-}
-.content-thumbnail:hover {
-    box-shadow: inset 0 0 0.5em 0.125em var(--textColor);
-}
-
-
 
 
 

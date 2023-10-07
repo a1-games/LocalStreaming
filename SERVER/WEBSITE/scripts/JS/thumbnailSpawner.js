@@ -114,6 +114,7 @@ async function AddThumbnail(contentID, contentURL, parent, onclick, thumbnailTex
     
     clickableElement.onclick = () => onclick();
 
+
     thumbRowObjects[parent.id].thumbnails.push(clickableElement);
 
     clickableElement.style.backgroundImage = `url('Content/${contentURL}`;

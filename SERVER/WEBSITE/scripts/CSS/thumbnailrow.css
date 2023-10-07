@@ -56,11 +56,17 @@
     background-position: center;
     text-decoration: none !important;
     
-    transition: var(--hoverTransition);
+    transition: color ease 0.4s, transform ease 0.4s;
     overflow: hidden;
 }
 .content-thumbnail:hover {
     color: var(--scrollColorActive);
+
+    outline: var(--textColor) solid 0.175rem;
+    outline-offset: 0.175rem;
+
+    transform: scale(1.05);
+    z-index: 10;
 }
 
 .thumbnail-text {
