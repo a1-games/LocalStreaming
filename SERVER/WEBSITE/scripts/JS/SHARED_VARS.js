@@ -25,7 +25,7 @@ function SelectContentObject(obj, contentType)
     {
         let season = parseInt(localStorage.getItem("SEASON_SELECTED_"+obj.contentID));
         selectedSeason = isNaN(season) ? 0 : season;
-        console.log(selectedSeason)
+        //console.log(selectedSeason)
         let episode = parseInt(localStorage.getItem("EPISODE_SELECTED_"+obj.contentID));
         selectedEpisode = isNaN(episode) ? 0 : episode;
     }

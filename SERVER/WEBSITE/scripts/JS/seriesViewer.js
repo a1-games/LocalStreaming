@@ -24,7 +24,7 @@ function SpawnSeriesEpisodes(seriesObject, seasonIndex)
     let S = parseInt(seasonIndex)+1;
     
     // spawn season one, let user change it themselves
-    console.log(seasonIndex)
+    //console.log(seasonIndex)
     for (let i = 0; i < seriesObject.seasons[seasonIndex].episodes.length; i++) {
         var onclick = function() {
             // set the description info
