@@ -33,3 +33,7 @@ button {
     border-style: none;
     border-width: 0;
 }
+
+.nomouseevents {
+    pointer-events: none;
+}

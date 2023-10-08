@@ -5,13 +5,18 @@
 
 async function SetEpisodeInfo(seriesObject, seasonIndex, episodeIndex)
 {
-    var epidiv = document.getElementById("episode-title");
-    var epithumb = document.getElementById("episode-thumbnail");
+    var epidiv = document.getElementById("info-title");
+    var epidesc = document.getElementById("info-description");
+    var epithumb = document.getElementById("info-thumbnail");
 
-    epidiv.innerText = seriesObject.seasons[seasonIndex].episodes[episodeIndex].title;
+    let episodeObj = seriesObject.seasons[seasonIndex].episodes[episodeIndex];
+
+    epidiv.innerText = episodeObj.title;
+    // episodes only have one line descriptions
+    epidesc.innerText = episodeObj.description;
+
     let S = parseInt(seasonIndex)+1;
     epithumb.style.backgroundImage = `url('Content/Series/${seriesObject.contentID}/Season_${S}/S${S}E${episodeIndex+1}.jpg')`;
-
 }
 
 

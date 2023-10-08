@@ -41,7 +41,8 @@ html {
 .info-description {
     display: flex;
     position: relative;
-    margin: 1rem;
+    margin: 2rem 1rem 1rem 1rem;
+    padding: 1rem;
 
     height: auto;
     width: auto;
@@ -58,8 +59,9 @@ html {
     word-break: normal;
 
     border-radius: 0.5rem;
-    background-color: #03132475;
-    padding-right: 22px;
+    background-color: rgba(0, 0, 0, 0.25);
+
+    box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
 }
 
 .info-section {
@@ -84,7 +86,7 @@ html {
     display: flex;
     flex-direction: row;
     height: auto;
-    width: 92%;
+    width: 56%;
     justify-content: center;
 
     gap: 1rem;
@@ -95,11 +97,11 @@ html {
     display: flex;
     flex-grow: 2;
     
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
 
-
+    transition: filter ease 1s;
     flex-direction: column;
 }
 

@@ -8,7 +8,7 @@
 <div id="top-row" class="row">
     <div id="info-box">
         <div id="info-banner" class="info-section">
-            <a id="info-thumbnail" class="content-thumbnail">
+            <a id="info-thumbnail" class="content-thumbnail nomouseevents">
             </a>
             <div id="info-title" class="info-title">
             </div>
@@ -24,8 +24,12 @@
 
 
 <script> 
-    SpawnContentInfo(collectionObjects, "C");
+    SpawnContentInfo(currentContentObject, "C");
 
 
     ResizeAllThumbnailDivs();
+
+
+    // set the info to relative since its absolute by default
+    document.getElementById("info-box").style.position = "relative";
 </script>

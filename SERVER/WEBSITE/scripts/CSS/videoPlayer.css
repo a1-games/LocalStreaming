@@ -19,7 +19,8 @@
     border-radius: 0.5rem;
     overflow: hidden;
     margin: 0;
-    width: 56rem;
+    min-width: 56rem;
+    width: auto;
     flex-grow: 0;
 }
 

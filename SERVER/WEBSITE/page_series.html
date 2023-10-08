@@ -8,9 +8,9 @@
 <div id="season-banner-row" class="row">
     <div id="season-banner-box">
         <div id="info-banner" class="info-section">
-            <a id="info-thumbnail" class="content-thumbnail">
+            <a id="series-thumbnail" class="content-thumbnail nomouseevents">
             </a>
-            <div id="info-title" class="info-title">
+            <div id="series-title" class="info-title">
             </div>
         </div>
     </div>
@@ -20,19 +20,6 @@
     <div id="rightside-box" class="info-section">
     </div>
     <script>$("#rightside-box").load("videoplayer.html");</script>
-
-
-    <div id="info-box">
-        <div id="episode-banner" class="info-section">
-            <a id="episode-thumbnail" class="content-thumbnail">
-            </a>
-            <div id="episode-title" class="info-title">
-            </div>
-        </div>
-        <div id="info-description" class="info-description">
-        </div>
-    </div>
-
     
 </div>
 
@@ -61,9 +48,6 @@
 
 <script>
     ResizeAllThumbnailDivs();
-    
-    SpawnContentInfo(seriesObjects, "S");
-
     //SelectSeason(selectedSeason);
 </script>
 

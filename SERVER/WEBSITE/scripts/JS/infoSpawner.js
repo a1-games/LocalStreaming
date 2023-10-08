@@ -33,6 +33,12 @@ async function SpawnContentInfo(contentObject, contentType)
         //let parent = document.getElementById("episodes")
         //SpawnThumbnailRow(parent, "S", "Season 1")
             
+        var s_titlediv = document.getElementById("series-title");
+        var s_thumb = document.getElementById("series-thumbnail");
+        
+        s_thumb.style.backgroundImage = `url('Content/${ContentFolder[contentType]}/${contentObject.contentID}/thumbnail.jpg')`;
+        s_titlediv.innerText = contentObject.contentTitle;
+            
         thumbRowObjects[`thumbnailrow-episodes`] = {
             "thumbnails" : [],
             "thumbRow" : document.getElementById(`thumbnailrow-episodes`),

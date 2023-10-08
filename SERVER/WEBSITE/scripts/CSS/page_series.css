@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: row;
     height: auto;
-    width: 92%;
+    width: 56%;
     justify-content: center;
 }
 
@@ -31,7 +31,7 @@
     display: block;
     position: relative;
 
-    width: 92%;
+    width: 73%;
     height: 2rem;
 
 
@@ -77,6 +77,8 @@
 }
 
 
-
+#episodes {
+    margin: 2rem auto 4rem auto;
+}
 
 

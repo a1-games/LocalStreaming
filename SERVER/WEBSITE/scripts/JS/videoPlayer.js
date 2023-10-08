@@ -24,6 +24,7 @@ introEnd = -1;
 skipIntroButton = document.getElementById("skip-intro-button");
 
 videoPlayerBox = document.getElementById("video-player-box");
+infoBox = document.getElementById("info-box");
 
 videoControlBar = document.getElementById("video-control-bar");
 playpauseButton = document.getElementById('button-play-pause');
@@ -99,11 +100,13 @@ SetEventListener(video, 'click', togglePlay);
 // do when video starts playing
 SetEventListener(video, 'play', () => {
     playpauseButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_pause.png')";
+    infoBox.style.filter = "opacity(0)";
     videoIsPlaying = true;
 });
 // do when video becomes paused
 SetEventListener(video, 'pause', () => {
     playpauseButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_play.png')";
+    infoBox.style.filter = "";
     videoIsPlaying = false;
 });
 
@@ -528,7 +531,7 @@ function LoadVideo()
     {
         video.src = `Content/${ContentFolder["M"]}/${CCO.contentID}/${CCO.contentID}.${CCO.fileType}`;
         //videosource.src = `Content/${ContentFolder["M"]}/${CCO.contentID}/${CCO.contentID}.${CCO.fileType}`;
-        //video.poster = `Content/${ContentFolder["M"]}/${CCO.contentID}/thumbnail.jpg`;
+        video.poster = `Content/${ContentFolder["M"]}/${CCO.contentID}/thumbnail.jpg`;
     }
     
     // SERIES
