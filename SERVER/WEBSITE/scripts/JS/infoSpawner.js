@@ -13,13 +13,11 @@ function GetSingleStringDescription(readableDescription)
 }
 
 
-async function SpawnContentInfo(contentObjects, contentType)
+async function SpawnContentInfo(contentObject, contentType)
 {
     var titlediv = document.getElementById("info-title");
     var descElem = document.getElementById("info-description");
     var thumb = document.getElementById("info-thumbnail");
-
-    var contentObject = contentObjects[localStorage.getItem("selectedContent")];
     
     thumb.style.backgroundImage = `url('Content/${ContentFolder[contentType]}/${contentObject.contentID}/thumbnail.jpg')`;
     titlediv.innerText = contentObject.contentTitle;

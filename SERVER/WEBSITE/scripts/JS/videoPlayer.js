@@ -528,7 +528,7 @@ function LoadVideo()
     {
         video.src = `Content/${ContentFolder["M"]}/${CCO.contentID}/${CCO.contentID}.${CCO.fileType}`;
         //videosource.src = `Content/${ContentFolder["M"]}/${CCO.contentID}/${CCO.contentID}.${CCO.fileType}`;
-        video.poster = `Content/${ContentFolder["M"]}/${CCO.contentID}/thumbnail.jpg`;
+        //video.poster = `Content/${ContentFolder["M"]}/${CCO.contentID}/thumbnail.jpg`;
     }
     
     // SERIES

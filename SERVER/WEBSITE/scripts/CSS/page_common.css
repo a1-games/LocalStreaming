@@ -91,10 +91,15 @@ html {
 }
 
 #info-box {
-    position: relative;
+    position: absolute;
     display: flex;
     flex-grow: 2;
-    width: auto;
+    
+    top: 0;
+    left: 0;
+    right: 0;
+
+
     flex-direction: column;
 }
 
