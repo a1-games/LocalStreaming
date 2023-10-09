@@ -64,17 +64,17 @@
             <div class="upload-section-title">
                 Movie Upload
             </div>
-            <div class="movie-list-item">
+            <div class="list-item">
                 <input id="content-thumbnail" class="content-thumb" onchange="showUploadedThumb(event)" type="file" id="img" name="img" accept="image/*">
                 </input> 
                 <div style="display: flex; flex-direction: column;">
                     <input class="content-id content-info-text" type="text" value="ContentID">
                     </input>
-                    <textarea class="content-title content-info-text" wrap="soft" onfocus="ClearTextArea(this)">
+                    <textarea class="content-title content-info-text" wrap="soft">
                         Content Title
                     </textarea>
                 </div>
-                <textarea class="content-description" wrap="soft" onfocus="ClearTextArea(this)">
+                <textarea class="content-description" wrap="soft">
                     Description
                 </textarea>
             </div>
@@ -88,17 +88,17 @@
             <div class="upload-section-title">
                 Series Upload
             </div>
-            <div class="movie-list-item">
-                <input id="content-thumbnail" class="content-thumb" onchange="showUploadedThumb(event)" type="file" id="img" name="img" accept="image/*">
+            <div class="list-item">
+                <input id="series-thumbnail" class="content-thumb" onchange="showUploadedThumb(event)" type="file" id="img" name="img" accept="image/*">
                 </input> 
                 <div style="display: flex; flex-direction: column;">
-                    <input class="content-id content-info-text" type="text" value="ContentID">
+                    <input id="series-id" class="content-id content-info-text" type="text" value="ContentID">
                     </input>
-                    <textarea class="content-title content-info-text" wrap="soft" onfocus="ClearInnerText(this)">
+                    <textarea id="series-title" class="content-title content-info-text" wrap="soft" onfocus="">
                         Content Title
                     </textarea>
                 </div>
-                <textarea class="content-description" wrap="soft" onfocus="ClearInnerText(this)">
+                <textarea id="series-description" class="content-description" wrap="soft" onfocus="">
                     Description
                 </textarea>
             </div>

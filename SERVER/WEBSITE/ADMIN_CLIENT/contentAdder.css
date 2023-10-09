@@ -10,7 +10,7 @@
     margin: auto;
 }
 
-.movie-list-item {
+.list-item {
     display: flex;
     flex-direction: row;
 }

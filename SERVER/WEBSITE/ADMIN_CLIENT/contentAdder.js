@@ -3,6 +3,18 @@
 let currentSeriesObject = {};
 
 
+function GetSingleStringDescription(readableDescription)
+{
+    let ssDescription = "";
+    for (let i = 0; i < readableDescription.length; i++) {
+        if (i != 0)
+        ssDescription += "\n";
+        ssDescription += readableDescription[i];
+    }
+    return ssDescription;
+}
+
+
 function showUploadedThumb(event) {
     var image = document.getElementById("content-thumbnail");
     image.style.backgroundImage = `url(\"${URL.createObjectURL(event.target.files[0])}\")`;
@@ -35,6 +47,10 @@ async function UploadSeriesObject()
 // --- When a series has been selected: ---
 
 let episodeRow = document.getElementById("series-episodes");
+let seriesThumbDiv = document.getElementById("series-thumbnail");
+let seriesIDdiv = document.getElementById("series-id");
+let seriesTitleDiv = document.getElementById("series-title");
+let seriesDescDiv = document.getElementById("series-description");
 
 function ClearEpisodeRow()
 {
@@ -43,11 +59,19 @@ function ClearEpisodeRow()
     }
 }
 
-function SpawnEpisodeInfo(seriesObject)
+function SpawnSeriesInfo(seriesObject)
 {
     // save the reference
     currentSeriesObject = seriesObject;
 
+
+    // content object stuff
+    seriesThumbDiv.style.backgroundImage = `url(\"Content/Series/${seriesObject.contentID}/thumbnail.jpg\")`;
+    seriesIDdiv.value = seriesObject.contentID;
+    seriesTitleDiv.innerText = seriesObject.contentTitle;
+    seriesDescDiv.value = GetSingleStringDescription(seriesObject.readableDescription);
+
+    // episodes list
     let seasons = seriesObject.seasons;
     for (let i = 0; i < seasons.length; i++) {
         let seperatorTitle = document.createElement("div");
@@ -163,7 +187,7 @@ function SpawnEpisodeInfo(seriesObject)
 ClearEpisodeRow();
 
 
-SpawnEpisodeInfo(seriesObjects["Game_Of_Thrones"])
+SpawnSeriesInfo(seriesObjects["Game_Of_Thrones"])
 
 
 
