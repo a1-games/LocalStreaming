@@ -1,4 +1,5 @@
 
+let seriesThumbRow = document.getElementById("series-thumbrow");
 
 let currentSeriesObject = {};
 
@@ -31,17 +32,36 @@ function ClearValue(element) {
 }
 
 
-
-async function ListAllSeries()
+async function SpawnSeriesThumbs()
 {
+    ClearEpisodeRow();
 
+    let keys = [...Object.keys(seriesObjects)];
+    await SpawnThumbnailRow(seriesThumbRow, "S", "Series");
+
+    let thumbRow = document.getElementById("thumbnailrow-series");
+    console.log(thumbRow)
+
+    for (let i = 0; i < keys.length; i++) {
+        var onclick = function() {
+            SpawnSeriesInfo(seriesObjects[keys[i]]);
+        };
+        AddThumbnail(keys[i], `Series/${keys[i]}/thumbnail.jpg`, thumbRow, onclick);
+    }
+    
+    ResizeAllThumbnailDivs();
 }
+
+
+
 
 
 async function UploadSeriesObject()
 {
     console.log(currentSeriesObject);
 }
+
+
 
 
 // --- When a series has been selected: ---
@@ -61,6 +81,8 @@ function ClearEpisodeRow()
 
 function SpawnSeriesInfo(seriesObject)
 {
+    ClearEpisodeRow();
+
     // save the reference
     currentSeriesObject = seriesObject;
 
@@ -205,16 +227,6 @@ function SpawnSeriesInfo(seriesObject)
 }
 
 
-
-
-
-
-// -------- Start --------
-
-ClearEpisodeRow();
-
-
-SpawnSeriesInfo(seriesObjects["Game_Of_Thrones"])
 
 
 
