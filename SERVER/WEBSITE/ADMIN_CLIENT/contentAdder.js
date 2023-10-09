@@ -174,6 +174,31 @@ function SpawnSeriesInfo(seriesObject)
 
             episodeRow.append(row);
         }
+
+        // at the very end, add episode remove/add for the season
+
+        let addRemover = document.createElement("div");
+        addRemover.classList.add("addremove-row");
+        addRemover.id = (`addremove-S${i+1}`);
+        
+        let remover = document.createElement("div");
+        remover.classList.add("addremove")
+        remover.classList.add("add-episode")
+        remover.innerText = "-";
+        addRemover.append(remover);
+        
+        let adder = document.createElement("div");
+        adder.classList.add("addremove")
+        adder.classList.add("add-episode")
+        adder.innerText = "+";
+        addRemover.append(adder);
+
+        episodeRow.append(addRemover);
+
+
+
+
+
     }
 }
 
