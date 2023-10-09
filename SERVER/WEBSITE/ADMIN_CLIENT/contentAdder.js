@@ -185,12 +185,14 @@ function SpawnSeriesInfo(seriesObject)
         remover.classList.add("addremove")
         remover.classList.add("add-episode")
         remover.innerText = "-";
+        remover.onclick = ""
         addRemover.append(remover);
         
         let adder = document.createElement("div");
         adder.classList.add("addremove")
         adder.classList.add("add-episode")
         adder.innerText = "+";
+        adder.onclick = ""
         addRemover.append(adder);
 
         episodeRow.append(addRemover);
