@@ -1,0 +1,63 @@
+
+
+
+
+
+
+
+
+
+
+#user-admin-box {
+    margin: auto;
+    width: 24rem;
+
+    background-color: rgba(0, 255, 255, 0.26);
+}
+
+
+.user-box {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.user-color {
+    height: 2rem;
+    width: 2rem;
+    background-color: white;
+}
+
+.user-info-text {
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: auto 0;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

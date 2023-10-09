@@ -1,5 +1,4 @@
 
-
 // if picture in picture becomes requested,
 // it is stated how to add it in this article
 // https://freshman.tech/custom-html5-video/
@@ -239,7 +238,7 @@ function updateTimeElapsed()
         let minutesPassed = parseInt(secondsPassed / 60);
         if (lastMinute < minutesPassed)
         {
-            console.log(minutesPassed)
+            //console.log(minutesPassed)
             lastMinute = minutesPassed;
             
             let watchedSeconds = secondsPassed;

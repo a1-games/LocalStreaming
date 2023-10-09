@@ -12,59 +12,136 @@
 
     
     <!-- Local Stylesheets -->
-    <link rel="stylesheet" href="scripts/CSS/colorSchemes/cyan.css" media="screen" id="colorscheme">
-    <script src="scripts/JS/colorSchemePicker.js" ></script>
-    <link rel="stylesheet" href="scripts/CSS/contract.css" media="screen">
-    <link rel="stylesheet" href="scripts/CSS/fonts.css" media="screen">
-    <link rel="stylesheet" href="scripts/CSS/scrollbar.css" media="screen">
-    <link rel="stylesheet" href="scripts/CSS/mouseHover.css" media="screen">
-    <link rel="stylesheet" href="scripts/CSS/thumbnailrow.css" media="screen">
-    <link rel="stylesheet" href="scripts/CSS/page_homepage.css" media="screen">
-    <link rel="stylesheet" href="scripts/CSS/page_common.css" media="screen">
-    <link rel="stylesheet" href="scripts/CSS/videoPlayer.css" media="screen">
-    
-    
-    <!-- RequireJS
-        <script data-main="scripts/main" src="scripts/require.js"></script> -->
-    
-    
-    <!-- Indie Ads Fetch -->
-    <script src="https://indieads.github.io/indieads.js"></script>
+    <link rel="stylesheet" href="../scripts/CSS/colorSchemes/cyan.css" media="screen" id="colorscheme">
+    <script src="../scripts/JS/colorSchemePicker.js" ></script>
+    <link rel="stylesheet" href="../scripts/CSS/contract.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/fonts.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/scrollbar.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/mouseHover.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/thumbnailrow.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/page_homepage.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/page_common.css" media="screen">
     
     <!-- Shared Lists & Variables -->
-    <script src="scripts/JS/SHARED_VARS.js" ></script>
-    <script src="Content/movies.js"></script>
-    <script src="Content/hiddenMovies.js"></script>
-    <script src="Content/series.js"></script>
-    <script src="Content/collections.js"></script>
+    <script src="../scripts/JS/SHARED_VARS.js" ></script>
+    <script src="../Content/movies.js"></script>
+    <script src="../Content/hiddenMovies.js"></script>
+    <script src="../Content/series.js"></script>
+    <script src="../Content/collections.js"></script>
     
-    <!-- Custom JS -->
-    <script src="scripts/JS/thumbnailSpawner.js"></script>
-    <script src="scripts/JS/infoSpawner.js"></script>
-    <script src="scripts/JS/seriesViewer.js"></script>
-    <script src="scripts/JS/pngIconColorizer.js"></script>
-    <script src="scripts/JS/watchProgressManager.js"></script>
+    <!-- Admin Page Only -->
+    <link rel="stylesheet" href="ADMIN_CLIENT/userAdmin.css" media="screen">
+    <link rel="stylesheet" href="ADMIN_CLIENT/contentAdder.css" media="screen">
 
 </head>
-<body style="width: 100%;">
-    <!-- load header in -->
-    <header id="header">
-    </header>
-    <script>$("#header").load("header.html");</script>
-    <div style="height: 6rem;">
-    </div>
-    
-    <!-- Page Content -->
-    <div id="main-content-box">
+<body style="width: 100%; padding: 0; margin: 0;">
+
+    <div style="height: 6rem;"> space </div>
+
+
+    <div>
 
     </div>
-    <script>$("#main-content-box").load("page_homepage.html");</script>
     
+    <div id="user-admin-box">
+        <div class="user-box" id="users-headline">
+            <div class="user-color" style="background-color: transparent;"></div>
+            <div class="user-name user-info-text"> Name </div>
+            <div class="user-colorscheme user-info-text"> Colorscheme </div>
+        </div>
+    </div>
+    <script src="ADMIN_CLIENT/userList.js"></script>
+    <script>
+        SpawnUserList();
+    </script>
 
-    
-    <script src="scripts/JS/pageManager.js"></script>
-    <script src="scripts/JS/thumbnailRowFitter.js"></script>
-    
+
+    <div style="height: 6rem;"> space </div>
+
+
+    <div id="content-adder-box">
+        <div id="list-movies" class="">
+            <div class="upload-section-title">
+                Movie Upload
+            </div>
+            <div class="movie-list-item">
+                <input id="content-thumbnail" class="content-thumb" onchange="showUploadedThumb(event)" type="file" id="img" name="img" accept="image/*">
+                </input> 
+                <div style="display: flex; flex-direction: column;">
+                    <input class="content-id content-info-text" type="text" value="ContentID">
+                    </input>
+                    <textarea class="content-title content-info-text" wrap="soft" onfocus="ClearTextArea(this)">
+                        Content Title
+                    </textarea>
+                </div>
+                <textarea class="content-description" wrap="soft" onfocus="ClearTextArea(this)">
+                    Description
+                </textarea>
+            </div>
+            
+            <div id="upload-button-movie" class="upload-button" onclick="">
+                Upload
+            </div>
+        </div>
+
+        <div id="list-series" class="">
+            <div class="upload-section-title">
+                Series Upload
+            </div>
+            <div class="movie-list-item">
+                <input id="content-thumbnail" class="content-thumb" onchange="showUploadedThumb(event)" type="file" id="img" name="img" accept="image/*">
+                </input> 
+                <div style="display: flex; flex-direction: column;">
+                    <input class="content-id content-info-text" type="text" value="ContentID">
+                    </input>
+                    <textarea class="content-title content-info-text" wrap="soft" onfocus="ClearInnerText(this)">
+                        Content Title
+                    </textarea>
+                </div>
+                <textarea class="content-description" wrap="soft" onfocus="ClearInnerText(this)">
+                    Description
+                </textarea>
+            </div>
+            <div id="series-episodes">
+                <div class="episode-info-row">
+                    Season 1:
+                </div>
+                <div class="episode-info-row">
+                    <div class="episode-number">
+                        S1E1
+                    </div>
+                    <select class="episode-fileformat" value="mkv">
+                        <option value="mkv">.mkv</option>
+                        <option value="mp4">.mp4</option>
+                        <option value="mov">.mov</option>
+                    </select>
+                    <input class="episode-title episode-info-text" type="text" value="Episode Title" onfocus="ClearValue(this)">
+                    </input>
+                    Intro Start
+                    <input class="episode-introstart episode-intronr" type="text" value="0" >
+                    </input>
+                    Intro End
+                    <input class="episode-introend episode-intronr" type="text" value="0" >
+                    </input>
+                    <textarea class="episode-description" wrap="soft" onfocus="ClearInnerText(this)">
+                        Description
+                    </textarea>
+                </div>
+            </div>
+            
+            <div id="upload-button-movie" class="upload-button" onclick="UploadSeriesObject()">
+                Upload
+            </div>
+        </div>
+
+    </div>
+
+    <script src="ADMIN_CLIENT/contentAdder.js"></script>
+
+
+
+
+
 
 
 </body>

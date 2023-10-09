@@ -44,7 +44,7 @@ seriesObjects = {
                 episodes:[
                     { title:"Winter Is Coming", fileType:"mkv", intro:{start:435,end:535}, description:"Lord Ned Stark is troubled by disturbing reports from a Night's Watch deserter; King Robert arrives at Winterfell.", },
                     { title:"The Kingsroad", fileType:"mkv", intro:{start:0,end:105}, description:"The Lannisters plot to ensure Bran's silence; Jon and Tyrion head to the Wall; Ned faces a family crisis en route to King's Landing.", },
-                    { title:"Lord Snow", fileType:"mkv", intro:{start:0,end:0}, description:"", },
+                    { title:"Lord Snow", fileType:"mkv", intro:{start:0,end:0}, description:"prut", },
                     { title:"Cripples, Bastards, and Broken Things", fileType:"mkv", intro:{start:0,end:0}, description:"", },
                     { title:"The Wolf and the Lion", fileType:"mkv", intro:{start:0,end:0}, description:"", },
                     { title:"Golden Crown", fileType:"mkv", intro:{start:0,end:0}, description:"", },
