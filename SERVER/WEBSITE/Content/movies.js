@@ -296,9 +296,45 @@ movieObjects = {
         ],
         fileType:"mp4",
     },
+    "Doctor_Strange_1":
+    {
+        contentID:"Doctor_Strange_1",
+        contentTitle:"Doctor Strange",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mp4",
+    },
+    "Doctor_Strange_2":
+    {
+        contentID:"Doctor_Strange_2",
+        contentTitle:"Doctor Strange",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mp4",
+    },
+    "Shang_Chi_1":
+    {
+        contentID:"Shang_Chi_1",
+        contentTitle:"Shang Chi",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mp4",
+    },
+    "Captain_Marvel_1":
+    {
+        contentID:"Captain_Marvel_1",
+        contentTitle:"Captain Marvel",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mp4",
+    },
     "Captain_America_1":
     {
-        contentID:"Spiderman_Andrew_2",
+        contentID:"Captain_America_1",
         contentTitle:"Captain America: The First Avenger",
         readableDescription:[
             ".",
@@ -359,6 +395,24 @@ movieObjects = {
         ],
         fileType:"mp4",
     },
+    "Black_Panther_1":
+    {
+        contentID:"Black_Panther_1",
+        contentTitle:"Black Panther",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mp4",
+    },
+    "Black_Panther_2":
+    {
+        contentID:"Black_Panther_2",
+        contentTitle:"Black Panther: Wakanda Forever",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mp4",
+    },
     "Eternals_1":
     {
         contentID:"Eternals_1",
@@ -381,6 +435,24 @@ movieObjects = {
     {
         contentID:"Spiderman_Tom_1",
         contentTitle:"Spiderman: Homecoming",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mp4",
+    },
+    "Spiderman_Tom_2":
+    {
+        contentID:"Spiderman_Tom_2",
+        contentTitle:"Spiderman: ?",
+        readableDescription:[
+            ".",
+        ],
+        fileType:"mp4",
+    },
+    "Spiderman_Tom_3":
+    {
+        contentID:"Spiderman_Tom_3",
+        contentTitle:"Spiderman: ?",
         readableDescription:[
             ".",
         ],

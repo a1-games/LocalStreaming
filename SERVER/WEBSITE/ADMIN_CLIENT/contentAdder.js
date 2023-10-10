@@ -1,36 +1,10 @@
 
 let seriesThumbRow = document.getElementById("series-thumbrow");
 let movieThumbRow = document.getElementById("movies-thumbrow");
+let collectionThumbRow = document.getElementById("collections-thumbrow");
 
 let selectedContentObject = {};
 
-
-function GetSingleStringDescription(readableDescription)
-{
-    let ssDescription = "";
-    for (let i = 0; i < readableDescription.length; i++) {
-        if (i != 0)
-        ssDescription += "\n";
-        ssDescription += readableDescription[i];
-    }
-    return ssDescription;
-}
-
-
-function showUploadedThumb(event) {
-    var image = document.getElementById("content-thumbnail");
-    image.style.backgroundImage = `url(\"${URL.createObjectURL(event.target.files[0])}\")`;
-    console.log(`src(${URL.createObjectURL(event.target.files[0])})`)
-};
-
-
-function ClearInnerText(element) {
-    element.innerText = "";
-}
-
-function ClearValue(element) {
-    element.value = "";
-}
 
 
 async function SpawnSeriesThumbs()
@@ -74,31 +48,116 @@ async function SpawnMovieThumbs()
 }
 
 
-
-
-
-async function UploadSeriesObject()
+async function SpawnCollectionThumbs()
 {
-    console.log(selectedContentObject);
+    ClearEpisodeRow();
+
+    let keys = [...Object.keys(collectionObjects)];
+    await SpawnThumbnailRow(collectionThumbRow, "C", "Collections");
+
+    let thumbRow = document.getElementById("thumbnailrow-collections");
+
+    for (let i = 0; i < keys.length; i++) {
+        var onclick = function() {
+            SpawnCollectionInfo(collectionObjects[keys[i]])
+        };
+        AddThumbnail(keys[i], `Collections/${keys[i]}/thumbnail.jpg`, thumbRow, onclick);
+    }
+    
+    ResizeAllThumbnailDivs();
 }
 
 
+
+
+
+// -- when collection is selected --
+function SpawnCollectionItem(index, watchItem)
+{
+    let row = document.createElement("div");
+    row.classList.add("episode-info-row");
+
+    // watch order number
+    let orderNrDiv =  document.createElement("div");
+    orderNrDiv.classList.add("order-number");
+    orderNrDiv.innerText = `${index+1}:`;
+    row.append(orderNrDiv);
+
+    // type dropdown
+    let typeDropdown = SpawnContentTypeDropdown(row);
+    typeDropdown.value = watchItem.contentType;
+    
+    // content choices dropdown
+    let choiceDropdown = document.createElement("select");
+    choiceDropdown.classList.add("content-type-dropdown");
+    
+    // changing the movie/series options
+    typeDropdown.onchange = () => {
+        SpawnContentSelectionDropdown(choiceDropdown, typeDropdown.value)
+        // set new value internally
+        selectedContentObject.watchOrder[index].contentType = typeDropdown.value;
+        // also set choice value to avoid errors of type mismatch
+        if (typeDropdown.value == "S")
+            choiceDropdown.value = "Loki";
+        else
+            choiceDropdown.value = "Avatar_1";
+    }
+    SpawnContentSelectionDropdown(choiceDropdown, watchItem.contentType);
+    
+    choiceDropdown.onchange = () => {
+        console.log(selectedContentObject.watchOrder[index]);
+        // set new value internally
+        selectedContentObject.watchOrder[index].title = choiceDropdown.value;
+    }
+    
+    choiceDropdown.value = watchItem.title;
+    row.append(choiceDropdown);
+
+    // append the whole row
+    childRow.append(row);
+}
+
+function SpawnCollectionInfo(collectionObject)
+{
+    SpawnContentInfo(collectionObject, "C");
+    
+    //console.log(collectionObject)
+
+    // episodes list
+    let watchOrder = collectionObject.watchOrder;
+    
+    for (let i = 0; i < watchOrder.length; i++) {
+        SpawnCollectionItem(i, watchOrder[i]);
+    }
+    
+
+
+    let onremove = () => {
+        // remove the thing
+        selectedContentObject.watchOrder.splice(selectedContentObject.watchOrder.length-1, 1);
+        // refresh the list
+        SpawnCollectionInfo(selectedContentObject, "C");
+    };  
+
+    let onadd = () => {
+        // get added episode's index
+        let eIndex = selectedContentObject.watchOrder.length;
+        // add empty eObj to contentObject
+        let eObj = {
+          title:"Avatar_1",
+          contentType:"M",  
+        };
+        selectedContentObject.watchOrder.push(eObj)
+        SpawnCollectionItem(eIndex, eObj);
+    };
+
+    SpawnAddRemoveButtons(onadd, onremove);
+
+}
 
 
 // --- When a series has been selected: ---
 
-let episodeRow = document.getElementById("series-episodes");
-let seriesThumbDiv = document.getElementById("series-thumbnail");
-let seriesIDdiv = document.getElementById("series-id");
-let seriesTitleDiv = document.getElementById("series-title");
-let seriesDescDiv = document.getElementById("series-description");
-
-function ClearEpisodeRow()
-{
-    while (episodeRow.firstChild) {
-        episodeRow.removeChild(episodeRow.firstChild);
-    }
-}
 
 function SpawnSeriesInfo(seriesObject)
 {
@@ -112,7 +171,7 @@ function SpawnSeriesInfo(seriesObject)
         seperatorTitle.classList.add("episode-info-row");
         seperatorTitle.innerText = `Season ${i+1}`;
 
-        episodeRow.append(seperatorTitle);
+        childRow.append(seperatorTitle);
 
         let episodes = seasons[i].episodes;
         for (let j = 0; j < episodes.length; j++) {
@@ -126,24 +185,11 @@ function SpawnSeriesInfo(seriesObject)
 
         // at the very end, add episode remove/add for the season
 
-        let addRemover = document.createElement("div");
-        addRemover.classList.add("addremove-row");
-        addRemover.id = (`addremove-S${i+1}`);
-        
-        let remover = document.createElement("div");
-        remover.classList.add("addremove")
-        remover.classList.add("add-episode")
-        remover.innerText = "-";
-        remover.onclick = () => {
-
+        let onremove = () => {
+            
         };
-        addRemover.append(remover);
-        
-        let adder = document.createElement("div");
-        adder.classList.add("addremove")
-        adder.classList.add("add-episode")
-        adder.innerText = "+";
-        adder.onclick = () => {
+
+        let onadd = () => {
             // get added episode's index
             let eIndex = contentObject.seasons.episodes.length-1;
             // add empty eObj to contentObject
@@ -153,35 +199,14 @@ function SpawnSeriesInfo(seriesObject)
             // add episode row visually with the eObj
             AddEpisodeRow(eObj, i, eIndex);
         };
-        addRemover.append(adder);
 
-        episodeRow.append(addRemover);
-
+        SpawnAddRemoveButtons(onadd, onremove);
 
     }
 }
 
-
-function SpawnContentInfo(contentObject, contentType)
-{
-    ClearEpisodeRow();
-
-    // save the reference
-    selectedContentObject = contentObject;
-
-
-    // content object stuff
-    seriesThumbDiv.style.backgroundImage = `url(\"Content/${ContentFolder[contentType]}/${contentObject.contentID}/thumbnail.jpg\")`;
-    seriesIDdiv.value = contentObject.contentID;
-    seriesTitleDiv.innerText = contentObject.contentTitle;
-    seriesDescDiv.value = GetSingleStringDescription(contentObject.readableDescription);
-
-}
-
-
 function AddEpisodeRow(eObj, S, E)
 {
-    
     // add intro object if we havent added already
     if (!("intro" in eObj))
     {
@@ -194,7 +219,7 @@ function AddEpisodeRow(eObj, S, E)
     // S[X]E[X] episode id
     let epIDdiv =  document.createElement("div");
     epIDdiv.classList.add("episode-number");
-    epIDdiv.innerText = `S${i+1}E${j+1}`;
+    epIDdiv.innerText = `S${S+1}E${E+1}`;
     row.append(epIDdiv);
 
     // file type dropdown
@@ -267,7 +292,7 @@ function AddEpisodeRow(eObj, S, E)
     row.append(descDiv);
 
 
-    episodeRow.append(row);
+    childRow.append(row);
 }
 
 
