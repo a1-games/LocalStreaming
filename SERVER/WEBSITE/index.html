@@ -45,10 +45,6 @@
 
         <div style="height: 6rem;"> space </div>
 
-
-        <div>
-    
-        </div>
         
         <div id="user-admin-box">
             <div class="user-box" id="users-headline">
@@ -65,7 +61,7 @@
     
         <div style="height: 6rem;"> space </div>
     
-    
+    <!--  TEMPORARILY DISABLED, DONT THINK ITS NEEDED ACTUALLY
         <div class="content-adder-box">
             <div id="list-movies" class="">
                 <div class="upload-section-title">
@@ -91,7 +87,12 @@
                 </div>
             </div>
         </div>
+    -->
     
+    
+        <div id="movies-thumbrow">
+    
+        </div>
     
         <div id="series-thumbrow">
     
@@ -150,9 +151,14 @@
                         </div>
                     </div>
                 </div>
-                
-                <div id="upload-button-movie" class="upload-button" onclick="UploadSeriesObject()">
-                    Upload
+                <div id="button-box" style="display: flex; flex-direction: row; justify-content: center; width: fit-content; margin: 0 auto;">
+                    <div id="upload-button" class="button" onclick="UploadSeriesObject()">
+                        Upload
+                    </div>
+    
+                    <div id="delete-button" class="button" onclick="console.log('delete content object pressed')">
+                        Delete
+                    </div>
                 </div>
             </div>
     
@@ -173,6 +179,7 @@
     <script src="scripts/JS/thumbnailRowFitter.js"></script>
     <script>
         SpawnSeriesThumbs();
+        SpawnMovieThumbs();
     </script>
 
 </body>

@@ -13,6 +13,7 @@
 .list-item {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 
@@ -47,6 +48,9 @@
 }
 
 .content-description {
+    display: flex;
+    flex-grow: 1;
+
     padding: 1rem;
     font-weight: 500;
     font-size: 0.8rem;
@@ -70,23 +74,32 @@
     letter-spacing: 0.05rem;
 }
 
-.upload-button {
+.button {
     display: flex;
     align-items: center;
     justify-content: center;
 
     width: 12rem;
     height: 3rem;
-    margin: 1rem auto 0 auto;
+    margin: 1rem;
 
     user-select: none;
 
     border-radius: 0.4rem;
+}
+#upload-button {
     background-color: rgb(100, 119, 16);
 }
-.upload-button:hover {
+#upload-button:hover {
     background-color: rgb(124, 148, 17);
 }
+#delete-button {
+    background-color: rgb(119, 16, 30);
+}
+#delete-button:hover {
+    background-color: rgb(148, 17, 34);
+}
+
 
 /*  serise & episodes  */
 
@@ -137,6 +150,7 @@
 
 
 .episode-description {
+
     padding: 0;
     font-weight: 500;
     font-size: 0.8rem;
