@@ -111,11 +111,6 @@ async function SpawnUsers()
     
     SpawnOneUser(currentUser, chosenUserIconBox);
 
-
-    // we need user to be loaded to call this, which is why we do it here
-    LoadWatchProgressForContentType("M");
-    LoadWatchProgressForContentType("S");
-    LoadWatchProgressForContentType("C");
 }
 
 function SpawnOneUser(user, parentDiv)

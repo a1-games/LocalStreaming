@@ -27,7 +27,7 @@ function WriteUser(users, username, usercolor, colorscheme)
     console.log("Wrote user data: " + username + " | " + usercolor + " | " + colorscheme)
 
     users[username] = playerData;
-    let pD = JSON.stringify(users);
+    let pD = JSON.stringify(users, null, 2);
 
     fs.writeFile(`WEBSITE/files/USERS.json`, pD, function(err) {
         if (err) {

@@ -1,4 +1,7 @@
 
+let uploadButton = document.getElementById("upload-button");
+let thumbnailUploader = document.getElementById("content-thumbnail");
+
 function GetSingleStringDescription(readableDescription)
 {
     let ssDescription = "";
@@ -29,11 +32,50 @@ function showUploadedThumb(event) {
 
 
 
-async function UploadSelectedContentObject()
+async function UploadSelectedContentObject(contentType)
 {
-    console.log(selectedContentObject);
+    WriteContentObjectOnServer(selectedContentObject, contentType)
+
+    // upload thumnail if a file was given
+    if (thumbnailUploader.files.length <= 0) return;
+
+    let img = thumbnailUploader.files[0];
+    let formData = new FormData();
+
+    formData.append(`Content/${ContentFolder[contentType]}/${selectedContentObject.contentID}`, img);
+
+    fetch(`http://${IP_ADDRESS}/addthumbnail`, {
+        method: 'POST',
+        body: formData,
+    });
+
 }
 
+
+
+async function WriteContentObjectOnServer(obj, contentType)
+{
+    let data = {
+        "ContentType" : contentType,
+        "ContentID" : obj.contentID,
+        "NewValue" : obj
+    }
+
+    //console.log("trying to create new user " + newUser.Username);
+
+    // set user's new color scheme on server
+    fetch(`http://${IP_ADDRESS}/editContent`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+    });
+
+    console.log("Wrote ContentObject to server:");
+    console.log(obj);
+}
 
 
 
@@ -48,7 +90,6 @@ function ClearEpisodeRow()
     }
 }
 
-let contentThumbDiv = document.getElementById("series-thumbnail");
 let contentIDdiv = document.getElementById("series-id");
 let contentTitleDiv = document.getElementById("series-title");
 let contentDescDiv = document.getElementById("series-description");
@@ -60,12 +101,28 @@ function SpawnContentInfo(contentObject, contentType)
     // save the reference
     selectedContentObject = contentObject;
 
+    uploadButton.onclick = () => {
+        UploadSelectedContentObject(contentType);
+    }
+
 
     // content object stuff
-    contentThumbDiv.style.backgroundImage = `url(\"Content/${ContentFolder[contentType]}/${contentObject.contentID}/thumbnail.jpg\")`;
+    thumbnailUploader.style.backgroundImage = `url(\"Content/${ContentFolder[contentType]}/${contentObject.contentID}/thumbnail.jpg\")`;
+    
     contentIDdiv.value = contentObject.contentID;
-    contentTitleDiv.innerText = contentObject.contentTitle;
+    contentIDdiv.onchange = () => {
+        selectedContentObject.contentID = contentIDdiv.value;
+    }
+
+    contentTitleDiv.value = contentObject.contentTitle;
+    contentTitleDiv.onchange = () => {
+        selectedContentObject.contentTitle = contentTitleDiv.value;
+    }
+
     contentDescDiv.value = GetSingleStringDescription(contentObject.readableDescription);
+    contentDescDiv.onchange = () => {
+        selectedContentObject.readableDescription = [contentDescDiv.value];
+    }
 
 }
 

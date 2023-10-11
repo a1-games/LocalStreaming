@@ -1,42 +1,7 @@
 
 
 <script>
-    
-
-    SpawnThumbnailRow(document.getElementById("main-content-box"), "S", "Series", seriesObjects);
-
-    movies = {};
-
-    Object.keys(movieObjects).forEach(movieKey => {
-        if (!hiddenMovies.includes(movieKey))
-        {
-            movies[movieKey] = movieObjects[movieKey];
-        }
-    });
-
-    SpawnThumbnailRow(document.getElementById("main-content-box"), "M", "Movies", movies);
-
-    SpawnThumbnailRow(document.getElementById("main-content-box"), "C", "Collections", collectionObjects);
-    
-    // its called in the script row fitterS
-    //ResizeAllThumbnailDivs();
-    
-    //console.log(thumbRowObjects);
+    LoadThumbRowsForClient();
 </script>
-
-
-
-
-<script>
-    
-    // works every time except the first
-    LoadWatchProgressForContentType("M");
-    LoadWatchProgressForContentType("S");
-    LoadWatchProgressForContentType("C");
-
-    
-    ResizeAllThumbnailDivs();
-</script>
-
 
 

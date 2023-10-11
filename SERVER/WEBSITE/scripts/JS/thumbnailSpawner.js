@@ -17,7 +17,7 @@ function GetRandomKeyListFromContent(contentObjectDictionary)
 
 
 
-async function SpawnThumbnailRow(appendParent, contentType, title, contentList = null)
+function SpawnThumbnailRow(appendParent, contentType, title, contentList = null)
 {
 
     // parent row div
@@ -86,7 +86,7 @@ async function SpawnThumbnailRow(appendParent, contentType, title, contentList =
 
 }
 
-async function LoadAllThumbnails(objectList, contentType, thumbRow)
+function LoadAllThumbnails(objectList, contentType, thumbRow)
 {
     let randomKeys = GetRandomKeyListFromContent(objectList);
 
@@ -96,16 +96,15 @@ async function LoadAllThumbnails(objectList, contentType, thumbRow)
             SelectContentObject(objectList[randomKeys[i]], contentType);
             // load the page
             LoadPage(ContentPageName[contentType]);
-
-
         };
+
         AddThumbnail(randomKeys[i], `${ContentFolder[contentType]}/${randomKeys[i]}/thumbnail.jpg`, thumbRow, onclick);
     }
 }
 
 
 
-async function AddThumbnail(contentID, contentURL, parent, onclick, thumbnailText = null)
+function AddThumbnail(contentID, contentURL, parent, onclick, thumbnailText = null)
 {
     var clickableElement = document.createElement("a");
     clickableElement.id = contentID;
@@ -140,10 +139,7 @@ async function AddThumbnail(contentID, contentURL, parent, onclick, thumbnailTex
 
 async function LoadWatchProgressForContentType(contentType)
 {
-    //let contenttypediv = `thumbnailrow-${ContentID[contentType]}`
-    //let thumbWPs = contenttypediv.que (".thumbnail-wp");
-    //console.log(contentType)
-    
+    console.log(`thumbnailrow-${ContentID[contentType]}`)
     let thumbWPs = document.getElementById(`thumbnailrow-${ContentID[contentType]}`).querySelectorAll(".thumbnail-wp");
     
     for (let i = 0; i < thumbWPs.length; i++) {
@@ -159,6 +155,8 @@ async function LoadWatchProgressForContentType(contentType)
         //console.log(thumbWPs[i])
         thumbEl.style.width = `${prog * 100}%`;
     }
+
+
 }
 
 

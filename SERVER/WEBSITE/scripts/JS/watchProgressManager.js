@@ -75,9 +75,19 @@ function GetWatchProgress(contentID, contentType)
         return GetCummulativeWatchProgress(wpValues) / GetEpisodesCount(contentID);
     }
 
-    // the current selected episode in a series
-    if (contentType == "E")
+    // the current selected item in a collection
+    if (contentType == "I")
     {
+        // if content is a movie
+        if (Object.keys(movieObjects).includes(contentID))
+            // the same code as in "M"
+            return wp;
+        else // if content is a series
+        {
+            // the same code as in "S"
+            let wpValues = Object.values(wp);
+            return GetCummulativeWatchProgress(wpValues) / GetEpisodesCount(contentID);
+        }
     }
 
     if (contentType == "C")

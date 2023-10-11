@@ -13,7 +13,8 @@
   "author": "a1",
   "license": "UNLICENSED",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.1"
   },
   "dev": "npm run users"
 }

@@ -24,10 +24,8 @@
     
     <!-- Shared Lists & Variables -->
     <script src="../scripts/JS/SHARED_VARS.js" ></script>
-    <script src="../Content/movies.js"></script>
+    <script src="scripts/JS/contentObjectsLoader.js"></script>
     <script src="../Content/hiddenMovies.js"></script>
-    <script src="../Content/series.js"></script>
-    <script src="../Content/collections.js"></script>
 
     
     <!-- Custom JS -->
@@ -39,6 +37,35 @@
 
 </head>
 <body style="width: 100%; padding: 0; margin: 0;">
+
+
+    <!-- testing -->
+
+
+    <div style="height: 6rem;"> space </div>
+
+    <div id="testing-box" style="display: flex; flex-direction: column; justify-content: center; width: fit-content; margin: auto;">
+
+        <p style="color: wheat;"> greyscale watch progress test: </p>
+
+        <div id="test thumb" class="content-thumbnail">
+            <div id="test background thumb" style=" width: 100%; height: 100%; position: absolute; background-image: url('Content/Collections/Harry_Potter/thumbnail.jpg'); background-position: left; margin: 0; filter: grayscale(1);">
+            </div>
+            <div id="test-overlay-thumb" style=" width: 40%; height: 100%; position: absolute; background-image: url('Content/Collections/Harry_Potter/thumbnail.jpg'); background-position: left; margin: 0; margin-right: auto; filter: none;">
+            </div>
+        </div>
+
+        <input type="range" min="0" max="100" onmousemove="setwidth(this.value)">
+        <script>
+            function setwidth(val)
+            {
+                let t = document.getElementById("test-overlay-thumb");
+    
+                t.style.width = `${val}%`;
+            }
+        </script>
+    </div>
+
 
     <div id="main-content-box">
 
@@ -61,34 +88,6 @@
     
         <div style="height: 6rem;"> space </div>
     
-    <!--  TEMPORARILY DISABLED, DONT THINK ITS NEEDED ACTUALLY
-        <div class="content-adder-box">
-            <div id="list-movies" class="">
-                <div class="upload-section-title">
-                    Movie Upload
-                </div>
-                <div class="list-item">
-                    <input id="content-thumbnail" class="content-thumb" onchange="showUploadedThumb(event)" type="file" id="img" name="img" accept="image/*">
-                    </input> 
-                    <div style="display: flex; flex-direction: column;">
-                        <input class="content-id content-info-text" type="text" value="ContentID">
-                        </input>
-                        <textarea class="content-title content-info-text" wrap="soft">
-                            Content Title
-                        </textarea>
-                    </div>
-                    <textarea class="content-description" wrap="soft">
-                        Description
-                    </textarea>
-                </div>
-                
-                <div id="upload-button-movie" class="upload-button" onclick="">
-                    Upload
-                </div>
-            </div>
-        </div>
-    -->
-    
     
         <div id="collections-thumbrow">
     
@@ -109,7 +108,7 @@
                     Series Upload
                 </div>
                 <div class="list-item">
-                    <input id="series-thumbnail" class="content-thumb" onchange="showUploadedThumb(event)" type="file" id="img" name="img" accept="image/*">
+                    <input id="content-thumbnail" class="content-thumb" onchange="showUploadedThumb(event)" type="file" id="img" name="img" accept=".jpg">
                     </input> 
                     <div style="display: flex; flex-direction: column;">
                         <input id="series-id" class="content-id content-info-text" type="text" value="ContentID">
@@ -157,7 +156,7 @@
                     </div>
                 </div>
                 <div id="button-box" style="display: flex; flex-direction: row; justify-content: center; width: fit-content; margin: 0 auto;">
-                    <div id="upload-button" class="button" onclick="UploadSelectedContentObject()">
+                    <div id="upload-button" class="button" onclick="">
                         Upload
                     </div>
     
@@ -179,14 +178,14 @@
 
 
 
+    <div style="height: 6rem;"> space </div>
+
 
     <script src="ADMIN_CLIENT/contentUtils.js"></script>
     <script src="ADMIN_CLIENT/contentAdder.js"></script>
     <script src="scripts/JS/thumbnailRowFitter.js"></script>
     <script>
-        SpawnSeriesThumbs();
-        SpawnMovieThumbs();
-        SpawnCollectionThumbs();
+        LoadThumbRowsForAdmin();
     </script>
 
 </body>

@@ -98,9 +98,15 @@ function SpawnCollectionItem(index, watchItem)
         selectedContentObject.watchOrder[index].contentType = typeDropdown.value;
         // also set choice value to avoid errors of type mismatch
         if (typeDropdown.value == "S")
+        {
             choiceDropdown.value = "Loki";
+            selectedContentObject.watchOrder[index].title = "Loki";
+        }
         else
+        {
             choiceDropdown.value = "Avatar_1";
+            selectedContentObject.watchOrder[index].title = "Avatar_1";
+        }
     }
     SpawnContentSelectionDropdown(choiceDropdown, watchItem.contentType);
     
@@ -194,7 +200,7 @@ function SpawnSeriesInfo(seriesObject)
             let eIndex = contentObject.seasons.episodes.length-1;
             // add empty eObj to contentObject
             let eObj = somethingSomething, title = something, desc, intro, etc
-            selectedContentObject.seasons[eIndex] = eObj;
+            //selectedContentObject.seasons[eIndex] = eObj;
             // add data
             // add episode row visually with the eObj
             AddEpisodeRow(eObj, i, eIndex);
