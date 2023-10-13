@@ -297,5 +297,38 @@
         "contentType": "M"
       }
     ]
+  },
+  "Rocky": {
+    "contentID": "Rocky",
+    "contentTitle": "Rocky",
+    "readableDescription": [
+      "All Rocky Balboa Movies"
+    ],
+    "watchOrder": [
+      {
+        "title": "Rocky_1",
+        "contentType": "M"
+      },
+      {
+        "title": "Rocky_2",
+        "contentType": "M"
+      },
+      {
+        "title": "Rocky_3",
+        "contentType": "M"
+      },
+      {
+        "title": "Rocky_4",
+        "contentType": "M"
+      },
+      {
+        "title": "Rocky_5",
+        "contentType": "M"
+      },
+      {
+        "title": "Rocky_6",
+        "contentType": "M"
+      }
+    ]
   }
 }
