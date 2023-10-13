@@ -565,7 +565,7 @@
   },
   "Rocky_2": {
     "contentID": "Rocky_2",
-    "contentTitle": "Rocky",
+    "contentTitle": "Rocky II",
     "readableDescription": [
       "Rocky is a 1976 American sports drama film directed by John G. Avildsen and written by and starring Sylvester Stallone. It is the first installment in the Rocky franchise and also stars Talia Shire, Burt Young, Carl Weathers, and Burgess Meredith. In the film, Rocky Balboa (Stallone), a poor small-time club fighter and loanshark debt collector, gets an unlikely shot at the world heavyweight championship held by Apollo Creed (Weathers)."
     ],
@@ -573,7 +573,31 @@
   },
   "Rocky_3": {
     "contentID": "Rocky_3",
-    "contentTitle": "Rocky 3",
+    "contentTitle": "Rocky III",
+    "readableDescription": [
+      "Rocky is a 1976 American sports drama film directed by John G. Avildsen and written by and starring Sylvester Stallone. It is the first installment in the Rocky franchise and also stars Talia Shire, Burt Young, Carl Weathers, and Burgess Meredith. In the film, Rocky Balboa (Stallone), a poor small-time club fighter and loanshark debt collector, gets an unlikely shot at the world heavyweight championship held by Apollo Creed (Weathers)."
+    ],
+    "fileType": "mkv"
+  },
+  "Rocky_4": {
+    "contentID": "Rocky_4",
+    "contentTitle": "Rocky IV",
+    "readableDescription": [
+      "Rocky is a 1976 American sports drama film directed by John G. Avildsen and written by and starring Sylvester Stallone. It is the first installment in the Rocky franchise and also stars Talia Shire, Burt Young, Carl Weathers, and Burgess Meredith. In the film, Rocky Balboa (Stallone), a poor small-time club fighter and loanshark debt collector, gets an unlikely shot at the world heavyweight championship held by Apollo Creed (Weathers)."
+    ],
+    "fileType": "mkv"
+  },
+  "Rocky_5": {
+    "contentID": "Rocky_5",
+    "contentTitle": "Rocky V",
+    "readableDescription": [
+      "Rocky is a 1976 American sports drama film directed by John G. Avildsen and written by and starring Sylvester Stallone. It is the first installment in the Rocky franchise and also stars Talia Shire, Burt Young, Carl Weathers, and Burgess Meredith. In the film, Rocky Balboa (Stallone), a poor small-time club fighter and loanshark debt collector, gets an unlikely shot at the world heavyweight championship held by Apollo Creed (Weathers)."
+    ],
+    "fileType": "mkv"
+  },
+  "Rocky_6": {
+    "contentID": "Rocky_6",
+    "contentTitle": "Rocky Balboa",
     "readableDescription": [
       "Rocky is a 1976 American sports drama film directed by John G. Avildsen and written by and starring Sylvester Stallone. It is the first installment in the Rocky franchise and also stars Talia Shire, Burt Young, Carl Weathers, and Burgess Meredith. In the film, Rocky Balboa (Stallone), a poor small-time club fighter and loanshark debt collector, gets an unlikely shot at the world heavyweight championship held by Apollo Creed (Weathers)."
     ],
