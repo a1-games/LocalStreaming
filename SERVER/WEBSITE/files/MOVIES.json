@@ -5,7 +5,10 @@
     "readableDescription": [
       "james camerons master piece with the blue guys"
     ],
-    "fileType": "mp4"
+    "fileType": "mp4",
+    "filters": [
+      "Animation", "Mixed Animation", "Human"
+    ]
   },
   "Avatar_2": {
     "contentID": "Avatar_2",

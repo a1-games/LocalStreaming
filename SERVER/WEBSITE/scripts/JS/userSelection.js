@@ -231,13 +231,13 @@ async function WriteUserOnServer(event)
         "Username" : document.getElementById("username-input").value,
         "Color" : document.getElementById("usercolor-input").value,
         // savedCS gets set on page load
-        "ColorScheme" : savedCS
+        "ColorScheme" : savedCS,
     }
 
     //console.log("trying to create new user " + newUser.Username);
 
     // set user's new color scheme on server
-    fetch(`http://${IP_ADDRESS}/createUser`, {
+    fetch(`/createUser`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

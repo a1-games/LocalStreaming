@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="files/IMAGES/Logos/PageIcon16px.ico" type="image/x-icon">
+    <title>a1 Video</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Jquery (load first!) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+
+    
+    <!-- Local Stylesheets -->
+    <link rel="stylesheet" href="scripts/CSS/colorSchemes/cyan.css" media="screen" id="colorscheme">
+    <script src="scripts/JS/colorSchemePicker.js" ></script>
+    <link rel="stylesheet" href="scripts/CSS/contract.css" media="screen">
+    <link rel="stylesheet" href="scripts/CSS/fonts.css" media="screen">
+    <link rel="stylesheet" href="scripts/CSS/scrollbar.css" media="screen">
+    <link rel="stylesheet" href="scripts/CSS/mouseHover.css" media="screen">
+    <link rel="stylesheet" href="scripts/CSS/thumbnailrow.css" media="screen">
+    <link rel="stylesheet" href="scripts/CSS/page_homepage.css" media="screen">
+    <link rel="stylesheet" href="scripts/CSS/page_common.css" media="screen">
+    <link rel="stylesheet" href="scripts/CSS/videoPlayer.css" media="screen">
+    
+    
+    <!-- RequireJS
+        <script data-main="scripts/main" src="scripts/require.js"></script> -->
+    
+    
+    <!-- Indie Ads Fetch -->
+    <script src="https://indieads.github.io/indieads.js"></script>
+    
+    <!-- Shared Lists & Variables -->
+    <script src="scripts/JS/SHARED_VARS.js" ></script>
+    <script src="scripts/JS/contentObjectsLoader.js"></script>
+    <script src="scripts/JS/search.js"></script>
+    <script src="Content/hiddenMovies.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="scripts/JS/thumbnailSpawner.js"></script>
+    <script src="scripts/JS/infoSpawner.js"></script>
+    <script src="scripts/JS/seriesViewer.js"></script>
+    <script src="scripts/JS/pngIconColorizer.js"></script>
+    <script src="scripts/JS/watchProgressManager.js"></script>
+
+</head>
+<body style="width: 100%;">
+    <!-- load header in -->
+    <header id="header">
+    </header>
+    <script>$("#header").load("header.html");</script>
+    <div style="height: 6rem;">
+    </div>
+    
+    <!-- Page Content -->
+    <div id="main-content-box">
+
+    </div>
+    <script>$("#main-content-box").load("page_homepage.html");</script>
+    
+
+    
+    <script src="scripts/JS/pageManager.js"></script>
+    <script src="scripts/JS/thumbnailRowFitter.js"></script>
+    
+
+
+</body>
+
+</html>

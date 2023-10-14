@@ -97,6 +97,8 @@
     background-size: contain;
     background-repeat: no-repeat;
 
+    cursor: pointer;
+    user-select: none;
 }
 .mini-title {
     font-size: 1rem;
@@ -162,7 +164,27 @@
     box-shadow: 0 0.5rem 0.5rem -0.25rem var(--backgroundColor);
 }
 
+#search-bar {
+    display: block;
 
+    border: none;
+    border-radius: 0.5rem;
+
+    color: var(--textColor);
+
+    transition: width ease 0.5s;
+    background-color: var(--sectionColor);
+}
+.searchbar-closed {
+    width: 0;
+    margin: 0;
+    padding: 0;
+}
+.searchbar-open {
+    width: 16rem;
+    margin-right: 0.5rem;
+    padding-left: 0.5rem;
+}
 
 
 

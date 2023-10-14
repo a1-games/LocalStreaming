@@ -1,8 +1,17 @@
 // Load Node modules
-var http = require('http');
+var http = require("http");
+var fs = require("fs");
+
+// base path
+const { dirname } = require('path');
+const rootDir = dirname(require.main.filename);
+console.log(rootDir)
+
+// packages
 var express = require('express');
 var fileUpload = require('express-fileupload');
 var users = require('./users.js');
+var whitelist = require('./whitelist.js');
 var contentdata = require('./contentdata.js');
 
 // Initialise Express
@@ -13,6 +22,47 @@ app.use(fileUpload());
 app.use(express.static('WEBSITE'));
 //app.use(express.urlencoded({ extended: false }));
 app.use(express.json({ extended: false }));
+
+
+app.post("/whitelistcheck", (req, res) => {
+
+    let ip = req.body.ip;
+    // check if username is taken
+    let allowed = whitelist.IsWhitelisted(ip)
+
+    if (allowed)
+    {
+
+
+        res.sendFile("WEBSITE/homepage.html", {root : rootDir} );
+
+
+        return
+
+        
+        fs.promises.readFile(`WEBSITE/homepage.html`, 'utf8')
+        .then( fileData  => {
+            res.send(fileData);
+        })
+
+            
+        contentdata.ReadContentObjects("S")
+        .then(contentObjects => {
+            res.status(200).send(JSON.stringify(contentObjects));
+        });
+
+        
+        res.set('Content-Type', 'text/html');
+        res.send('<script>console.log("received this res.send test")</script>');
+
+
+
+    }
+    else
+    {
+        res.end();
+    }
+});
 
 
 app.get("/users", (req, res) => {
@@ -66,7 +116,7 @@ app.post("/contentObjects", (req, res) => {
     contentdata.ReadContentObjects(_contentType)
         .then(contentObjects => {
             res.status(200).send(JSON.stringify(contentObjects));
-        })
+        });
 });
 
 
@@ -82,6 +132,31 @@ app.post("/addthumbnail", (req, res) => {
     res.sendStatus(200);
 });
 
+
+
+
+var _server = http.createServer((req, res) =>
+{
+    var ip = req.ip 
+            || req.connection.remoteAddress 
+            || req.socket.remoteAddress 
+            || req.connection.socket.remoteAddress;
+
+    
+    
+            
+    let allowed = whitelist.IsWhitelisted(ip);
+    
+    console.log("asdasdsdasdasd server pis")
+
+    if(!allowed)
+    {
+        res.end(); // exit if it is a black listed ip
+    }
+
+})
+
+app.server = _server;
 
 // Port website will run on
 app.listen(3030);

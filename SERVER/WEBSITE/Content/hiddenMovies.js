@@ -71,4 +71,14 @@ hiddenMovies = [
     "Black_Panther_2",
     "Ant_Man_3",
     "Guardians_Of_The_Galaxy_3",
+    // Rocky Balboa
+    "Rocky_1",
+    "Rocky_2",
+    "Rocky_3",
+    "Rocky_4",
+    "Rocky_5",
+    "Rocky_6",
+    "Creed_1",
+    "Creed_2",
+    "Creed_3",
 ]
