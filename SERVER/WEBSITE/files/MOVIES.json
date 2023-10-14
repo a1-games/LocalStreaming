@@ -602,5 +602,29 @@
       "Rocky is a 1976 American sports drama film directed by John G. Avildsen and written by and starring Sylvester Stallone. It is the first installment in the Rocky franchise and also stars Talia Shire, Burt Young, Carl Weathers, and Burgess Meredith. In the film, Rocky Balboa (Stallone), a poor small-time club fighter and loanshark debt collector, gets an unlikely shot at the world heavyweight championship held by Apollo Creed (Weathers)."
     ],
     "fileType": "mkv"
+  },
+  "Creed_1": {
+    "contentID": "Creed_1",
+    "contentTitle": "Creed",
+    "readableDescription": [
+      "creed"
+    ],
+    "fileType": "mp4"
+  },
+  "Creed_2": {
+    "contentID": "Creed_2",
+    "contentTitle": "Creed II",
+    "readableDescription": [
+      "creed II"
+    ],
+    "fileType": "mp4"
+  },
+  "Creed_3": {
+    "contentID": "Creed_3",
+    "contentTitle": "Creed III",
+    "readableDescription": [
+      "creed III"
+    ],
+    "fileType": "mp4"
   }
 }

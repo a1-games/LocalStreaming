@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="files/IMAGES/Logos/PageIcon16px.ico" type="image/x-icon">
+    <title>a1 Video</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Jquery (load first!) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+
+    
+    <!-- Local Stylesheets -->
+    <link rel="stylesheet" href="../scripts/CSS/colorSchemes/cyan.css" media="screen" id="colorscheme">
+    <script src="../scripts/JS/colorSchemePicker.js" ></script>
+    <link rel="stylesheet" href="../scripts/CSS/contract.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/fonts.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/scrollbar.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/mouseHover.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/thumbnailrow.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/page_homepage.css" media="screen">
+    <link rel="stylesheet" href="../scripts/CSS/page_common.css" media="screen">
+    
+    <!-- Shared Lists & Variables -->
+    <script src="../scripts/JS/SHARED_VARS.js" ></script>
+    <script src="scripts/JS/contentObjectsLoader.js"></script>
+    <script src="../Content/hiddenMovies.js"></script>
+
+    
+    <!-- Custom JS -->
+    <script src="scripts/JS/thumbnailSpawner.js"></script>
+    
+    <!-- Admin Page Only -->
+    <link rel="stylesheet" href="ADMIN_CLIENT/userAdmin.css" media="screen">
+    <link rel="stylesheet" href="ADMIN_CLIENT/contentAdder.css" media="screen">
+
+</head>
+<body style="width: 100%; padding: 0; margin: 0;">
+
+
+    <!-- testing -->
+
+
+    <div style="height: 6rem;"> space </div>
+
+    <div id="testing-box" style="display: flex; flex-direction: column; justify-content: center; width: fit-content; margin: auto;">
+
+        <p style="color: wheat;"> greyscale watch progress test: </p>
+
+        <div id="test thumb" class="content-thumbnail">
+            <div id="test background thumb" style=" width: 100%; height: 100%; position: absolute; background-image: url('Content/Collections/Harry_Potter/thumbnail.jpg'); background-position: left; margin: 0; filter: grayscale(1);">
+            </div>
+            <div id="test-overlay-thumb" style=" width: 40%; height: 100%; position: absolute; background-image: url('Content/Collections/Harry_Potter/thumbnail.jpg'); background-position: left; margin: 0; margin-right: auto; filter: none;">
+            </div>
+        </div>
+
+        <input type="range" min="0" max="100" onmousemove="setwidth(this.value)">
+        <script>
+            function setwidth(val)
+            {
+                let t = document.getElementById("test-overlay-thumb");
+    
+                t.style.width = `${val}%`;
+            }
+        </script>
+    </div>
+
+
+    <div id="main-content-box">
+
+
+        <div style="height: 6rem;"> space </div>
+
+        
+        <div id="user-admin-box">
+            <div class="user-box" id="users-headline">
+                <div class="user-color" style="background-color: transparent;"></div>
+                <div class="user-name user-info-text"> Name </div>
+                <div class="user-colorscheme user-info-text"> Colorscheme </div>
+            </div>
+        </div>
+        <script src="ADMIN_CLIENT/userList.js"></script>
+        <script>
+            SpawnUserList();
+        </script>
+    
+    
+        <div style="height: 6rem;"> space </div>
+    
+    
+        <div id="collections-thumbrow">
+    
+        </div>
+    
+    
+        <div id="movies-thumbrow">
+    
+        </div>
+    
+        <div id="series-thumbrow">
+    
+        </div>
+    
+        <div class="content-adder-box">
+            <div id="list-series" class="">
+                <div class="upload-section-title">
+                    Series Upload
+                </div>
+                <div class="list-item">
+                    <input id="content-thumbnail" class="content-thumb" onchange="showUploadedThumb(event)" type="file" id="img" name="img" accept=".jpg">
+                    </input> 
+                    <div style="display: flex; flex-direction: column;">
+                        <input id="series-id" class="content-id content-info-text" type="text" value="ContentID">
+                        </input>
+                        <textarea id="series-title" class="content-title content-info-text" wrap="soft" onfocus="">
+                            Content Title
+                        </textarea>
+                    </div>
+                    <textarea id="series-description" class="content-description" wrap="soft" onfocus="">
+                        Description
+                    </textarea>
+                </div>
+                <div id="child-rows">
+                    <div class="episode-info-row">
+                        Season 1:
+                    </div>
+                    <div class="episode-info-row">
+                        <div class="episode-number">
+                            S1E1
+                        </div>
+                        <select class="episode-fileformat" value="mkv">
+                            <option value="mkv">.mkv</option>
+                            <option value="mp4">.mp4</option>
+                            <option value="mov">.mov</option>
+                        </select>
+                        <input class="episode-title episode-info-text" type="text" value="Episode Title" onfocus="ClearValue(this)">
+                        </input>
+                        Intro Start
+                        <input class="episode-introstart episode-intronr" type="text" value="0" >
+                        </input>
+                        Intro End
+                        <input class="episode-introend episode-intronr" type="text" value="0" >
+                        </input>
+                        <textarea class="episode-description" wrap="soft" onfocus="ClearInnerText(this)">
+                            Description
+                        </textarea>
+                    </div>
+                    <div id="" class="addremove-row">
+                        <div class="remove-episode addremove">
+                            -
+                        </div>
+                        <div class="add-episode addremove">
+                            +
+                        </div>
+                    </div>
+                </div>
+                <div id="button-box" style="display: flex; flex-direction: row; justify-content: center; width: fit-content; margin: 0 auto;">
+                    <div id="upload-button" class="button" onclick="">
+                        Upload
+                    </div>
+    
+                    <div id="delete-button" class="button" onclick="console.log('delete content object pressed')">
+                        Delete
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+    <div style="height: 6rem;"> space </div>
+
+
+    <script src="ADMIN_CLIENT/contentUtils.js"></script>
+    <script src="ADMIN_CLIENT/contentAdder.js"></script>
+    <script src="scripts/JS/thumbnailRowFitter.js"></script>
+    <script>
+        LoadThumbRowsForAdmin();
+    </script>
+
+</body>
+
+</html>
