@@ -27,9 +27,9 @@ function WriteUser(users, username, usercolor, colorscheme)
     console.log("Wrote user data: " + username + " | " + usercolor + " | " + colorscheme)
 
     users[username] = playerData;
-    let pD = JSON.stringify(users, null, 2);
+    let writeData = JSON.stringify(users, null, 2);
 
-    fs.writeFile(`WEBSITE/files/USERS.json`, pD, function(err) {
+    fs.writeFile(`WEBSITE/files/USERS.json`, writeData, function(err) {
         if (err) {
             // there should never happen an error, this is just for good measure
             console.log(err);
@@ -44,9 +44,9 @@ async function EditUser(username, keyToEdit, newValue)
     users[username][keyToEdit] = newValue;
     console.log("Changed user data: " + keyToEdit + " | " + newValue + " for user " + username)
 
-    let pD = JSON.stringify(users);
+    let writeData = JSON.stringify(users, null, 2);
 
-    fs.writeFile(`WEBSITE/files/USERS.json`, pD, function(err) {
+    fs.writeFile(`WEBSITE/files/USERS.json`, writeData, function(err) {
         if (err) {
             // there should never happen an error, this is just for good measure
             console.log(err);
@@ -55,7 +55,27 @@ async function EditUser(username, keyToEdit, newValue)
 }
 
 
+async function WriteBlockedUser(ip, data)
+{
+    let fileData = await fs.readFile(`WEBSITE/files/BLACKLIST.json`, 'utf8');
+    let blacklist = JSON.parse(fileData);
 
-module.exports = { CreateUser, ReadUsers, EditUser };
+    blacklist[ip] = data;
+
+    let writeData = JSON.stringify(blacklist, null, 2);
+
+    fs.writeFile(`WEBSITE/files/BLACKLIST.json`, writeData, function(err) {
+        if (err) {
+            // there should never happen an error, this is just for good measure
+            console.log(err);
+        }
+    });
+
+    console.log("Wrote data to BLACKLIST ( " + ip + " ).");
+}
+
+
+
+module.exports = { CreateUser, ReadUsers, EditUser, WriteBlockedUser };
 
 console.log("Server was started");

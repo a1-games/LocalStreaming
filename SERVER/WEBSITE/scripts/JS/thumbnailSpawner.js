@@ -1,23 +1,27 @@
 
 
-function GetRandomKeyListFromContent(contentObjectDictionary)
+function GetKeyListFromContent(contentObjectDictionary, randomize = true)
 {
-    rndKeys = [];
+    // get the keys
     _contentKeys = [...Object.keys(contentObjectDictionary)];
-    let len = Object.keys(_contentKeys).length;
-
+    if (!randomize)
+    {
+        return _contentKeys;
+    }
+    // if randomize is true:
+    rndKeys = [];
+    let len = _contentKeys.length;
     for (let i = 0; i < len; i++) {
         let rnd = Math.floor(Math.random() * _contentKeys.length);
         rndKeys[i] = (_contentKeys[rnd]);
         _contentKeys.splice(rnd, 1);
     }
-
     return rndKeys;
 }
 
 
 
-function SpawnThumbnailRow(appendParent, contentType, title, contentList = null)
+function SpawnThumbnailRow(appendParent, contentType, title, contentList = null, randomize = true)
 {
 
     // parent row div
@@ -81,24 +85,24 @@ function SpawnThumbnailRow(appendParent, contentType, title, contentList = null)
     // spawn the thumbnails
     if (contentList != null)
     {
-        LoadAllThumbnails(contentList, contentType, thumbRow);
+        LoadAllThumbnails(contentList, contentType, thumbRow, randomize = true);
     }
 
 }
 
-function LoadAllThumbnails(objectList, contentType, thumbRow)
+function LoadAllThumbnails(objectList, contentType, thumbRow, randomize = true)
 {
-    let randomKeys = GetRandomKeyListFromContent(objectList);
+    let keys = GetKeyListFromContent(objectList, randomize);
 
-    for (let i = 0; i < randomKeys.length; i++) {
+    for (let i = 0; i < keys.length; i++) {
         var onclick = function() {
             // set the selected content
-            SelectContentObject(objectList[randomKeys[i]], contentType);
+            SelectContentObject(objectList[keys[i]], contentType);
             // load the page
             LoadPage(ContentPageName[contentType]);
         };
 
-        AddThumbnail(randomKeys[i], `${ContentFolder[contentType]}/${randomKeys[i]}/thumbnail.jpg`, thumbRow, onclick);
+        AddThumbnail(keys[i], `${ContentFolder[contentType]}/${keys[i]}/thumbnail.jpg`, thumbRow, onclick);
     }
 }
 

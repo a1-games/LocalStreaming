@@ -20,6 +20,7 @@
     flex-direction: row;
     
 
+    justify-content: center;
     height: 4rem;
     width: 100%;
     
@@ -88,10 +89,13 @@
     position: relative;
     display: flex;
 
+    justify-content: center;
+
     height: 1rem;
     width: 1rem;
 
-    margin: 0 0.5rem 0 0;
+    margin: 0;
+    margin-right: 0.5rem;
 
     background-position: center;
     background-size: contain;
@@ -101,6 +105,12 @@
     user-select: none;
 }
 .mini-title {
+    position: relative;
+    display: flex;
+
+    /* This fixes a dumn centering issue with the font */
+    padding-bottom: 1px;
+
     font-size: 1rem;
     font-weight: 300;
     letter-spacing: 0.05rem;
@@ -120,15 +130,16 @@
     position: relative;
     display: flex;
     flex-direction: row;
+    
 
     width: auto;
-    height: auto;
+    height: 100%;
 
-    padding: 1rem 0;
     margin: auto 1rem;
 
     justify-content: center;
     align-items: center;
+    align-content: center;
 }
 #search-icon {
     background-image: url('../../files/IMAGES/Icons/search.png');
@@ -181,6 +192,7 @@
     padding: 0;
 }
 .searchbar-open {
+    height: 2rem;
     width: 16rem;
     margin-right: 0.5rem;
     padding-left: 0.5rem;

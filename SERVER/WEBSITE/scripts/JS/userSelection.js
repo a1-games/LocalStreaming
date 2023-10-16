@@ -92,9 +92,7 @@ async function SelectUser(username)
 
 async function SpawnUsers()
 {
-
-
-    let response = await fetch(`http://${IP_ADDRESS}/users`);
+    let response = await fetch(`/users`);
     userList = await response.json();
 
     await LoadCurrentUser();
@@ -136,8 +134,6 @@ function SpawnOneUser(user, parentDiv)
 
 
 
-SpawnUsers();
-
 
 
 
@@ -145,7 +141,6 @@ SpawnUsers();
 
 // --------- User Creation Client Side ----------
 const createUserBox = document.getElementById("create-user-box");
-createUserBox.style.display = "none";
 const colorPicker = document.getElementById("usercolor-input");
 const nameInput = document.getElementById("username-input");
 const firstLetter = document.getElementById("showcase-usericon-letter");

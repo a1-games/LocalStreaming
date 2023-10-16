@@ -24,7 +24,10 @@ function LoadPage(pagename) {
 
 
 
-
+function PreventDefault(formevent)
+{
+    formevent.preventDefault();
+}
 
 
 

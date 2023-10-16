@@ -13,6 +13,7 @@ var fileUpload = require('express-fileupload');
 var users = require('./users.js');
 var whitelist = require('./whitelist.js');
 var contentdata = require('./contentdata.js');
+var { lookup } = require('geoip-lite');
 
 // Initialise Express
 var app = express();
@@ -60,7 +61,14 @@ app.post("/whitelistcheck", (req, res) => {
     }
     else
     {
+        console.log(ip + " tried to connect, was blocked!");
         res.end();
+
+        let data = lookup(ip);
+        if (data != null)
+        {
+            users.WriteBlockedUser(ip, data);
+        }
     }
 });
 

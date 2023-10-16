@@ -1,0 +1,19 @@
+{
+  "212.237.176.28": {
+    "range": [
+      3572346908,
+      3572346909
+    ],
+    "country": "DK",
+    "region": "82",
+    "eu": "1",
+    "timezone": "Europe/Copenhagen",
+    "city": "Ronde",
+    "ll": [
+      56.3015,
+      10.4751
+    ],
+    "metro": 0,
+    "area": 100
+  }
+}

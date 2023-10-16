@@ -17,9 +17,11 @@
     </a>
     
     <div id="search" class="mini-section" onclick="OpenSearchBar()">
-        <div id="search-icon" class="mini-icon" >
+        <div id="search-icon" class="mini-icon" onclick="SubmitSearch()">
         </div>
-        <input type="text" value=" test search" id="search-bar" class="searchbar-closed" onfocus="EmptyInputOnSelect(this)">
+        <form onsubmit="PreventDefault(event)" id="search-form">
+            <input name="search" type="text" value="Search" id="search-bar" class="searchbar-closed" oninput="SubmitSearch()" onfocus="EmptyInputOnSelect(this)">
+        </form>
         <div id="search-text" class="mini-title" >
             SEARCH
         </div>
@@ -47,7 +49,7 @@
             </div>
         </div>
         <!-- USER CREATION -->
-        <div id="create-user-box">
+        <div id="create-user-box" style="display: none;">
             <div class="input-div">
                 <input id="username-input" type="text" name="Username" value="Username" onclick="" onfocus="EmptyInputOnSelect(this)">
                 <div id="usercolor-input-div" class="create-user-title">
@@ -74,12 +76,26 @@
         </div>
     </div>
     
+
+
+    <!-- Search Bar Functionality -->
+    <script src="scripts/JS/search.js"></script>
     
     <!-- Accounts / User Menu -->
-    <script src="scripts/JS/userSelection.js">    
-    </script>
+    <script src="scripts/JS/userSelection.js"></script>
     <script>
         LoadColorschemeDropdown();
     </script>
     
+
+    <!-- It should be safe to load homepage when loading
+         header, because header is only loaded once on startup -->
+    <script>
+        async function LoadSiteInCorrectAsyncOrder()
+        {
+            await SpawnUsers();
+            LoadThumbRowsForClient();
+        }
+        LoadSiteInCorrectAsyncOrder();
+    </script>
 </div>
