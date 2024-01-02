@@ -304,15 +304,33 @@
 }
 
 #button-rewind5s {
-    margin-right: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+
+    transform: translate(calc(-50% - 3rem), 50%);
+
+    margin: 0;
 }
 
 #button-skip5s {
-    margin-left: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+
+    transform: translate(calc(-50% + 3rem), 50%);
+
+    margin: 0;
 }
 
 #button-play-pause {
-    margin: auto 1rem;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+
+    transform: translate(-50%, 50%);
+
+    margin: 0;
 }
 
 #button-airplay {
@@ -345,8 +363,8 @@
     width: auto;
 
     top: 0;
-    left: 0;
-    transform: translate(-1rem, -5.2125rem) rotate(270deg) ;
+    left: 50%;
+    transform: translate(-50%, -222%) rotate(270deg) ;
 
     z-index: 5;
     background-color: #00000044;

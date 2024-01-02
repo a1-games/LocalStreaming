@@ -370,18 +370,15 @@ SetEventListener(seek, 'click', skipAhead);
 
 // SKIP & REWIND
 SetEventListener(skip5sButton, 'click',  () => {
-    console.log("skipped 5s")
+    //console.log("skipped 5s")
     SkipTo(video.currentTime + 5);
 });
 
 SetEventListener(rewind5sButton, 'click',  () => {
-    console.log("rewinded 5s")
+    //console.log("rewinded 5s")
     SkipTo(video.currentTime - 5);
 });
 
-SetEventListener(rewind5sButton, 'mouseenter',  () => {
-    console.log("motherfucker 5s")
-});
 
 
 function SetThumbPos(timevalue)
