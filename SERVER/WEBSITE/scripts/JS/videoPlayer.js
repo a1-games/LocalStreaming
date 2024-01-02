@@ -27,6 +27,8 @@ infoBox = document.getElementById("info-box");
 
 videoControlBar = document.getElementById("video-control-bar");
 playpauseButton = document.getElementById('button-play-pause');
+skip5sButton = document.getElementById('button-skip5s');
+rewind5sButton = document.getElementById('button-rewind5s');
 airplayButton = document.getElementById('button-airplay');
 fullscreenButton = document.getElementById('button-fullscreen');
 
@@ -46,11 +48,13 @@ volumeSlider = document.getElementById("volume-slider");
 volumeSliderBox = document.getElementById("volume-slider-box");
 volumeProgressBar = document.getElementById("volume-progress-bar");
 
+// color the video player icons
 textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textColor');
-ColorizePNG(playpauseButton, textColor, 1);
-ColorizePNG(airplayButton, textColor, 1);
-ColorizePNG(fullscreenButton, textColor, 1);
-ColorizePNG(volumeButton, textColor, 1);
+icons = document.getElementsByClassName("video-button");
+for (let i = 0; i < icons.length; i++) {
+    ColorizePNG(icons[i], textColor);
+}
+
 
 
 function SetEventListener(element, eventKey, action)
@@ -337,6 +341,7 @@ function updateSeekTooltip(event)
 }
 SetEventListener(seek, 'mousemove', updateSeekTooltip);
 
+// skip with time
 function SkipTo(seconds)
 {
     video.currentTime = seconds;
@@ -347,6 +352,8 @@ function SkipTo(seconds)
     SetThumbPos(seconds);
     
 }
+
+// skip by dragging
 function skipAhead(event) {
 
     let skipTo = event.target.dataset.seek ? event.target.dataset.seek : event.target.value;
@@ -359,7 +366,22 @@ function skipAhead(event) {
     
 }
 SetEventListener(seek, 'input', skipAhead);
-SetEventListener(seek, 'onclick', skipAhead);
+SetEventListener(seek, 'click', skipAhead);
+
+// SKIP & REWIND
+SetEventListener(skip5sButton, 'click',  () => {
+    console.log("skipped 5s")
+    SkipTo(video.currentTime + 5);
+});
+
+SetEventListener(rewind5sButton, 'click',  () => {
+    console.log("rewinded 5s")
+    SkipTo(video.currentTime - 5);
+});
+
+SetEventListener(rewind5sButton, 'mouseenter',  () => {
+    console.log("motherfucker 5s")
+});
 
 
 function SetThumbPos(timevalue)

@@ -1,19 +1,2 @@
 {
-  "83.137.123.56": {
-    "range": [
-      1401518080,
-      1401520127
-    ],
-    "country": "DK",
-    "region": "",
-    "eu": "1",
-    "timezone": "Europe/Copenhagen",
-    "city": "",
-    "ll": [
-      55.7123,
-      12.0564
-    ],
-    "metro": 0,
-    "area": 200
-  }
 }

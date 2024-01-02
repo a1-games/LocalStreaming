@@ -90,10 +90,14 @@ async function SetPNGColors()
 {
     // set the png images through javascript instead of css
     let textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textColor');
+    
+    let icons = document.getElementsByClassName("mini-icon");
+    //let icons = document.getElementsByClassName("video-button");
+    
     ColorizePNG(document.getElementById("website-logo"), textColor);
-    ColorizePNG(document.getElementById("search-icon"), textColor);
-    ColorizePNG(document.getElementById("favourites-icon"), textColor);
-    ColorizePNG(document.getElementById("settings-icon"), textColor);
+    for (let i = 0; i < icons.length; i++) {
+        ColorizePNG(icons[i], textColor);
+    }
     document.body.style.pointerEvents = "all";
 }
 

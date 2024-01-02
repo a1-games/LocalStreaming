@@ -53,8 +53,8 @@
 .video-button {
     position: relative;
 
-    height: 2rem;
-    width: 5rem;
+    height: 1.6rem;
+    width: 1.6rem;
 
     margin: auto;
     
@@ -65,6 +65,7 @@
     cursor: pointer;
 }
 
+
 #button-play-pause {
     background-image: url("../../files/IMAGES/Icons/video_play.png");
 }
@@ -74,6 +75,13 @@
 #button-fullscreen {
     background-image: url("../../files/IMAGES/Icons/video_fullscreen.png");
 }
+#button-skip5s {
+    background-image: url("../../files/IMAGES/Icons/skip5.png");
+}
+#button-rewind5s {
+    background-image: url("../../files/IMAGES/Icons/rewind5.png");
+}
+
 
 
 #video-progress-parent {
@@ -283,9 +291,37 @@
 
 
 
+#volume-control {
+    position: relative;
+    height: 1.6rem;
+    width: 1.6rem;
 
+    margin: auto 0 auto 1rem;
+}
 
+#video-timer {
+    margin: auto 0 auto 1rem;
+}
 
+#button-rewind5s {
+    margin-right: 0;
+}
+
+#button-skip5s {
+    margin-left: 0;
+}
+
+#button-play-pause {
+    margin: auto 1rem;
+}
+
+#button-airplay {
+    margin: auto 1rem auto auto;
+}
+
+#button-fullscreen {
+    margin: auto 1rem auto 0;
+}
 
 
 
