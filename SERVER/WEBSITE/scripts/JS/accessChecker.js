@@ -28,7 +28,7 @@ async function GetPageAccess(clientIP)
         },
         body : JSON.stringify(data),
     })
-    
+
     return await response.text();
 }
 
@@ -36,8 +36,12 @@ async function CheckIPWhitelist(clientIP)
 {
     let resp = await GetPageAccess(clientIP);
     //console.log(resp)
+    
     if (resp != "")
     {
+    
+        // its document.write that makes the page load infinitely 
+        // check why and fix!
         document.write(resp);
 
     }

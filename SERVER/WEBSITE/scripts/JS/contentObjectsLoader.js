@@ -12,6 +12,7 @@ collectionObjects = {};
 
 async function GetContentObjects(contentType)
 {
+    
     let response = await fetch(`/contentObjects`, {
         method: 'POST',
         headers: {

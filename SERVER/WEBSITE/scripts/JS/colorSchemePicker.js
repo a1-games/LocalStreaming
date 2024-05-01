@@ -83,22 +83,30 @@ async function LoadSavedColorScheme(user)
     // change png after 400 milliseconds bc the new css reference above isn't loaded yet
     // also disable setting a new colorscheme until this is loaded
     document.body.style.pointerEvents = "none";
-    setTimeout(SetPNGColors, 400);
+    //setTimeout(SetPNGColors, 400);
+    setTimeout(setSVGColors, 1000);
 }
 
-async function SetPNGColors()
+async function setSVGColors()
 {
-    // set the png images through javascript instead of css
     let textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textColor');
+
+    let svgs = document.body.getElementsByClassName("SVG");
     
-    let icons = document.getElementsByClassName("mini-icon");
-    //let icons = document.getElementsByClassName("video-button");
-    
-    ColorizePNG(document.getElementById("website-logo"), textColor);
-    for (let i = 0; i < icons.length; i++) {
-        ColorizePNG(icons[i], textColor);
+    for (let i = 0; i < svgs.length; i++) {
+
+        let elem = svgs[i];
+
+        //let fill = elem.getAttribute("fill");
+        //if (fill != "none")
+            elem.setAttribute("fill", textColor);
+        
+        
+        //let stroke = elem.getAttribute("stroke");
+        //if (stroke != null)
+        //    elem.setAttribute("stroke", textColor);
+        
     }
-    document.body.style.pointerEvents = "all";
 }
 
 function SetColorschemeDropdownSelected(colorscheme)

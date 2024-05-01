@@ -25,55 +25,40 @@ app.use(express.static('WEBSITE'));
 app.use(express.json({ extended: false }));
 
 
+
+
 app.post("/whitelistcheck", (req, res) => {
+
 
     let ip = req.body.ip;
     // check if username is taken
     let allowed = whitelist.IsWhitelisted(ip)
-
-    if (allowed)
-    {
-
-
-        res.sendFile("WEBSITE/homepage.html", {root : rootDir} );
-
-
-        return
-
-        
-        fs.promises.readFile(`WEBSITE/homepage.html`, 'utf8')
-        .then( fileData  => {
-            res.send(fileData);
-        })
-
-            
-        contentdata.ReadContentObjects("S")
-        .then(contentObjects => {
-            res.status(200).send(JSON.stringify(contentObjects));
-        });
-
-        
-        res.set('Content-Type', 'text/html');
-        res.send('<script>console.log("received this res.send test")</script>');
-
-
-
-    }
-    else
-    {
-        console.log(ip + " tried to connect, was blocked!");
-        res.end();
-
-        let data = lookup(ip);
-        if (data != null)
+    try {
+        if (allowed)
         {
-            users.WriteBlockedUser(ip, data);
+            res.status(200).sendFile("WEBSITE/homepage.html", {root : rootDir} );
+        }
+        else{
+            console.log(ip + " tried to connect, was blocked!");
+            res.end();
+    
+            let data = lookup(ip);
+            if (data != null)
+            {
+                users.WriteBlockedUser(ip, data);
+            }
         }
     }
+    catch (err)
+    {
+        res.status(500).send("Error: " + err);
+    }
+
 });
 
 
 app.get("/users", (req, res) => {
+    console.log(" / users called");
     // check if username is taken
     users.ReadUsers()
         .then(userList => {
@@ -83,6 +68,7 @@ app.get("/users", (req, res) => {
 
 
 app.post("/createUser", (req, res) => {
+    console.log(" / createUser called" + req);
     let usnam = req.body.Username;
     let col = req.body.Color;
     let colscheme = req.body.ColorScheme;
@@ -96,6 +82,7 @@ app.post("/createUser", (req, res) => {
 
 
 app.post("/editUser", (req, res) => {
+    console.log(" / createUser called" + req);
     let usnam = req.body.Username;
     let kte = req.body.KeyToEdit;
     let newValue = req.body.NewValue;
@@ -110,6 +97,7 @@ app.post("/editUser", (req, res) => {
 
 
 app.post("/editContent", (req, res) => {
+    console.log(" / editContent called" + req);
     let _contentType = req.body.ContentType;
     let _contentID = req.body.ContentID;
     let _newValue = req.body.NewValue;
@@ -119,6 +107,8 @@ app.post("/editContent", (req, res) => {
 
 // this works as a get but must be a post to contain a body
 app.post("/contentObjects", (req, res) => {
+    console.log(" / contentObjects called");
+    console.log(req.body);
     let _contentType = req.body.ContentType;
     
     contentdata.ReadContentObjects(_contentType)
@@ -142,7 +132,7 @@ app.post("/addthumbnail", (req, res) => {
 
 
 
-
+/*
 var _server = http.createServer((req, res) =>
 {
     var ip = req.ip 
@@ -163,8 +153,9 @@ var _server = http.createServer((req, res) =>
     }
 
 })
-
 app.server = _server;
+*/
+
 
 // Port website will run on
 app.listen(3030);
