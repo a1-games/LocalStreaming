@@ -307,7 +307,7 @@ SetEventListener(video, 'loadstart', () => {
 
 // error stuff
 SetEventListener(video, 'error', (e) => {
-    console.log("VIDEO had en ERROR. - " + e);
+    console.log("VIDEO had an ERROR. - " + e);
 });
 
 SetEventListener(video, 'abort', (e) => {
@@ -429,7 +429,9 @@ function ToggleMuted() {
         // do not call UpdateVolume as it overwrites videoVolume which is used to untoggle mute
         volumeSlider.value = 0.0;
         volumeProgressBar.value = 0.0;
-        volumeButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_volume_0.png')";
+        
+        let textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textColor');
+        volumeButton.innerHTML = `<svg fill=\"${textColor}\"` + " class=\"SVG video-button-SVG\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"512\" height=\"512\"><path d=\"m14.5,24c-.095,0-.189-.009-.284-.027-2.877-.555-5.765-2.276-7.573-4.473h-1.143c-3.032,0-5.5-2.467-5.5-5.5v-3.5c0-3.033,2.468-5.5,5.5-5.5h.771C8.09,2.539,11.118.625,14.216.027c.44-.088.894.031,1.239.316.345.285.545.709.545,1.157v21c0,.448-.2.872-.545,1.157-.271.224-.609.343-.955.343ZM5.5,8c-1.379,0-2.5,1.122-2.5,2.5v3.5c0,1.378,1.121,2.5,2.5,2.5h1.885c.49,0,.949.239,1.229.641.978,1.398,2.618,2.627,4.386,3.348V3.511c-1.919.786-3.671,2.178-4.658,3.777-.273.442-.757.712-1.276.712h-1.565Z\"/><path d=\"m23.599,13.439c.586.585.586,1.536,0,2.121-.293.293-.677.439-1.061.439s-.768-.146-1.061-.439l-1.439-1.439-1.439,1.439c-.293.293-.677.439-1.061.439s-.768-.146-1.061-.439c-.586-.585-.586-1.536,0-2.121l1.439-1.439-1.439-1.439c-.586-.585-.586-1.536,0-2.121.586-.586,1.535-.586,2.121,0l1.439,1.439,1.439-1.439c.586-.586,1.535-.586,2.121,0,.586.585.586,1.536,0,2.121l-1.439,1.439,1.439,1.439Z\"/></svg>";    
     }
 }
 SetEventListener(volumeButton, 'click', ToggleMuted)
@@ -443,13 +445,15 @@ function UpdateVolume(volume) {
     videoVolume = volume;
     video.volume = videoVolume;
     
+    let textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textColor');
+
     // set the icon
     if ( volume <= 0.22 )
-        volumeButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_volume_1.png')";
+        volumeButton.innerHTML = `<svg fill=\"${textColor}\"` + " class=\"SVG video-button-SVG\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"512\" height=\"512\"><path d=\"m14.5,24c-.095,0-.189-.009-.284-.027-2.877-.555-5.765-2.276-7.573-4.473h-1.143c-3.032,0-5.5-2.467-5.5-5.5v-3.5c0-3.033,2.468-5.5,5.5-5.5h.771C8.09,2.539,11.118.625,14.216.027c.44-.088.894.031,1.239.316.345.285.545.709.545,1.157v21c0,.448-.2.872-.545,1.157-.271.224-.609.343-.955.343ZM5.5,8c-1.379,0-2.5,1.122-2.5,2.5v3.5c0,1.378,1.121,2.5,2.5,2.5h1.885c.49,0,.949.239,1.229.641.978,1.398,2.618,2.627,4.386,3.348V3.511c-1.919.786-3.671,2.178-4.658,3.777-.273.442-.757.712-1.276.712h-1.565Z\"/></svg>";
     else if ( 0.22 < volume && volume <= 0.6 )
-        volumeButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_volume_2.png')";
+        volumeButton.innerHTML = `<svg fill=\"${textColor}\"` + " class=\"SVG video-button-SVG\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"512\" height=\"512\"><path d=\"m19,12c0-1.909-1.267-3.505-3-4.042V1.5c0-.448-.2-.872-.545-1.157-.346-.285-.803-.404-1.239-.316-3.097.598-6.126,2.512-7.944,4.973h-.771C2.467,5,0,7.467,0,10.5v3.5c0,3.033,2.467,5.5,5.5,5.5h1.143c1.809,2.196,4.696,3.917,7.573,4.473.094.019.189.027.284.027.346,0,.684-.12.955-.343.345-.285.545-.709.545-1.157v-6.458c1.733-.536,3-2.132,3-4.042Zm-6,8.489c-1.768-.721-3.408-1.95-4.386-3.348-.28-.402-.74-.641-1.229-.641h-1.885c-1.378,0-2.5-1.122-2.5-2.5v-3.5c0-1.378,1.122-2.5,2.5-2.5h1.565c.52,0,1.003-.27,1.276-.712.987-1.599,2.739-2.991,4.658-3.777v16.978Z\"/></svg>";
     else if ( 0.6 < volume )
-        volumeButton.style.backgroundImage = "url('../../files/IMAGES/Icons/video_volume_3.png')";
+        volumeButton.innerHTML = `<svg fill=\"${textColor}\"` + " class=\"SVG video-button-SVG\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"512\" height=\"512\"><path d=\"M20.79,4.256a1.5,1.5,0,0,0-2.121,2.121,7.952,7.952,0,0,1,0,11.246,1.5,1.5,0,0,0,2.121,2.121,10.951,10.951,0,0,0,0-15.488Z\"/><path d=\"m19,12c0-1.909-1.267-3.505-3-4.042V1.5c0-.448-.2-.872-.545-1.157-.346-.285-.803-.404-1.239-.316-3.097.598-6.126,2.512-7.944,4.973h-.771C2.467,5,0,7.467,0,10.5v3.5c0,3.033,2.467,5.5,5.5,5.5h1.143c1.809,2.196,4.696,3.917,7.573,4.473.094.019.189.027.284.027.346,0,.684-.12.955-.343.345-.285.545-.709.545-1.157v-6.458c1.733-.536,3-2.132,3-4.042Zm-6,8.489c-1.768-.721-3.408-1.95-4.386-3.348-.28-.402-.74-.641-1.229-.641h-1.885c-1.378,0-2.5-1.122-2.5-2.5v-3.5c0-1.378,1.122-2.5,2.5-2.5h1.565c.52,0,1.003-.27,1.276-.712.987-1.599,2.739-2.991,4.658-3.777v16.978Z\"/></svg>";
 
     volumeProgressBar.value = volume;
     localStorage.setItem("VOLUME", volume);
@@ -543,6 +547,9 @@ LoadSavedVolume();
 function LoadVideo()
 {
     let CCO = currentContentObject;
+
+    //setTimeout(setSVGColors, 1000);
+    setSVGColors();
 
     // MOVIE
     if (CCO.contentType == "M")

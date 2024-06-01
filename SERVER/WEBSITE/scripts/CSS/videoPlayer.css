@@ -45,7 +45,7 @@
     left: 0;
     right: 0;
 
-    background-color: #00000044;
+    background-color: var(--hoverColor);
     transition: filter ease 1s;
 }
 
@@ -65,21 +65,24 @@
     cursor: pointer;
 }
 
+.video-button-SVG {
+    height: 1.5rem;
+    width: 1.5rem;
+}
 
 #button-play-pause {
-    background-image: url("../../files/IMAGES/Icons/video_play.png");
+    
 }
 #button-airplay {
     background-image: url("../../files/IMAGES/Icons/video_airplay.png");
 }
 #button-fullscreen {
-    background-image: url("../../files/IMAGES/Icons/video_fullscreen.png");
 }
 #button-skip5s {
-    background-image: url("../../files/IMAGES/Icons/skip5.png");
+    text-align: center;
 }
 #button-rewind5s {
-    background-image: url("../../files/IMAGES/Icons/rewind5.png");
+    text-align: center;
 }
 
 
@@ -338,7 +341,8 @@
 }
 
 #button-fullscreen {
-    margin: auto 1rem auto 0;
+    /* 4th should be 0 if airplay button exists*/
+    margin: auto 1rem auto auto;
 }
 
 
@@ -351,8 +355,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-
-    background-image: url('../../files/IMAGES/Icons/video_volume_3.png');
 }
 
 #volume-slider-box {
