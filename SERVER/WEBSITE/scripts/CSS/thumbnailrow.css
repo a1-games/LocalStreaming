@@ -184,7 +184,7 @@
 .arrow-inactive {
     border-color: var(--sectionColor);
     color: var(--sectionColor);
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 

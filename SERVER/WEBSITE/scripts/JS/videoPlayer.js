@@ -52,7 +52,7 @@ volumeProgressBar = document.getElementById("volume-progress-bar");
 textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textColor');
 icons = document.getElementsByClassName("video-button");
 for (let i = 0; i < icons.length; i++) {
-    ColorizePNG(icons[i], textColor);
+    //ColorizePNG(icons[i], textColor);
 }
 
 

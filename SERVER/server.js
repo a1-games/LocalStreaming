@@ -5,7 +5,10 @@ var fs = require("fs");
 // base path
 const { dirname } = require('path');
 const rootDir = dirname(require.main.filename);
-console.log(rootDir)
+console.log(rootDir);
+
+console.log("Hosted on localhost:3030");
+console.log("Last local IP was 192.168.1.27");
 
 // packages
 var express = require('express');
@@ -37,6 +40,7 @@ app.post("/whitelistcheck", (req, res) => {
         if (allowed)
         {
             res.status(200).sendFile("WEBSITE/homepage.html", {root : rootDir} );
+            //res.end();
         }
         else{
             console.log(ip + " tried to connect, was blocked!");
@@ -156,6 +160,6 @@ var _server = http.createServer((req, res) =>
 app.server = _server;
 */
 
-
+//const port = process.env.PORT || 3030;
 // Port website will run on
 app.listen(3030);

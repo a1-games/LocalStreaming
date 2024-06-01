@@ -56,6 +56,10 @@ function DontCloseUserTab(event)
 
 async function SelectUser(username)
 {
+    
+    // if we just clicked the already chosen user icon
+    if (selectedUserIcon.getAttribute("name") == username) return;
+
 
     // set new item
     localStorage.setItem("CURRENT_USER", username);

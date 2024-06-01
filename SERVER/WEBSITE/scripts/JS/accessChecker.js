@@ -43,7 +43,8 @@ async function CheckIPWhitelist(clientIP)
         // its document.write that makes the page load infinitely 
         // check why and fix!
         document.write(resp);
-
+        document.close();
+        //console.log(resp)
     }
 }
 

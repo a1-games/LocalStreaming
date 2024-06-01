@@ -15,5 +15,22 @@
     ],
     "metro": 0,
     "area": 200
+  },
+  "93.165.251.102": {
+    "range": [
+      1571143680,
+      1571160063
+    ],
+    "country": "DK",
+    "region": "",
+    "eu": "1",
+    "timezone": "Europe/Copenhagen",
+    "city": "",
+    "ll": [
+      55.7123,
+      12.0564
+    ],
+    "metro": 0,
+    "area": 200
   }
 }

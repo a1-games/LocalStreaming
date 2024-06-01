@@ -82,6 +82,7 @@ async function LoadSavedColorScheme(user)
 
     // change png after 400 milliseconds bc the new css reference above isn't loaded yet
     // also disable setting a new colorscheme until this is loaded
+    document.body.style.cursor = "wait";
     document.body.style.pointerEvents = "none";
     //setTimeout(SetPNGColors, 400);
     setTimeout(setSVGColors, 1000);
@@ -89,6 +90,9 @@ async function LoadSavedColorScheme(user)
 
 async function setSVGColors()
 {
+    document.body.style.removeProperty("cursor");
+    document.body.style.removeProperty("pointer-events");
+
     let textColor = getComputedStyle(colorscheme_CSSElement).getPropertyValue('--textColor');
 
     let svgs = document.body.getElementsByClassName("SVG");
