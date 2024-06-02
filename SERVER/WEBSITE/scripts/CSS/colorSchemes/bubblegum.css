@@ -1,10 +1,12 @@
 
 :root {
+    /*--- Essential ---*/
     --textColor: #fff5f5;
-    --textHover: #ffc1c1;
     --sectionColor: #ffbe46;
     --backgroundColor: #a30a82;
+    --lowOpacity: #ff008011;
     /*--- Hover  ---*/
+    --textHover: #ffc1c1;
     --hoverColor: #ffe23d86;
     /*--- Scroll  ---*/
     --scrollColor: #e6a52d;

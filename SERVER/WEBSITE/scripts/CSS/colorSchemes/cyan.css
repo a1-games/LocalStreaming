@@ -1,12 +1,14 @@
 
 :root {
-    --textColor: #e1edf8;
-    --textHover: #9fc8f3;
+    /*--- Essential ---*/
+    --textColor: #f8fcff;
     --sectionColor: #1f354d;
     --backgroundColor: #031324;
-    /*--- Hover  ---*/
+    --lowOpacity: #00aeff11;
+    /*--- Hover ---*/
+    --textHover: #9fc8f3;
     --hoverColor: #0d488686;
-    /*--- Scroll  ---*/
+    /*--- Scroll ---*/
     --scrollColor: #23548a;
     --scrollColorActive: #2c6fb8;
 }
