@@ -1,0 +1,13 @@
+https://www.noip.com/
+
+asbj15
+%RCJ@g/GhZN9Nd4
+
+security question:
+Bella
+
+
+
+
+for at se sin public ipv4:
+curl ifcfg.me
