@@ -1,0 +1,26 @@
+
+
+alle store object-lister som f.eks. hashtags, movielist, serieslist osv
+
+skal gemmes i localStorage.
+
+dette vil måske være 200kb maks? hvis gjort korrekt i hvert fald
+
+
+på denne måde kan loadingtime skæres ned efter første gang.
+
+første gang skal der så laves en loading skærm.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
