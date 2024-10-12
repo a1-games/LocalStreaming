@@ -1,0 +1,47 @@
+
+
+on load bliver alle hashtags loaded som en liste
+
+hver film bliver tjekket og smidt ind i alle hashtag-lister, den skal ligge i
+
+når så der sorteres efter hashtags skal man blot returnere listen
+
+man kan også søge efter flere hashtags
+
+has hashtag ( x && y )
+
+spawn x listen or frasortér alle uden y
+
+ved at tjekke filmobjektet med noget som her:
+	movieobject.hasTag(y)
+
+
+hashtags burde nok også have titler
+f.eks.
+
+HashtagObject {
+	public string tag = "agoodcry";
+	public string title= "A Good Cry";
+}
+
+
+ved at bruge titlerne kan man dermed nemt spawne et hashtag som kategori uden at det står grimt som #agoodcry
+
+hvis man bruger søgefunktionen skal man dog søge med #agoodcry MEN
+der skal naturligvis laves knapper til search page hvor man bare trykker på hashtaggets navn
+
+
+#horror
+#thriller
+#agoodcry
+#plottwist
+
+
+
+
+
+
+
+
+
+
