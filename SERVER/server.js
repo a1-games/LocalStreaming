@@ -43,7 +43,6 @@ app.post("/DSFJK4538FDSBHIEWIII", (req, res) => {
         if (allowed)
         {
             res.status(200).sendFile("WEBSITE/homepage.html", {root : rootDir} );
-            //res.end();
         }
         else{
             console.log(ip + " tried to connect, was blocked!");
@@ -116,8 +115,8 @@ app.post("/editContent", (req, res) => {
 
 // this works as a get but must be a post to contain a body
 app.post("/contentObjects", (req, res) => {
-    console.log(" / contentObjects called");
-    console.log(req.body);
+    console.log(" / contentObjects called by " + req.ip);
+    //console.log(req.body);
     let _contentType = req.body.ContentType;
     
     contentdata.ReadContentObjects(_contentType)

@@ -143,7 +143,7 @@ function AddThumbnail(contentID, contentURL, parent, onclick, thumbnailText = nu
 
 async function LoadWatchProgressForContentType(contentType)
 {
-    console.log(`thumbnailrow-${ContentID[contentType]}`)
+    //console.log(`thumbnailrow-${ContentID[contentType]}`)
     let thumbWPs = document.getElementById(`thumbnailrow-${ContentID[contentType]}`).querySelectorAll(".thumbnail-wp");
     
     for (let i = 0; i < thumbWPs.length; i++) {
