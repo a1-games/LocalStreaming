@@ -30,7 +30,10 @@ app.use(express.json({ extended: false }));
 
 
 
-app.post("/whitelistcheck", (req, res) => {
+// PREVIOUS NAME:
+// /whitelistcheck
+// Pseudo-encrypted to make it less obvious
+app.post("/DSFJK4538FDSBHIEWIII", (req, res) => {
 
 
     let ip = req.body.ip;
@@ -44,6 +47,8 @@ app.post("/whitelistcheck", (req, res) => {
         }
         else{
             console.log(ip + " tried to connect, was blocked!");
+            // 308 means permanent redirect
+            //res.status(308).sendFile("WEBSITE/404.html", {root : rootDir} );
             res.end();
     
             let data = lookup(ip);
