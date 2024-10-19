@@ -20,7 +20,6 @@ function GetKeyListFromContent(contentObjectDictionary, randomize = true)
 }
 
 
-
 function SpawnThumbnailRow(appendParent, contentType, title, contentList = null, randomize = true)
 {
 

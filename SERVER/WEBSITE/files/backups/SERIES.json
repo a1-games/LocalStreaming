@@ -527,7 +527,7 @@
     "contentID": "The_Office",
     "contentTitle": "The Office",
     "readableDescription": [
-      "The Office america"
+      "The Office america, very funny show with a lot of funny quotes"
     ],
     "seasons": [
       {
@@ -535,7 +535,11 @@
           {
             "title": "First Episode",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           }
         ]
       }
@@ -758,7 +762,11 @@
           {
             "title": "First Episode",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           }
         ]
       }

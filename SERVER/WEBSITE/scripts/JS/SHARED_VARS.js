@@ -1,4 +1,5 @@
-
+const IP_ADDRESS = window.location.hostname + ":" + window.location.port;
+//console.log(IP_ADDRESS)
 
 var seriesThumbElems = [];
 var moviesThumbElems = [];

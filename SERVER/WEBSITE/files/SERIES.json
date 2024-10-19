@@ -556,123 +556,219 @@
         "episodes": [
           {
             "title": "Pilot",
-            "description": "",
-            "fileType": "mkv"
+            "description": "test description",
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "The Bicycle Thief",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Come Fly with Me",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "The Incident",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Coal Digger",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Run for Your Wife",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "En Garde",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Great Expectations",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Fizbo",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Undeck the Halls",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Up All Night",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Not in My House",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Fifteen Percent",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Moon Landing",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "My Funky Valentine",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Fears",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Truth Be Told",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Starry Night",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Game Changer",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Benched",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Travels with Scout",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Airport 2010",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Hawaii",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           },
           {
             "title": "Family Portrait",
             "description": "",
-            "fileType": "mkv"
+            "fileType": "mkv",
+            "intro": {
+              "start": 0,
+              "end": 0
+            }
           }
         ]
       }
